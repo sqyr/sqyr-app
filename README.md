@@ -1,1 +1,3 @@
-# sqyr-app
+# sqyr - Connect with Lancers
+ 
+### ⚠ WORK IN PROGRESS ⚠
