@@ -3,16 +3,17 @@
 //  sqyr
 //
 //  Created by David Barsamian, Lauren Nelson, Steven Phun, True Sarmiento, and Tomas Perez on 1/27/21.
-
+ 
 import SwiftUI
 import CoreLocation
 import ARKit_CoreLocation
+import Drawer
 
 struct ContentView: View {
     var sceneLocationView = SceneLocationView()
     
     var body: some View {
-        return ARMapView().edgesIgnoringSafeArea(.all)
+        ARMapView().edgesIgnoringSafeArea(.all)
     }
 }
 

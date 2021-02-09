@@ -10,6 +10,7 @@
 		682908DB25C8D8500046F4C7 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 682908DA25C8D8500046F4C7 /* ARCL */; };
 		682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARMapView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
+		6860E7B125D21545009DCC13 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = 6860E7B025D21545009DCC13 /* Drawer */; };
 		68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6825C25DF20090E47D /* sqyrApp.swift */; };
 		68B96A6B25C25DF20090E47D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6A25C25DF20090E47D /* ContentView.swift */; };
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
@@ -33,6 +34,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				682908DB25C8D8500046F4C7 /* ARCL in Frameworks */,
+				6860E7B125D21545009DCC13 /* Drawer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -119,6 +121,7 @@
 			name = sqyr;
 			packageProductDependencies = (
 				682908DA25C8D8500046F4C7 /* ARCL */,
+				6860E7B025D21545009DCC13 /* Drawer */,
 			);
 			productName = sqyr;
 			productReference = 68B96A6525C25DF20090E47D /* sqyr.app */;
@@ -149,6 +152,7 @@
 			mainGroup = 68B96A5C25C25DF10090E47D;
 			packageReferences = (
 				682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
+				6860E7AF25D21545009DCC13 /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 			);
 			productRefGroup = 68B96A6625C25DF20090E47D /* Products */;
 			projectDirPath = "";
@@ -378,6 +382,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		6860E7AF25D21545009DCC13 /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maustinstar/swiftui-drawer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -385,6 +397,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
 			productName = ARCL;
+		};
+		6860E7B025D21545009DCC13 /* Drawer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6860E7AF25D21545009DCC13 /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
+			productName = Drawer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
