@@ -7,6 +7,7 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1DD3664625D3319C00C88941 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DD3664525D3319C00C88941 /* QRScannerView.swift */; };
 		682908DB25C8D8500046F4C7 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 682908DA25C8D8500046F4C7 /* ARCL */; };
 		682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARMapView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
@@ -17,6 +18,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1DD3664525D3319C00C88941 /* QRScannerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		682908E025C8D8D60046F4C7 /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
 		682908E325C8DBF50046F4C7 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
 		68B96A6525C25DF20090E47D /* sqyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sqyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -52,6 +54,7 @@
 				68B96A6A25C25DF20090E47D /* ContentView.swift */,
 				682908E025C8D8D60046F4C7 /* ARMapView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
+				1DD3664525D3319C00C88941 /* QRScannerView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -177,6 +180,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */,
+				1DD3664625D3319C00C88941 /* QRScannerView.swift in Sources */,
 				68B96A6B25C25DF20090E47D /* ContentView.swift in Sources */,
 				682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */,
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
