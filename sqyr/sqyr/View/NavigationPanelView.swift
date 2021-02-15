@@ -1,5 +1,5 @@
 //
-//  NavagationPanelView.swift
+//  NavigationPanelView.swift
 //  sqyr
 //
 //  Created by Steven Phun on 2/10/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct NavagationPanelView: View {
+struct NavigationPanelView: View {
     let buildings = getBuildings()
     
     var body: some View {
@@ -63,8 +63,8 @@ func getBuildings() -> Array<String> {
     return arrayOfBuildings
 }
 
-struct NavagationPanelView_Previews: PreviewProvider {
+struct NavigationPanelView_Previews: PreviewProvider {
     static var previews: some View {
-        NavagationPanelView()
+        NavigationPanelView()
     }
 }
