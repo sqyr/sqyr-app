@@ -7,13 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */; };
 		1DF896DD25DB48E100D4C335 /* NavView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1DF896DC25DB48E100D4C335 /* NavView.swift */; };
 		682908DB25C8D8500046F4C7 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 682908DA25C8D8500046F4C7 /* ARCL */; };
 		682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARMapView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
 		6896A81E25D466A700B57872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81A25D466A700B57872 /* ContentView.swift */; };
 		6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81B25D466A700B57872 /* BuildingPopUpView.swift */; };
-		6896A82025D466A700B57872 /* NavagationPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81C25D466A700B57872 /* NavagationPanelView.swift */; };
 		6896A82125D466A700B57872 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81D25D466A700B57872 /* SearchBarView.swift */; };
 		68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6825C25DF20090E47D /* sqyrApp.swift */; };
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
@@ -21,12 +21,12 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationPanelView.swift; sourceTree = "<group>"; };
 		1DF896DC25DB48E100D4C335 /* NavView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavView.swift; sourceTree = "<group>"; };
 		682908E025C8D8D60046F4C7 /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
 		682908E325C8DBF50046F4C7 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
 		6896A81A25D466A700B57872 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6896A81B25D466A700B57872 /* BuildingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingPopUpView.swift; sourceTree = "<group>"; };
-		6896A81C25D466A700B57872 /* NavagationPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavagationPanelView.swift; sourceTree = "<group>"; };
 		6896A81D25D466A700B57872 /* SearchBarView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		68B96A6525C25DF20090E47D /* sqyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sqyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B96A6825C25DF20090E47D /* sqyrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sqyrApp.swift; sourceTree = "<group>"; };
@@ -57,9 +57,9 @@
 		682908DE25C8D8960046F4C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */,
 				6896A81B25D466A700B57872 /* BuildingPopUpView.swift */,
 				6896A81A25D466A700B57872 /* ContentView.swift */,
-				6896A81C25D466A700B57872 /* NavagationPanelView.swift */,
 				6896A81D25D466A700B57872 /* SearchBarView.swift */,
 				682908E025C8D8D60046F4C7 /* ARMapView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
@@ -188,7 +188,6 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6896A82025D466A700B57872 /* NavagationPanelView.swift in Sources */,
 				682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */,
 				1DF896DD25DB48E100D4C335 /* NavView.swift in Sources */,
 				6896A81E25D466A700B57872 /* ContentView.swift in Sources */,
@@ -196,6 +195,7 @@
 				682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */,
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
 				6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */,
+				1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

@@ -17,7 +17,7 @@ struct NavView: View {
         NavigationView {
             ZStack {
                 ARMapView()
-                NavagationPanelView()
+                NavigationPanelView()
             }
             
         }
