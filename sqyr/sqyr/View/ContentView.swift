@@ -12,7 +12,7 @@ struct ContentView: View {
     var sceneLocationView = SceneLocationView()
     
     var body: some View {
-        return ARMapView().edgesIgnoringSafeArea(.all)
+        return NavView().edgesIgnoringSafeArea(.all)
     }
 }
 
