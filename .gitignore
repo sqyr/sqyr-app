@@ -26,4 +26,7 @@ DerivedData/
 /*.gcno
 
 .DS_Store
+<<<<<<< HEAD
 *.xcuserstate
+=======
+>>>>>>> functional-ar-code

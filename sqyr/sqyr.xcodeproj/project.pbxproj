@@ -12,12 +12,17 @@
 		682908DB25C8D8500046F4C7 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 682908DA25C8D8500046F4C7 /* ARCL */; };
 		682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARMapView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
+<<<<<<< HEAD
 		6896A81E25D466A700B57872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81A25D466A700B57872 /* ContentView.swift */; };
 		6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81B25D466A700B57872 /* BuildingPopUpView.swift */; };
 		6896A82125D466A700B57872 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81D25D466A700B57872 /* SearchBarView.swift */; };
+=======
+		6860E7B125D21545009DCC13 /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = 6860E7B025D21545009DCC13 /* Drawer */; };
+>>>>>>> functional-ar-code
 		68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6825C25DF20090E47D /* sqyrApp.swift */; };
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
 		68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */; };
+		68FF5F1925DB46A200EEDDBF /* LandmarkCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FF5F1825DB46A200EEDDBF /* LandmarkCalloutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +38,7 @@
 		68B96A6C25C25DF30090E47D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68B96A7125C25DF30090E47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68FF5F1825DB46A200EEDDBF /* LandmarkCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkCalloutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -41,6 +47,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				682908DB25C8D8500046F4C7 /* ARCL in Frameworks */,
+				6860E7B125D21545009DCC13 /* Drawer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -63,7 +70,11 @@
 				6896A81D25D466A700B57872 /* SearchBarView.swift */,
 				682908E025C8D8D60046F4C7 /* ARMapView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
+<<<<<<< HEAD
 				1DF896DC25DB48E100D4C335 /* NavView.swift */,
+=======
+				68FF5F1825DB46A200EEDDBF /* LandmarkCalloutView.swift */,
+>>>>>>> functional-ar-code
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -131,6 +142,7 @@
 			name = sqyr;
 			packageProductDependencies = (
 				682908DA25C8D8500046F4C7 /* ARCL */,
+				6860E7B025D21545009DCC13 /* Drawer */,
 			);
 			productName = sqyr;
 			productReference = 68B96A6525C25DF20090E47D /* sqyr.app */;
@@ -161,6 +173,7 @@
 			mainGroup = 68B96A5C25C25DF10090E47D;
 			packageReferences = (
 				682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
+				6860E7AF25D21545009DCC13 /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 			);
 			productRefGroup = 68B96A6625C25DF20090E47D /* Products */;
 			projectDirPath = "";
@@ -194,8 +207,12 @@
 				6896A82125D466A700B57872 /* SearchBarView.swift in Sources */,
 				682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */,
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
+<<<<<<< HEAD
 				6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */,
 				1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */,
+=======
+				68FF5F1925DB46A200EEDDBF /* LandmarkCalloutView.swift in Sources */,
+>>>>>>> functional-ar-code
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -394,6 +411,14 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		6860E7AF25D21545009DCC13 /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/maustinstar/swiftui-drawer";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 0.1.0;
+			};
+		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -401,6 +426,11 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
 			productName = ARCL;
+		};
+		6860E7B025D21545009DCC13 /* Drawer */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6860E7AF25D21545009DCC13 /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
+			productName = Drawer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};

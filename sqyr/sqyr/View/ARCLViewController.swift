@@ -5,10 +5,11 @@
 //  Created by David Barsamian on 2/1/21.
 //
 
-import Foundation
-import UIKit
 import ARKit_CoreLocation
 import CoreLocation
+import Foundation
+import UIKit
+import SwiftUI
 
 class ARCLViewController: UIViewController {
     var sceneLocationView = SceneLocationView()
@@ -25,19 +26,42 @@ class ARCLViewController: UIViewController {
         
         sceneLocationView.frame = view.bounds
         
+        var nodes: [LocationAnnotationNode] = []
+        
+        let hostingVC = UIHostingController(rootView: LandmarkCalloutView(title: "Apple Park", distance: "!Distance"))
+        hostingVC.loadView()
+        
         // Apple Park
-        var coordinate = CLLocationCoordinate2D(latitude: 37.3326, longitude: -122.0055)
-        var location = CLLocation(coordinate: coordinate, altitude: 200)
-        var image = UIImage(systemName: "mappin")!
-        var annotationNode = LocationAnnotationNode(location: location, image: image)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        nodes.append(buildNode(lat: 37.3326, long: -122.0055, altitude: 200, view: hostingVC.view))
         
         // CBU
-        coordinate = CLLocationCoordinate2D(latitude: 33.9289, longitude: -117.4259)
-        location = CLLocation(coordinate: coordinate, altitude: 200)
-        image = UIImage(systemName: "mappin")!.withTintColor(.systemBlue).resizableImage(withCapInsets: .zero)
-        annotationNode = LocationAnnotationNode(location: location, image: image)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        nodes.append(buildNode(lat: 33.9289, long: -117.4259, altitude: 200, image: UIImage(systemName: "graduationcap.fill")!.withTintColor(.blue).withRenderingMode(.alwaysTemplate)))
         
+        // Ten Ren's Tea Time
+        nodes.append(buildNode(lat: 33.9758, long: -117.5751, altitude: 200, image: UIImage(systemName: "cube.fill")!.withTintColor(.green).withRenderingMode(.alwaysTemplate)))
+        
+        sceneLocationView.addLocationNodesWithConfirmedLocation(locationNodes: nodes)
+    }
+    
+    /// Returns a new LocationAnnotationNode with an image
+    /// - Parameter lat: The latitude of the location
+    /// - Parameter long: The longitude of the location
+    /// - Parameter altitude: The altitude of the location
+    /// - Parameter image: The image to display for the node
+    private func buildNode(lat: CLLocationDegrees, long: CLLocationDegrees, altitude: CLLocationDistance, image: UIImage) -> LocationAnnotationNode {
+        let coord = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let location = CLLocation(coordinate: coord, altitude: altitude)
+        return LocationAnnotationNode(location: location, image: image)
+    }
+    
+    /// Returns a new LocationAnnotationNode with a view
+    /// - Parameter lat: The latitude of the location
+    /// - Parameter long: The longitude of the location
+    /// - Parameter altitude: The altitude of the location
+    /// - Parameter view: The view to dipslay for the node
+    private func buildNode(lat: CLLocationDegrees, long: CLLocationDegrees, altitude: CLLocationDistance, view: UIView) -> LocationAnnotationNode {
+        let coord = CLLocationCoordinate2D(latitude: lat, longitude: long)
+        let location = CLLocation(coordinate: coord, altitude: altitude)
+        return LocationAnnotationNode(location: location, view: view)
     }
 }
