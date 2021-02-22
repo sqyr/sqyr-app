@@ -18,6 +18,7 @@
 		68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6825C25DF20090E47D /* sqyrApp.swift */; };
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
 		68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */; };
+		BEDA6DD425E46F4C007C3CAF /* onboardingHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEDA6DD325E46F4C007C3CAF /* onboardingHelpView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -33,6 +34,7 @@
 		68B96A6C25C25DF30090E47D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68B96A7125C25DF30090E47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		BEDA6DD325E46F4C007C3CAF /* onboardingHelpView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = onboardingHelpView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -64,6 +66,7 @@
 				682908E025C8D8D60046F4C7 /* ARMapView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
 				1DF896DC25DB48E100D4C335 /* NavView.swift */,
+				BEDA6DD325E46F4C007C3CAF /* onboardingHelpView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -190,6 +193,7 @@
 			files = (
 				682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */,
 				1DF896DD25DB48E100D4C335 /* NavView.swift in Sources */,
+				BEDA6DD425E46F4C007C3CAF /* onboardingHelpView.swift in Sources */,
 				6896A81E25D466A700B57872 /* ContentView.swift in Sources */,
 				6896A82125D466A700B57872 /* SearchBarView.swift in Sources */,
 				682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */,
@@ -325,7 +329,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = ZSGY3777RX;
+				DEVELOPMENT_TEAM = BY6LM8QRC2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -333,7 +337,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sqyr.sqyr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sqyr.juniorDesign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
@@ -347,7 +351,7 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = ZSGY3777RX;
+				DEVELOPMENT_TEAM = BY6LM8QRC2;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -355,7 +359,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = com.sqyr.sqyr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.sqyr.juniorDesign;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
