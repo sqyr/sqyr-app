@@ -15,6 +15,7 @@
 		68B96A6B25C25DF20090E47D /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6A25C25DF20090E47D /* ContentView.swift */; };
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
 		68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */; };
+		68FF5F1925DB46A200EEDDBF /* LandmarkCalloutView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FF5F1825DB46A200EEDDBF /* LandmarkCalloutView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +27,7 @@
 		68B96A6C25C25DF30090E47D /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68B96A7125C25DF30090E47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		68FF5F1825DB46A200EEDDBF /* LandmarkCalloutView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkCalloutView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -54,6 +56,7 @@
 				68B96A6A25C25DF20090E47D /* ContentView.swift */,
 				682908E025C8D8D60046F4C7 /* ARMapView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
+				68FF5F1825DB46A200EEDDBF /* LandmarkCalloutView.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -184,6 +187,7 @@
 				68B96A6B25C25DF20090E47D /* ContentView.swift in Sources */,
 				682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */,
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
+				68FF5F1925DB46A200EEDDBF /* LandmarkCalloutView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
