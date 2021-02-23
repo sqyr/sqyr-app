@@ -56,3 +56,5 @@ build/
 *~
 *.dat
 *.dep
+/sqyr/sqyr.xcodeproj/project.pbxproj
+/sqyr/sqyr.xcodeproj/project.xcworkspace/xcuserdata/dbarsamian.xcuserdatad/UserInterfaceState.xcuserstate

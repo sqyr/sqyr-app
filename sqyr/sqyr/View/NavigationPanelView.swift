@@ -62,3 +62,4 @@ enum Category: String, CaseIterable {
     
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
+

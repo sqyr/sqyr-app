@@ -48,6 +48,5 @@ struct SearchBarView: UIViewRepresentable {
     
     func updateUIView(_ uiView: UISearchBar, context: UIViewRepresentableContext<SearchBarView>) {
         uiView.text = text
-        
     }
 }

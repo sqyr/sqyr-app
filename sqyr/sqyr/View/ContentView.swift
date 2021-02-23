@@ -10,20 +10,26 @@ import Drawer
 import SwiftUI
 
 struct ContentView: View {
+    @State var drawerHeights: [CGFloat] = [200]
+
     var sceneLocationView = SceneLocationView()
 
     var body: some View {
         ZStack {
             ARMapView()
                 .edgesIgnoringSafeArea(.all)
+                .onTapGesture {
+                    dismissKeyboard()
+                }
             GeometryReader { geo in
-                Drawer(heights: Binding<[CGFloat]>.constant([200, UIScreen.main.bounds.height - geo.safeAreaInsets.top]), startingHeight: 200) {
+                // Binding<[CGFloat]>.constant([200, UIScreen.main.bounds.height - geo.safeAreaInsets.top]
+                Drawer(heights: $drawerHeights, startingHeight: 200) {
                     ZStack {
                         // Background
                         RoundedRectangle(cornerRadius: 12)
-                            .foregroundColor(.white)
+                            .foregroundColor(Color(UIColor.systemBackground))
                             .shadow(radius: 100)
-                        
+
                         // Content
                         NavigationPanelView()
                             .padding(.vertical)
@@ -40,6 +46,9 @@ struct ContentView: View {
                 }
                 .impact(.light)
                 .edgesIgnoringSafeArea(.vertical)
+                .onAppear {
+                    drawerHeights = [200, UIScreen.main.bounds.height - geo.safeAreaInsets.top]
+                }
             }
         }
     }
