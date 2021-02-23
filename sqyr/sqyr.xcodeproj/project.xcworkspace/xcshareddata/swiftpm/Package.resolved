@@ -9,6 +9,15 @@
           "revision": "42abf4f47b191b153d4bfe4509f15617aadd837d",
           "version": "1.3.0"
         }
+      },
+      {
+        "package": "Drawer",
+        "repositoryURL": "https://github.com/sqyr/swiftui-drawer",
+        "state": {
+          "branch": null,
+          "revision": "2ef4f0a9e977169553c6c0aeacb4a160be38990e",
+          "version": "0.1.1"
+        }
       }
     ]
   },

@@ -9,57 +9,54 @@ import SwiftUI
 
 struct NavigationPanelView: View {
     let buildings = getBuildings()
-    
+
     var body: some View {
-        NavigationView {
-            VStack {
-                SearchBarView(text: .constant(""))
-                
+        VStack {
+            SearchBarView(text: .constant(""))
+
+            HStack {
+                Spacer()
                 HStack {
-                    Spacer()
-                    HStack {
-                        Circle()
-                            .fill(Color.gray)
-                            .opacity(0.2)
-                            .frame(width: 20)
-                        Text("Academic")
-                    }
-                    Spacer()
-                    HStack {
-                        Circle()
-                            .fill(Color.gray)
-                            .opacity(0.2)
-                            .frame(width: 20)
-                        Text("Social")
-                    }
-                    Spacer()
+                    Circle()
+                        .fill(Color.gray)
+                        .opacity(0.2)
+                        .frame(width: 20)
+                    Text("Academic")
                 }
-                .frame(height: 20)
-                .padding()
-                
-                List(buildings, id: \.self) { building in
-                    NavigationLink(destination: BuildingPopUpView(building: building)) {
-                        HStack {
-                            Rectangle()
-                                .frame(width: 20, height: 20)
-                                .foregroundColor(.black)
-                            Text(building)
-                        }
+                Spacer()
+                HStack {
+                    Circle()
+                        .fill(Color.gray)
+                        .opacity(0.2)
+                        .frame(width: 20)
+                    Text("Social")
+                }
+                Spacer()
+            }
+            .frame(height: 20)
+            .padding()
+
+            List(buildings, id: \.self) { building in
+                NavigationLink(destination: BuildingPopUpView(building: building)) {
+                    HStack {
+                        Rectangle()
+                            .frame(width: 20, height: 20)
+                            .foregroundColor(.black)
+                        Text(building)
                     }
                 }
-                .navigationTitle("CBU Buildings")
             }
         }
     }
 }
 
-func getBuildings() -> Array<String> {
+func getBuildings() -> [String] {
     var arrayOfBuildings = [String]()
-    
-    for i in 1...10 {
+
+    for i in 1 ... 10 {
         arrayOfBuildings.append("Building #\(i)")
     }
-    
+
     return arrayOfBuildings
 }
 

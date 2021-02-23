@@ -4,15 +4,41 @@
 //
 //  Created by David Barsamian, Lauren Nelson, Steven Phun, True Sarmiento, and Tomas Perez on 1/27/21.
 
-import SwiftUI
-import CoreLocation
 import ARKit_CoreLocation
+import CoreLocation
+import Drawer
+import SwiftUI
 
 struct ContentView: View {
     var sceneLocationView = SceneLocationView()
-    
+
     var body: some View {
-        return NavView().edgesIgnoringSafeArea(.all)
+        ZStack {
+            ARMapView()
+                .edgesIgnoringSafeArea(.all)
+            GeometryReader { geo in
+                Drawer(heights: Binding<[CGFloat]>.constant([100, UIScreen.main.bounds.height - geo.safeAreaInsets.top]), startingHeight: 100) {
+                    ZStack {
+                        RoundedRectangle(cornerRadius: 12)
+                            .foregroundColor(.white)
+                            .shadow(radius: 100)
+                        
+                        NavigationPanelView()
+                            .padding(.vertical)
+
+                        VStack(alignment: .center) {
+                            Spacer().frame(height: 4.0)
+                            RoundedRectangle(cornerRadius: 3.0)
+                                .foregroundColor(Color.gray.opacity(0.5))
+                                .frame(width: 40.0, height: 6.0)
+                            Spacer()
+                        }
+                    }
+                }
+                .impact(.light)
+                .edgesIgnoringSafeArea(.vertical)
+            }
+        }
     }
 }
 
