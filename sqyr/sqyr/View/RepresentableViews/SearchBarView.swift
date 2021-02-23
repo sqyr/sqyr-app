@@ -32,6 +32,14 @@ struct SearchBarView: UIViewRepresentable {
             searchBar.text = ""
             searchBar.setShowsCancelButton(false, animated: true)
         }
+        
+        func searchBarTextDidBeginEditing(_ searchBar: UISearchBar) {
+            // TODO: Use GlobalModel to broadcast when search bar begins editing
+        }
+        
+        func searchBarTextDidEndEditing(_ searchBar: UISearchBar) {
+            // TODO: Use GlobalModel to broadcast when search bar ends editing
+        }
     }
     
     func makeCoordinator() -> Coordinator {
