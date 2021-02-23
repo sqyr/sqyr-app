@@ -8,6 +8,8 @@
 
 /* Begin PBXBuildFile section */
 		1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */; };
+		6807457925E488C40025FE38 /* OnboardingHelpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6807457725E488C40025FE38 /* OnboardingHelpView.swift */; };
+		6807457A25E488C40025FE38 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6807457825E488C40025FE38 /* QRScannerView.swift */; };
 		682908DB25C8D8500046F4C7 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 682908DA25C8D8500046F4C7 /* ARCL */; };
 		682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARMapView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
@@ -22,6 +24,8 @@
 
 /* Begin PBXFileReference section */
 		1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationPanelView.swift; sourceTree = "<group>"; };
+		6807457725E488C40025FE38 /* OnboardingHelpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = OnboardingHelpView.swift; sourceTree = "<group>"; };
+		6807457825E488C40025FE38 /* QRScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		682908E025C8D8D60046F4C7 /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
 		682908E325C8DBF50046F4C7 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
 		6896A81A25D466A700B57872 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -57,6 +61,8 @@
 		682908DE25C8D8960046F4C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6807457725E488C40025FE38 /* OnboardingHelpView.swift */,
+				6807457825E488C40025FE38 /* QRScannerView.swift */,
 				1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */,
 				6896A81B25D466A700B57872 /* BuildingPopUpView.swift */,
 				6896A81A25D466A700B57872 /* ContentView.swift */,
@@ -191,7 +197,9 @@
 			files = (
 				682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */,
 				6896A81E25D466A700B57872 /* ContentView.swift in Sources */,
+				6807457925E488C40025FE38 /* OnboardingHelpView.swift in Sources */,
 				6896A82125D466A700B57872 /* SearchBarView.swift in Sources */,
+				6807457A25E488C40025FE38 /* QRScannerView.swift in Sources */,
 				682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */,
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
 				6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */,

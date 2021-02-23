@@ -9,7 +9,7 @@ import SwiftUI
 
 var isOnboarding = true
 
-struct onboardingHelpView: View {
+struct OnboardingHelpView: View {
 
     var body: some View {
         
@@ -42,7 +42,7 @@ struct onboardingHelpView: View {
 
 struct onboardingHelpView_Previews: PreviewProvider {
     static var previews: some View {
-        onboardingHelpView()
+        OnboardingHelpView()
             .preferredColorScheme(.dark)
     }
 }
