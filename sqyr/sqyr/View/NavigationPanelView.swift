@@ -9,33 +9,22 @@ import SwiftUI
 
 struct NavigationPanelView: View {
     let buildings = getBuildings()
+    
+    @State var categorySelection: Category = .all
+    @State var text: String = ""
 
     var body: some View {
         VStack {
-            SearchBarView(text: .constant(""))
-
-            HStack {
-                Spacer()
-                HStack {
-                    Circle()
-                        .fill(Color.gray)
-                        .opacity(0.2)
-                        .frame(width: 20)
-                    Text("Academic")
+            SearchBarView(text: $text)
+            
+            Picker("Category", selection: $categorySelection) {
+                ForEach(Category.allCases, id: \.self) {
+                    Text($0.rawValue).tag($0.rawValue)
                 }
-                Spacer()
-                HStack {
-                    Circle()
-                        .fill(Color.gray)
-                        .opacity(0.2)
-                        .frame(width: 20)
-                    Text("Social")
-                }
-                Spacer()
             }
-            .frame(height: 20)
+            .pickerStyle(SegmentedPickerStyle())
             .padding()
-
+            
             List(buildings, id: \.self) { building in
                 NavigationLink(destination: BuildingPopUpView(building: building)) {
                     HStack {
@@ -64,4 +53,12 @@ struct NavigationPanelView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationPanelView()
     }
+}
+
+enum Category: String, CaseIterable {
+    case all = "All"
+    case academic = "Academic"
+    case social = "Social"
+    
+    var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }

@@ -17,15 +17,18 @@ struct ContentView: View {
             ARMapView()
                 .edgesIgnoringSafeArea(.all)
             GeometryReader { geo in
-                Drawer(heights: Binding<[CGFloat]>.constant([100, UIScreen.main.bounds.height - geo.safeAreaInsets.top]), startingHeight: 100) {
+                Drawer(heights: Binding<[CGFloat]>.constant([200, UIScreen.main.bounds.height - geo.safeAreaInsets.top]), startingHeight: 200) {
                     ZStack {
+                        // Background
                         RoundedRectangle(cornerRadius: 12)
                             .foregroundColor(.white)
                             .shadow(radius: 100)
                         
+                        // Content
                         NavigationPanelView()
                             .padding(.vertical)
 
+                        // Grey Pill Indicator
                         VStack(alignment: .center) {
                             Spacer().frame(height: 4.0)
                             RoundedRectangle(cornerRadius: 3.0)
