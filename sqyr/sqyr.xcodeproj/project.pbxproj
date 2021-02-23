@@ -334,7 +334,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = "iPhone Developer";
+				DEVELOPMENT_TEAM = "";
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
