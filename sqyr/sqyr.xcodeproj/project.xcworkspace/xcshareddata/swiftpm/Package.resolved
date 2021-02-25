@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "PermissionsSwiftUI",
+        "repositoryURL": "https://github.com/jevonmao/PermissionsSwiftUI",
+        "state": {
+          "branch": null,
+          "revision": "87b24bb3139692f47741454c755660a0c61c6c64",
+          "version": "1.2.3"
+        }
+      },
+      {
         "package": "Drawer",
         "repositoryURL": "https://github.com/sqyr/swiftui-drawer",
         "state": {
