@@ -11,6 +11,8 @@ import SwiftUI
 struct ContentView: View {
     @State var showingDrawer: Bool = true
     @State var showingPermAlert: Bool = true
+    
+    @ObservedObject var globalModel: GlobalModel = GlobalModel()
 
     var sceneLocationView = SceneLocationView()
 
@@ -22,10 +24,9 @@ struct ContentView: View {
                     dismissKeyboard()
                 }
             GeometryReader { geo in
-                NavigationDrawer(geoProxy: geo)
+                NavigationDrawer(geoProxy: geo, globalModel: globalModel)
             }
         }
-        .JMAlert(showModal: $showingPermAlert, for: [.camera, .location])
     }
 }
 

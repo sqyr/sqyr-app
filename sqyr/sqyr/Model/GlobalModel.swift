@@ -8,7 +8,11 @@
 import Foundation
 
 class GlobalModel: ObservableObject {
-    @Published var searchBarIsEditing: Bool
+    @Published var searchBarIsEditing: Bool {
+        willSet {
+            objectWillChange.send()
+        }
+    }
     
     init() {
         searchBarIsEditing = false
