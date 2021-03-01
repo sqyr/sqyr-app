@@ -15,9 +15,11 @@
 		6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6807459625E4A0350025FE38 /* SearchBarView.swift */; };
 		681EAF4D25E4D58D00C39ACE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681EAF4C25E4D58D00C39ACE /* ViewExtension.swift */; };
 		682908DB25C8D8500046F4C7 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 682908DA25C8D8500046F4C7 /* ARCL */; };
-		682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARMapView.swift */; };
+		682908E125C8D8D60046F4C7 /* ARCLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARCLView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
 		6866C7A325E481B1006DB84D /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = 6866C7A225E481B1006DB84D /* Drawer */; };
+		688F08A825ECC99C00A36433 /* NavigationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08A725ECC99C00A36433 /* NavigationDrawer.swift */; };
+		688F08AF25ECCB8B00A36433 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08AE25ECCB8B00A36433 /* ARView.swift */; };
 		6896A81E25D466A700B57872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81A25D466A700B57872 /* ContentView.swift */; };
 		6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81B25D466A700B57872 /* BuildingPopUpView.swift */; };
 		68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6825C25DF20090E47D /* sqyrApp.swift */; };
@@ -33,8 +35,10 @@
 		6807457825E488C40025FE38 /* QRScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		6807459625E4A0350025FE38 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		681EAF4C25E4D58D00C39ACE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
-		682908E025C8D8D60046F4C7 /* ARMapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARMapView.swift; sourceTree = "<group>"; };
+		682908E025C8D8D60046F4C7 /* ARCLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLView.swift; sourceTree = "<group>"; };
 		682908E325C8DBF50046F4C7 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
+		688F08A725ECC99C00A36433 /* NavigationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDrawer.swift; sourceTree = "<group>"; };
+		688F08AE25ECCB8B00A36433 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		6896A81A25D466A700B57872 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		6896A81B25D466A700B57872 /* BuildingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingPopUpView.swift; sourceTree = "<group>"; };
 		68B96A6525C25DF20090E47D /* sqyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sqyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
@@ -62,7 +66,7 @@
 		6807458A25E494980025FE38 /* RepresentableViews */ = {
 			isa = PBXGroup;
 			children = (
-				682908E025C8D8D60046F4C7 /* ARMapView.swift */,
+				682908E025C8D8D60046F4C7 /* ARCLView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
 				6807459625E4A0350025FE38 /* SearchBarView.swift */,
 			);
@@ -95,13 +99,15 @@
 		682908DE25C8D8960046F4C7 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				6896A81A25D466A700B57872 /* ContentView.swift */,
 				6807457725E488C40025FE38 /* OnboardingHelpView.swift */,
 				6807457825E488C40025FE38 /* QRScannerView.swift */,
 				1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */,
 				6896A81B25D466A700B57872 /* BuildingPopUpView.swift */,
-				6896A81A25D466A700B57872 /* ContentView.swift */,
-				6807458A25E494980025FE38 /* RepresentableViews */,
 				1D1A551C25E7633100166B49 /* LocationAndCameraServices.swift */,
+				688F08AE25ECCB8B00A36433 /* ARView.swift */,
+				6807458A25E494980025FE38 /* RepresentableViews */,
+				688F08A725ECC99C00A36433 /* NavigationDrawer.swift */,
 			);
 			path = View;
 			sourceTree = "<group>";
@@ -237,9 +243,11 @@
 				6896A81E25D466A700B57872 /* ContentView.swift in Sources */,
 				6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */,
 				6807457925E488C40025FE38 /* OnboardingHelpView.swift in Sources */,
+				688F08A825ECC99C00A36433 /* NavigationDrawer.swift in Sources */,
 				681EAF4D25E4D58D00C39ACE /* ViewExtension.swift in Sources */,
 				6807457A25E488C40025FE38 /* QRScannerView.swift in Sources */,
-				682908E125C8D8D60046F4C7 /* ARMapView.swift in Sources */,
+				682908E125C8D8D60046F4C7 /* ARCLView.swift in Sources */,
+				688F08AF25ECCB8B00A36433 /* ARView.swift in Sources */,
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
 				6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */,
 				1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */,

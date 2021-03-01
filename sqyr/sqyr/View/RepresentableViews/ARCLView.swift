@@ -10,7 +10,7 @@ import UIKit
 import ARKit_CoreLocation
 import CoreLocation
 
-struct ARMapView: UIViewControllerRepresentable {
+struct ARCLView: UIViewControllerRepresentable {
     func makeUIViewController(context: Context) -> ARCLViewController {
         return ARCLViewController()
     }
