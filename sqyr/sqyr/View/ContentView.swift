@@ -9,7 +9,6 @@ import CoreLocation
 import SwiftUI
 
 struct ContentView: View {
-    @State var drawerHeights: [CGFloat] = [200]
     @State var showingDrawer: Bool = true
     @State var showingPermAlert: Bool = true
 
@@ -26,7 +25,7 @@ struct ContentView: View {
                 NavigationDrawer(geoProxy: geo)
             }
         }
-        .JMAlert(showModal: $showingPermAlert, for: [.camera, .location], autoDismiss: true)
+        .JMAlert(showModal: $showingPermAlert, for: [.camera, .location])
     }
 }
 

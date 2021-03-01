@@ -11,8 +11,10 @@ import Drawer
 struct NavigationDrawer: View {
     var geoProxy: GeometryProxy
     
+    @State var heights: [CGFloat] = [200]
+    
     var body: some View {
-        Drawer(heights: Binding<[CGFloat]>.constant([200, geoProxy.size.height * 0.9]), startingHeight: 200.0) {
+        Drawer(heights: $heights, startingHeight: 200.0) {
             ZStack {
                 // Background
                 RoundedRectangle(cornerRadius: 12)
@@ -33,6 +35,9 @@ struct NavigationDrawer: View {
                 }
             }
         }
-        .impact(.light)
+        .impact(.medium)
+        .onAppear {
+            heights = [200, geoProxy.size.height * 0.9]
+        }
     }
 }
