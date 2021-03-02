@@ -52,7 +52,7 @@
 		68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68B96A7125C25DF30090E47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68C2061725E4DA860057A07F /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
-		BE18754A25EE17110009096F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = SOURCE_ROOT; };
+		BE18754A25EE17110009096F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = sqyr/Helper/Constant.swift; sourceTree = SOURCE_ROOT; };
 		BE18754D25EE18FB0009096F /* LocateClassroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateClassroomView.swift; sourceTree = "<group>"; };
 		BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingHoursView.swift; sourceTree = "<group>"; };
 		BED74D6025EE2CF700EEFF05 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
@@ -89,14 +89,6 @@
 				681EAF4C25E4D58D00C39ACE /* ViewExtension.swift */,
 			);
 			path = Extensions;
-			sourceTree = "<group>";
-		};
-		681EAF4425E4CE4900C39ACE /* Helper */ = {
-			isa = PBXGroup;
-			children = (
-				BE18754A25EE17110009096F /* Constant.swift */,
-			);
-			path = Helper;
 			sourceTree = "<group>";
 		};
 		682908DD25C8D8920046F4C7 /* Model */ = {
@@ -157,7 +149,7 @@
 				682908DD25C8D8920046F4C7 /* Model */,
 				682908DF25C8D89A0046F4C7 /* Controller */,
 				682908DE25C8D8960046F4C7 /* View */,
-				681EAF4425E4CE4900C39ACE /* Helper */,
+				BED74D6D25EEF4E500EEFF05 /* Helper */,
 				6807459025E49F660025FE38 /* Extensions */,
 				68B96A6C25C25DF30090E47D /* Assets.xcassets */,
 				68B96A7125C25DF30090E47D /* Info.plist */,
@@ -172,6 +164,14 @@
 				68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		BED74D6D25EEF4E500EEFF05 /* Helper */ = {
+			isa = PBXGroup;
+			children = (
+				BE18754A25EE17110009096F /* Constant.swift */,
+			);
+			path = Helper;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
