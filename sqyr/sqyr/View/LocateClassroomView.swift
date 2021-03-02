@@ -11,17 +11,13 @@ struct LocateClassroomView: View {
     let building: String
     
     var body: some View {
-        ScrollView {
+
+        ScrollView(.vertical, showsIndicators: false) {
             VStack {
-                Text("\(building) Floor Plan")
-                    .font(.title)
-                    .fontWeight(.bold)
-                    .padding()
-                
                 ForEach(1..<4) { index in
-                    Text("\(index) Level")
+                    Text("Level \(index)")
                         .fontWeight(.bold)
-                    
+                        .padding(.top)
                     
                     Image(floorPlanImage(building: building, floor: index))
                         .resizable()
@@ -30,6 +26,8 @@ struct LocateClassroomView: View {
                 } //: LOOP
             } //: VSTACK
         } //: SCROLL
+        .navigationBarTitle("\(building) Floor Plan", displayMode: .inline)
+    
     }
 }
 
