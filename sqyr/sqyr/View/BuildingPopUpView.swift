@@ -12,67 +12,49 @@ struct BuildingPopUpView: View {
     
     var body: some View {
         NavigationView {
-            VStack {
-                // TITLE
-                HStack{
-                    Image(systemName: "mappin.and.ellipse")
-                        .imageScale(.large)
-                    Text(building)
-                        .font(.title)
-                        .fontWeight(.bold)
-                } //: HSTACK
+            VStack(spacing: 20) {
+                // BUILDING HOURS TITLE
+                BuildingTitleView(icon: "building.2.crop.circle.fill", title: building)
                 
-                // BUILDING HOURS
+                // BUILDING HOURS CONTENT
                 BuildingHoursView()
-                    .padding()
+                    .padding(.horizontal)
+                    .padding(.bottom)
                     .cornerRadius(12)
                 
-                // OPTIONAL TITLE
-                HStack {
-                    Image(systemName: "questionmark.circle.fill")
-                        .imageScale(.large)
-                    Text("What would you like to do?")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                } //: HSTACK
+                // OPTIONAL ACTION TITLE
+                BuildingTitleView(icon: "questionmark.circle.fill", title: "What would you like to do?")
                 
-                // OPTITIONAL ACTIONS
-                let options = ["Join/Create a Study Group", "Find My Classroom"]
-                
+                // OPTIONAL ACTION CONTENT
                 List {
                     NavigationLink(destination: BuildingPopUpView(building: "TEGR")) {
-                        Text(options[0])
+                        Text("Join/Create a Study Group")
                     } //: LINK
                     .padding(.vertical, 4)
                     .padding(.horizontal)
                     
-                    NavigationLink(destination: BuildingPopUpView(building: "TEGR")) {
-                        Text(options[1])
+                    NavigationLink(destination: LocateClassroomView(building: "TEGR")) {
+                        Text("Find My Classroom")
                     } //: LINK
                     .padding(.vertical, 4)
                     .padding(.horizontal)
                 } //: LIST
                 
-                // INFORMATION TITLE
-                HStack {
-                    Image(systemName: "info.circle.fill")
-                        .imageScale(.large)
-                    Text("Did you know?")
-                        .font(.title3)
-                        .fontWeight(.bold)
-                } //: HSTACK
-                .padding(.vertical, 5)
+                // BUILDING INFORMATION TITLE
+                BuildingTitleView(icon: "info.circle.fill", title: "Did you know?")
+                    .padding(.vertical, 5)
                 
-                // INFORMATION TEXT
+                // BUILDING INFORMATION CONTENT
                 Text("CBU's engineering building is home of the university's rapidly growing School of Engineering. The building features a mixture of classrooms and labs where students learn how to harness the power of technology to overcome real-world challenges.")
                     .fixedSize(horizontal: false, vertical: true)
                     .padding(.horizontal)
                 
             } //: VSTACK
             .navigationBarHidden(true)
-            .padding(.top, 50)
-            .padding(.bottom, 70)
+            .padding(.vertical)
+            .padding(.bottom, 20) // FIXME: List is acting weird.
         } //: NAVIGATION
+        .navigationBarTitle("", displayMode: .inline)
         .navigationViewStyle(StackNavigationViewStyle())
     }
 }
