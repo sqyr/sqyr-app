@@ -109,8 +109,8 @@
 				1D1A551C25E7633100166B49 /* LocationAndCameraServices.swift */,
 				688F08AE25ECCB8B00A36433 /* ARView.swift */,
 				688F08A725ECC99C00A36433 /* NavigationDrawer.swift */,
-				6807458A25E494980025FE38 /* RepresentableViews */,
 				68AD764E25EDAF59005A22F0 /* OnboardingView.swift */,
+				6807458A25E494980025FE38 /* RepresentableViews */,
 			);
 			path = View;
 			sourceTree = "<group>";

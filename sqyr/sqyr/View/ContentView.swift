@@ -10,9 +10,11 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showingDrawer: Bool = true
-    @State var showingPermAlert: Bool = true
-    
-    @ObservedObject var globalModel: GlobalModel = GlobalModel()
+    @State var showingOnboarding: Bool = true
+
+    @ObservedObject var globalModel = GlobalModel()
+
+    @Environment(\.presentationMode) var presentationMode
 
     var sceneLocationView = SceneLocationView()
 
@@ -27,6 +29,9 @@ struct ContentView: View {
                 NavigationDrawer(geoProxy: geo, globalModel: globalModel)
             }
         }
+        .sheet(isPresented: $showingOnboarding, content: {
+            OnboardingView()
+        })
     }
 }
 
