@@ -118,8 +118,8 @@
 				688F08A725ECC99C00A36433 /* NavigationDrawer.swift */,
 				68AD764E25EDAF59005A22F0 /* OnboardingView.swift */,
 				BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */,
-				6807458A25E494980025FE38 /* RepresentableViews */,
 				BE18754D25EE18FB0009096F /* LocateClassroomView.swift */,
+				6807458A25E494980025FE38 /* RepresentableViews */,
 			);
 			path = View;
 			sourceTree = "<group>";
