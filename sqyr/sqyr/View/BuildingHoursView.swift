@@ -14,6 +14,7 @@ struct BuildingHoursView: View {
                 LazyVGrid(columns: getGridLayout(), spacing: 10, content: {
                     ForEach(0..<getWeekday().count, id:\.self) { day in
                         Text(getWeekday()[day])
+                            .fontWeight(.bold)
                         Text(getTime()[day])
                     }
                 })
