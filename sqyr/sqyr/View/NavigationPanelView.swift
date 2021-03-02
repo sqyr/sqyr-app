@@ -12,26 +12,28 @@ struct NavigationPanelView: View {
     
     @State var categorySelection: Category = .all
     @State var text: String = ""
-
+    
     var body: some View {
-        VStack {
-            SearchBarView(text: $text)
-            
-            Picker("Category", selection: $categorySelection) {
-                ForEach(Category.allCases, id: \.self) {
-                    Text($0.rawValue).tag($0.rawValue)
+        NavigationView {
+            VStack {
+                SearchBarView(text: $text)
+                
+                Picker("Category", selection: $categorySelection) {
+                    ForEach(Category.allCases, id: \.self) {
+                        Text($0.rawValue).tag($0.rawValue)
+                    }
                 }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
-            
-            List(buildings, id: \.self) { building in
-                NavigationLink(destination: BuildingPopUpView(building: building)) {
-                    HStack {
-                        Rectangle()
-                            .frame(width: 20, height: 20)
-                            .foregroundColor(.black)
-                        Text(building)
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                
+                List(buildings, id: \.self) { building in
+                    NavigationLink(destination: BuildingPopUpView(building: building)) {
+                        HStack {
+                            Rectangle()
+                                .frame(width: 20, height: 20)
+                                .foregroundColor(.black)
+                            Text(building)
+                        }
                     }
                 }
             }
@@ -41,11 +43,11 @@ struct NavigationPanelView: View {
 
 func getBuildings() -> [String] {
     var arrayOfBuildings = [String]()
-
+    
     for i in 1 ... 10 {
         arrayOfBuildings.append("Building #\(i)")
     }
-
+    
     return arrayOfBuildings
 }
 
