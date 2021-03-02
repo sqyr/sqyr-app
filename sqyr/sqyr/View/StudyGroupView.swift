@@ -30,7 +30,9 @@ struct StudyGroupView: View {
             GroupBox {
                 List {
                     ForEach(100..<150) { room in
-                        let time = Int.random(in: 15...22)
+                        let openHour = 1 + 12  // 12 hour format.
+                        let closeHour = 10 + 12 // 12 hour format.
+                        let time = Int.random(in: openHour...closeHour)
                         let hour12Format = time - 12
                         
                         HStack {
@@ -55,7 +57,7 @@ struct StudyGroupView: View {
 func isClosed(hour:Int) -> Bool {
     let currentHour = Calendar.current.component(.hour, from: Date())
     
-    return hour > 8 && hour < currentHour
+    return currentHour > 8 && currentHour < hour
 }
 
 func isRoomClosedStatus(hour: Int) -> Color {
