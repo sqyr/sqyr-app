@@ -15,7 +15,7 @@ let accentColor: UIColor = #colorLiteral(red: 0.6361396313, green: 0.4641576409,
 // MARK: - IMAGE
 
 func floorPlanImage(building: String, floor: Int) -> String {
-    return "\(building)_Floor_\(floor)"
+    return "\(building)_Floor\(floor)"
 }
 
 
