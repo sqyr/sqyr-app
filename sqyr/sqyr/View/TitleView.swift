@@ -1,5 +1,5 @@
 //
-//  BuildingTitleView.swift
+//  TitleView.swift
 //  sqyr
 //
 //  Created by Steven Phun on 3/2/21.
@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct BuildingTitleView: View {
+struct TitleView: View {
     
     let icon: String
     let title: String
@@ -23,9 +23,9 @@ struct BuildingTitleView: View {
     }
 }
 
-struct BuildingTitleView_Previews: PreviewProvider {
+struct TitleView_Previews: PreviewProvider {
     static var previews: some View {
-        BuildingTitleView(icon: "building.2.crop.circle.fill", title: "TEGR")
+        TitleView(icon: "building.2.crop.circle.fill", title: "TEGR")
             .previewLayout(.sizeThatFits)
             .padding()
     }
