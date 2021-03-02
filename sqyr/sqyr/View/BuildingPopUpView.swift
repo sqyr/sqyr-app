@@ -14,7 +14,7 @@ struct BuildingPopUpView: View {
         NavigationView {
             VStack(spacing: 20) {
                 // BUILDING HOURS TITLE
-                BuildingTitleView(icon: "building.2.crop.circle.fill", title: building)
+                TitleView(icon: "building.2.crop.circle.fill", title: building)
                 
                 // BUILDING HOURS CONTENT
                 BuildingHoursView()
@@ -23,11 +23,11 @@ struct BuildingPopUpView: View {
                     .cornerRadius(12)
                 
                 // OPTIONAL ACTION TITLE
-                BuildingTitleView(icon: "questionmark.circle.fill", title: "What would you like to do?")
+                TitleView(icon: "questionmark.circle.fill", title: "What would you like to do?")
                 
                 // OPTIONAL ACTION CONTENT
                 List {
-                    NavigationLink(destination: BuildingPopUpView(building: "TEGR")) {
+                    NavigationLink(destination: StudyGroupView(building:building, globalModel: GlobalModel())) {
                         Text("Join/Create a Study Group")
                     } //: LINK
                     .padding(.vertical, 4)
@@ -41,7 +41,7 @@ struct BuildingPopUpView: View {
                 } //: LIST
                 
                 // BUILDING INFORMATION TITLE
-                BuildingTitleView(icon: "info.circle.fill", title: "Did you know?")
+                TitleView(icon: "info.circle.fill", title: "Did you know?")
                     .padding(.vertical, 5)
                 
                 // BUILDING INFORMATION CONTENT
