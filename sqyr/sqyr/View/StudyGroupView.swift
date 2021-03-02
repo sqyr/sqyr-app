@@ -49,8 +49,8 @@ struct StudyGroupView: View {
                 .padding(.vertical, 7)
             } //: BOX
             .padding()
-            
         } //: VSTACK
+        .padding(.top)
     }
 }
 
