@@ -8,52 +8,58 @@
 import SwiftUI
 
 struct NavigationPanelView: View {
+    
     let buildings = getBuildings()
-
+    
     @State var categorySelection: Category = .all
     @State var text: String = ""
-
+    
     @ObservedObject var globalModel: GlobalModel
-
+    
     var body: some View {
-        VStack {
-            SearchBarView(text: $text, globalModel: globalModel)
-
-            Picker("Category", selection: $categorySelection) {
-                ForEach(Category.allCases, id: \.self) {
-                    Text($0.rawValue).tag($0.rawValue)
-                }
-            }
-            .pickerStyle(SegmentedPickerStyle())
-            .padding()
-
-            NavigationView {
-                VStack {
-                    List(buildings, id: \.self) { building in
-                        NavigationLink(destination: BuildingPopUpView(building: building)) {
-                            HStack {
-                                Rectangle()
-                                    .frame(width: 20, height: 20)
-                                    .foregroundColor(.black)
-                                Text(building)
-                            }
-                        }
+        NavigationView {
+            VStack {
+                SearchBarView(text: $text, globalModel: globalModel)
+                
+                Picker("Category", selection: $categorySelection) {
+                    ForEach(Category.allCases, id: \.self) {
+                        Text($0.rawValue).tag($0.rawValue)
                     }
-                    .navigationBarTitle("Landmarks")
                 }
-            }
-            
-        }
+                .pickerStyle(SegmentedPickerStyle())
+                .padding()
+                
+                VStack {
+                    List {
+                        NavigationLink(destination: BuildingPopUpView(building: "TEGR")) {
+                            HStack {
+                                Image(systemName: "building.2.crop.circle.fill")
+                                Text("Engineering Building")
+                            } // : HSTACK
+                        } //: LINK
+                        ForEach(buildings, id: \.self) { building in
+                            NavigationLink(destination: BuildingPopUpView(building: building)) {
+                                HStack {
+                                    Image(systemName: "building.2.crop.circle.fill")
+                                    Text(building)
+                                } //: HSTACK
+                            } //: LINK
+                        } //: LOOP
+                    } //: LIST
+                } //: VSTACK
+            } //: VSTACK
+            .navigationBarTitle("Landmarks")
+        } //: NAVIGATION
     }
 }
 
 func getBuildings() -> [String] {
     var arrayOfBuildings = [String]()
-
+    
     for i in 1 ... 10 {
         arrayOfBuildings.append("Building #\(i)")
     }
-
+    
     return arrayOfBuildings
 }
 
@@ -67,6 +73,6 @@ enum Category: String, CaseIterable {
     case all = "All"
     case academic = "Academic"
     case social = "Social"
-
+    
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
