@@ -68,6 +68,47 @@ struct CreditView: View {
     }
 }
 
+struct CreditItemView: View {
+    
+    let title: String
+    let name: String
+    
+    var body: some View {
+        VStack {
+            // DIVIDER
+            Divider()
+                .padding(.vertical, 4)
+            
+            // CONTENT
+            HStack {
+                // TITLE
+                Text(title)
+                    .foregroundColor(Color.gray)
+                
+                Spacer()
+                
+                // NAME
+                Text(name)
+            } //: HSTACK
+        } //: VSTACK
+    }
+}
+
+struct CreditTitleView: View {
+    
+    let title: String
+    let icon: String
+    
+    var body: some View {
+        HStack {
+            Text(title.uppercased())
+                .fontWeight(.bold)
+            Spacer()
+            Image(systemName: icon)
+        } //: HSTACK
+    }
+}
+
 struct CreditView_Previews: PreviewProvider {
     static var previews: some View {
         CreditView()
