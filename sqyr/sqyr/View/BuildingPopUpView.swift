@@ -10,15 +10,16 @@ import SwiftUI
 struct BuildingPopUpView: View {
     let building: String
     
+    @State var isShowingCredits : Bool = false
+    
     var body: some View {
-        NavigationView {
-            VStack(spacing: 20) {
+
+            VStack(spacing: 10) {
                 // BUILDING HOURS TITLE
                 TitleView(icon: "building.2.crop.circle.fill", title: building)
                 
                 // BUILDING HOURS CONTENT
                 BuildingHoursView()
-                    .padding(.horizontal)
                     .padding(.bottom)
                     .cornerRadius(12)
                 
@@ -31,14 +32,12 @@ struct BuildingPopUpView: View {
                         Text("Join/Create a Study Group")
                     } //: LINK
                     .padding(.vertical, 4)
-                    .padding(.horizontal)
                     
                     NavigationLink(destination: LocateClassroomView(building: "TEGR")) {
                         Text("Find My Classroom")
                     } //: LINK
                     .padding(.vertical, 4)
-                    .padding(.horizontal)
-                } //: LIST
+                } //: List
                 
                 // BUILDING INFORMATION TITLE
                 TitleView(icon: "info.circle.fill", title: "Did you know?")
@@ -47,15 +46,22 @@ struct BuildingPopUpView: View {
                 // BUILDING INFORMATION CONTENT
                 Text("CBU's engineering building is home of the university's rapidly growing School of Engineering. The building features a mixture of classrooms and labs where students learn how to harness the power of technology to overcome real-world challenges.")
                     .fixedSize(horizontal: false, vertical: true)
-                    .padding(.horizontal)
+                    .padding(.bottom, 50) // FIXME: SwiftUI List
                 
             } //: VSTACK
-            .navigationBarHidden(true)
-            .padding(.vertical)
-            .padding(.bottom, 20) // FIXME: List is acting weird.
-        } //: NAVIGATION
-        .navigationBarTitle("", displayMode: .inline)
-        .navigationViewStyle(StackNavigationViewStyle())
+            .padding()
+            .navigationBarTitle("", displayMode: .inline)
+            .navigationBarItems(
+                trailing:
+                    Button(action: {
+                        isShowingCredits = true
+                    }) {
+                        Image(systemName: "person.2")
+                    } //: BUTTON
+                    .sheet(isPresented: $isShowingCredits) {
+                        CreditView()
+                    } //: SHEET
+            ) //: ITEM
     }
 }
 
