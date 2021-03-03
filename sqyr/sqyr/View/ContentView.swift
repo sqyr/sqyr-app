@@ -4,19 +4,17 @@
 //
 //  Created by David Barsamian, Lauren Nelson, Steven Phun, True Sarmiento, and Tomas Perez on 1/27/21.
 
-import ARKit_CoreLocation
-import CoreLocation
+import PermissionsSwiftUI
 import SwiftUI
 
 struct ContentView: View {
     @State var showingDrawer: Bool = true
-    @State var showingOnboarding: Bool = true
+    @State var showingOnboarding: Bool = false
+    @State var showingAR: Bool = true // TODO: change this based on permissions granted
 
     @ObservedObject var globalModel = GlobalModel()
 
     @Environment(\.presentationMode) var presentationMode
-
-    var sceneLocationView = SceneLocationView()
 
     var body: some View {
         ZStack {
@@ -29,7 +27,7 @@ struct ContentView: View {
                 NavigationDrawer(geoProxy: geo, globalModel: globalModel)
             }
         }
-        .sheet(isPresented: $showingOnboarding, content: {
+        .fullScreenCover(isPresented: $showingOnboarding, content: {
             OnboardingView()
         })
     }

@@ -15,12 +15,15 @@ struct OnboardingView: View {
     @Environment(\.presentationMode) var presentationMode
 
     var body: some View {
-        VStack {
+        VStack(alignment: .leading) {
             Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.15)
             Text("Welcome to Sqyr")
                 .font(.largeTitle)
-                .bold()
-            Spacer().frame(height: 20)
+                .fontWeight(.black)
+                .tracking(-1.0)
+                .lineLimit(1)
+            Spacer().frame(height: 15)
             VStack {
                 OnboardingDetail(systemName: "figure.walk", header: "Get Directions", desc: "Discover important places on campus, like classrooms.", color: .blue)
                 OnboardingDetail(systemName: "mappin.and.ellipse", header: "View Landmark Info", desc: "Check building and restaurant hours, and more.", color: .red)
@@ -31,11 +34,13 @@ struct OnboardingView: View {
                 showingPerms = true
             }
             .buttonStyle(SolidButtonStyle(backgroundColor: .blue, foregroundColor: .white, width: constWidth))
-            .JMAlert(showModal: $showingPerms, for: [.camera, .location], autoDismiss: true, onAppear: {}, onDisappear: {
-                presentationMode.wrappedValue.dismiss()
-            })
+            Spacer()
+                .frame(height: UIScreen.main.bounds.height * 0.05)
         }
         .frame(width: constWidth)
+        .JMAlert(showModal: $showingPerms, for: [.camera, .location], autoDismiss: true, onAppear: {}, onDisappear: {
+            presentationMode.wrappedValue.dismiss()
+        })
     }
 }
 
@@ -60,7 +65,7 @@ private struct OnboardingDetail: View {
             }
             Spacer()
         }
-        .padding(.vertical)
+        .padding(.vertical, 10)
     }
 }
 
@@ -72,7 +77,7 @@ struct SolidButtonStyle: ButtonStyle {
     func makeBody(configuration: Configuration) -> some View {
         configuration.label
             .frame(width: width, height: 60)
-            .background(RoundedRectangle(cornerRadius: 16.0, style: .continuous).fill(backgroundColor))
+            .background(RoundedRectangle(cornerRadius: 8.0, style: .continuous).fill(backgroundColor))
             .foregroundColor(foregroundColor)
     }
 }
