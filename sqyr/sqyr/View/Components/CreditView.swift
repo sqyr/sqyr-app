@@ -30,7 +30,7 @@ struct CreditView: View {
                                 .frame(width: 80, height: 80)
                             
                             // APP DESCRIPTION
-                            Text("Get directions by discovering important places on campus, like classroom. Use the AR feature to check building and restaurant location and hours. Meet, find, and create study groups with Sqyr.")
+                            Text("Get directions by discovering important places on campus. Use the AR feature to check building or restaurant's location and hours. Meet, find, and create study groups with Sqyr.")
                                 .font(.caption)
                         } //: HSTACK
                     } //: BOX
