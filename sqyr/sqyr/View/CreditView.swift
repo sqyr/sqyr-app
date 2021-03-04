@@ -23,8 +23,10 @@ struct CreditView: View {
                             .padding(.vertical, 4)
                         HStack {
                             // APP IMAGE
-                            RoundedRectangle(cornerRadius: 9)
-                                .padding(.horizontal, 1)
+                            Image("logo")
+                                .resizable()
+                                .scaledToFit()
+                                .cornerRadius(12)
                                 .frame(width: 80, height: 80)
                             
                             // APP DESCRIPTION
