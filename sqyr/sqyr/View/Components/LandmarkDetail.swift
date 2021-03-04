@@ -9,7 +9,6 @@ import SwiftUI
 
 struct LandmarkDetail: View {
     let building: String
-    
     @State var isShowingCredits: Bool = false
     
     var body: some View {
@@ -32,6 +31,7 @@ struct LandmarkDetail: View {
             
             GroupBox {
                 Text("The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab.")
+                    .fixedSize(horizontal: false, vertical: true)
             }
                 
             // OPTIONAL ACTION TITLE
@@ -57,6 +57,7 @@ struct LandmarkDetail: View {
                 .buttonStyle(SolidButtonStyle(backgroundColor: .purple, foregroundColor: .white))
                 Spacer()
             }
+            .padding(.bottom)
         } //: SCROLLVIEW
         .padding()
         .navigationBarTitle("", displayMode: .inline)
@@ -65,12 +66,13 @@ struct LandmarkDetail: View {
             Button(action: {
                 isShowingCredits = true
             }) {
-                Image(systemName: "person.2")
+                Image(systemName: "c.circle")
             } //: BUTTON
             .sheet(isPresented: $isShowingCredits) {
                 CreditView()
             } //: SHEET
         ) //: ITEM
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

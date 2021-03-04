@@ -31,7 +31,7 @@ struct CreditView: View {
                             
                             // APP DESCRIPTION
                             Text("This app does ar stuff and it also does mapping stuff and you can also make friends if you don't have any and you can also make study group aka everyone waits for that one person to chegg it.")
-                                .font(.footnote)
+                                .font(.caption)
                         } //: HSTACK
                     } //: BOX
                     
@@ -61,7 +61,7 @@ struct CreditView: View {
                         Button(action: {
                             presentationMode.wrappedValue.dismiss()
                         })  {
-                            Image(systemName: "xmark")
+                            Text("Done")
                         }//: BUTTON
                 ) //: ITEMS
                 .padding()

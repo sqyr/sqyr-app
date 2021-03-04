@@ -33,7 +33,7 @@
     <resources>
         <image name="launch-screen-image" width="256" height="256"/>
         <namedColor name="launch-screen-color">
-            <color red="0.0" green="0.13333333333333333" blue="0.32941176470588235" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+            <color red="0.0" green="0.13300000131130219" blue="0.32899999618530273" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
         </namedColor>
     </resources>
 </document>

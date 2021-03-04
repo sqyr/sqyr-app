@@ -32,6 +32,7 @@ struct OnboardingView: View {
             Spacer()
             Button("Next") {
                 showingPerms = true
+                presentationMode.wrappedValue.dismiss()
             }
             .buttonStyle(SolidButtonStyle(backgroundColor: .blue, foregroundColor: .white, width: constWidth))
             Spacer()

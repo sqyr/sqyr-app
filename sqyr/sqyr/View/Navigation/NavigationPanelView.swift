@@ -9,16 +9,16 @@ import SwiftUI
 
 struct NavigationPanelView: View {
     let buildings = getBuildings()
-    
+
     @State private var categorySelection: Category = .all
     @State private var text: String = ""
-    
+
     @ObservedObject var globalModel: GlobalModel
-    
+
     init(globalModel: GlobalModel) {
         self.globalModel = globalModel
     }
-    
+
     var body: some View {
         NavigationView {
             VStack {
@@ -33,18 +33,18 @@ struct NavigationPanelView: View {
                 .padding()
 
                 List {
-                    NavigationLink(destination: LandmarkDetail(building: "TEGR")) {
-                        HStack {
-                            Image(systemName: "building.2.crop.circle.fill")
-                            Text("Engineering Building")
-                        } // : HSTACK
+                    NavigationLink(destination: LandmarkDetail(building: "Gordon and Jill Bourns College of Engineering")) {
+                        Label(
+                            title: { Text("Engineering Building") },
+                            icon: { Image(systemName: "building.2.fill").foregroundColor(.primary) }
+                        )
                     } //: LINK
                     ForEach(buildings, id: \.self) { building in
                         NavigationLink(destination: LandmarkDetail(building: building)) {
-                            HStack {
-                                Image(systemName: "building.2.crop.circle.fill")
-                                Text(building)
-                            } //: HSTACK
+                            Label(
+                                title: { Text(building) },
+                                icon: { Image(systemName: "building.columns.fill").foregroundColor(.primary) }
+                            )
                         } //: LINK
                     } //: LOOP
                 } //: LIST
@@ -58,11 +58,11 @@ struct NavigationPanelView: View {
 
 func getBuildings() -> [String] {
     var arrayOfBuildings = [String]()
-    
+
     for i in 1 ... 10 {
         arrayOfBuildings.append("Building #\(i)")
     }
-    
+
     return arrayOfBuildings
 }
 
@@ -76,6 +76,6 @@ enum Category: String, CaseIterable {
     case all = "All"
     case academic = "Academic"
     case social = "Social"
-    
+
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }

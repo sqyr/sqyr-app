@@ -9,7 +9,7 @@ import SwiftUI
 
 struct ContentView: View {
     @State var showingDrawer: Bool = true
-    @State var showingOnboarding: Bool = false
+    @State var showingOnboarding: Bool = true
     @State var showingAR: Bool = true // TODO: change this based on permissions granted
 
     @ObservedObject var globalModel = GlobalModel()
