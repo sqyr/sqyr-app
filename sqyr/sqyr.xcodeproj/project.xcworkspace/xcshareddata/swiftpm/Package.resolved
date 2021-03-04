@@ -12,11 +12,11 @@
       },
       {
         "package": "BottomSheet",
-        "repositoryURL": "https://github.com/LucasMucGH/BottomSheet",
+        "repositoryURL": "https://github.com/dbarsamian/BottomSheet",
         "state": {
-          "branch": null,
-          "revision": "39e70dd4db2a8e4955284875dbdea08adc570988",
-          "version": "1.0.4"
+          "branch": "main",
+          "revision": "e828a12baf1e6cb6b0399628fbff09c88440ef28",
+          "version": null
         }
       },
       {
@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/jevonmao/PermissionsSwiftUI",
         "state": {
           "branch": null,
-          "revision": "87b24bb3139692f47741454c755660a0c61c6c64",
-          "version": "1.2.3"
+          "revision": "fbcf29cb74140c8f115930653f400024f134f739",
+          "version": "1.2.5"
         }
       },
       {

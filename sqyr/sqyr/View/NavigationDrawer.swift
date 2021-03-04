@@ -26,7 +26,7 @@ struct NavigationDrawer: View {
 //                }
 //            }
         EmptyView()
-            .bottomSheet(bottomSheetPosition: $bottomSheetPosition, headerContent: {
+            .bottomSheet(bottomSheetPosition: $bottomSheetPosition, tapToExpand: true, headerContent: {
                 SearchBarView(text: $searchText, globalModel: globalModel)
             }, mainContent: {
                 NavigationPanelView(globalModel: globalModel)

@@ -69,19 +69,6 @@ private struct OnboardingDetail: View {
     }
 }
 
-struct SolidButtonStyle: ButtonStyle {
-    var backgroundColor: Color
-    var foregroundColor: Color
-    var width: CGFloat?
-
-    func makeBody(configuration: Configuration) -> some View {
-        configuration.label
-            .frame(width: width, height: 60)
-            .background(RoundedRectangle(cornerRadius: 8.0, style: .continuous).fill(backgroundColor))
-            .foregroundColor(foregroundColor)
-    }
-}
-
 struct OnboardingView_Previews: PreviewProvider {
     static var previews: some View {
         OnboardingView()

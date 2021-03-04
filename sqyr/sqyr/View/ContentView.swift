@@ -28,7 +28,7 @@ struct ContentView: View {
                 Rectangle() // Status Bar Blur
                     .frame(width: geo.size.width, height: UIApplication.shared.windows.filter{$0.isKeyWindow}.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0, alignment: .top)
                     .foregroundColor(.clear)
-                    .background(EffectViewRepresentable(effect: UIBlurEffect(style: .systemUltraThinMaterial)))
+                    .background(EffectViewRepresentable(effect: UIBlurEffect(style: .systemThinMaterial)))
                     .edgesIgnoringSafeArea(.top)
             }
         }

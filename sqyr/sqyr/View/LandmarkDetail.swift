@@ -13,7 +13,7 @@ struct LandmarkDetail: View {
     @State var isShowingCredits: Bool = false
     
     var body: some View {
-        ScrollView(.vertical) {
+        ScrollView {
             // BUILDING HOURS TITLE
             Label(
                 title: { Text(building).font(.title2).bold() },
@@ -24,28 +24,37 @@ struct LandmarkDetail: View {
             BuildingHoursView()
             
             // BUILDING INFORMATION CONTENT
-            Text("About").font(.title3).bold()
+            Label(
+                title: { Text("About").font(.title3).bold() },
+                icon: { Image(systemName: "info.circle.fill").font(.title3) }
+            )
+            .padding()
             
             GroupBox {
-                Text("The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab. Within the building are 45 classroom/teaching areas contained in two blocks.")
-                    .font(.body)
+                Text("The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab.")
             }
                 
             // OPTIONAL ACTION TITLE
-            // LandmarkTitleView(icon: "questionmark.circle.fill", title: "What would you like to do?")
+            Label(
+                title: { Text("Actions").font(.title3).bold() },
+                icon: { Image(systemName: "ellipsis.circle.fill").font(.title3) }
+            )
+            .padding()
                 
             // OPTIONAL ACTION CONTENT
             HStack {
                 Spacer()
                 NavigationLink(destination: StudyGroupView(building: building, globalModel: GlobalModel())) {
                     Text("Study Groups")
-                } //: LINK
-                .padding(.vertical, 4)
+                        .padding()
+                }
+                .buttonStyle(SolidButtonStyle(backgroundColor: .blue, foregroundColor: .white))
                 Spacer()
                 NavigationLink(destination: LocateClassroomView(building: "TEGR")) {
                     Text("Find My Classroom")
-                } //: LINK
-                .padding(.vertical, 4)
+                        .padding()
+                }
+                .buttonStyle(SolidButtonStyle(backgroundColor: .purple, foregroundColor: .white))
                 Spacer()
             }
         } //: SCROLLVIEW

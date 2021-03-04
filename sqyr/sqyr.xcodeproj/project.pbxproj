@@ -17,9 +17,11 @@
 		682908E125C8D8D60046F4C7 /* ARCLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARCLView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
 		6844D01125EF71F400FE34B6 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D01025EF71F400FE34B6 /* Permissions.swift */; };
-		6844D01725EF735A00FE34B6 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D01625EF735A00FE34B6 /* BottomSheet */; };
 		6844D01A25EF7E0400FE34B6 /* EffectViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D01925EF7E0400FE34B6 /* EffectViewRepresentable.swift */; };
 		6844D01E25F0436A00FE34B6 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D01D25F0436A00FE34B6 /* Introspect */; };
+		6844D02625F06D0C00FE34B6 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D02525F06D0C00FE34B6 /* BottomSheet */; };
+		6844D02A25F0848600FE34B6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D02925F0848600FE34B6 /* Constant.swift */; };
+		6844D02D25F0852300FE34B6 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D02C25F0852300FE34B6 /* SolidButtonStyle.swift */; };
 		6866C7A325E481B1006DB84D /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = 6866C7A225E481B1006DB84D /* Drawer */; };
 		688F08A825ECC99C00A36433 /* NavigationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08A725ECC99C00A36433 /* NavigationDrawer.swift */; };
 		688F08AF25ECCB8B00A36433 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08AE25ECCB8B00A36433 /* ARView.swift */; };
@@ -30,7 +32,6 @@
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
 		68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */; };
 		68C2061825E4DA860057A07F /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C2061725E4DA860057A07F /* GlobalModel.swift */; };
-		BE18754B25EE17110009096F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18754A25EE17110009096F /* Constant.swift */; };
 		BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18754D25EE18FB0009096F /* LocateClassroomView.swift */; };
 		BE68B83325EDCD0700FEDA90 /* BuildingHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */; };
 		BED74D6725EE396100EEFF05 /* StudyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED74D6625EE396100EEFF05 /* StudyGroupView.swift */; };
@@ -47,6 +48,8 @@
 		682908E325C8DBF50046F4C7 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
 		6844D01025EF71F400FE34B6 /* Permissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
 		6844D01925EF7E0400FE34B6 /* EffectViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectViewRepresentable.swift; sourceTree = "<group>"; };
+		6844D02925F0848600FE34B6 /* Constant.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Constant.swift; sourceTree = "<group>"; };
+		6844D02C25F0852300FE34B6 /* SolidButtonStyle.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SolidButtonStyle.swift; sourceTree = "<group>"; };
 		688F08A725ECC99C00A36433 /* NavigationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDrawer.swift; sourceTree = "<group>"; };
 		688F08AE25ECCB8B00A36433 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		6896A81A25D466A700B57872 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -58,7 +61,6 @@
 		68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68B96A7125C25DF30090E47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68C2061725E4DA860057A07F /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
-		BE18754A25EE17110009096F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = sqyr/Helper/Constant.swift; sourceTree = SOURCE_ROOT; };
 		BE18754D25EE18FB0009096F /* LocateClassroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateClassroomView.swift; sourceTree = "<group>"; };
 		BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingHoursView.swift; sourceTree = "<group>"; };
 		BED74D6625EE396100EEFF05 /* StudyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyGroupView.swift; sourceTree = "<group>"; };
@@ -70,8 +72,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				6844D02625F06D0C00FE34B6 /* BottomSheet in Frameworks */,
 				682908DB25C8D8500046F4C7 /* ARCL in Frameworks */,
-				6844D01725EF735A00FE34B6 /* BottomSheet in Frameworks */,
 				6844D01E25F0436A00FE34B6 /* Introspect in Frameworks */,
 				1D1A552125E7636100166B49 /* PermissionsSwiftUI in Frameworks */,
 				6866C7A325E481B1006DB84D /* Drawer in Frameworks */,
@@ -158,7 +160,7 @@
 				682908DD25C8D8920046F4C7 /* Model */,
 				682908DF25C8D89A0046F4C7 /* Controller */,
 				682908DE25C8D8960046F4C7 /* View */,
-				BED74D6D25EEF4E500EEFF05 /* Helper */,
+				BED74D6D25EEF4E500EEFF05 /* Supporting Files */,
 				6807459025E49F660025FE38 /* Extensions */,
 				68B96A6C25C25DF30090E47D /* Assets.xcassets */,
 				68B96A7125C25DF30090E47D /* Info.plist */,
@@ -175,13 +177,14 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		BED74D6D25EEF4E500EEFF05 /* Helper */ = {
+		BED74D6D25EEF4E500EEFF05 /* Supporting Files */ = {
 			isa = PBXGroup;
 			children = (
 				6844D01025EF71F400FE34B6 /* Permissions.swift */,
-				BE18754A25EE17110009096F /* Constant.swift */,
+				6844D02925F0848600FE34B6 /* Constant.swift */,
+				6844D02C25F0852300FE34B6 /* SolidButtonStyle.swift */,
 			);
-			path = Helper;
+			path = "Supporting Files";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -204,8 +207,8 @@
 				682908DA25C8D8500046F4C7 /* ARCL */,
 				6866C7A225E481B1006DB84D /* Drawer */,
 				1D1A552025E7636100166B49 /* PermissionsSwiftUI */,
-				6844D01625EF735A00FE34B6 /* BottomSheet */,
 				6844D01D25F0436A00FE34B6 /* Introspect */,
+				6844D02525F06D0C00FE34B6 /* BottomSheet */,
 			);
 			productName = sqyr;
 			productReference = 68B96A6525C25DF20090E47D /* sqyr.app */;
@@ -238,8 +241,8 @@
 				682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				6866C7A125E481B1006DB84D /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 				1D1A551F25E7636100166B49 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
-				6844D01525EF735A00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 				6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
+				6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 68B96A6625C25DF20090E47D /* Products */;
 			projectDirPath = "";
@@ -268,9 +271,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				68C2061825E4DA860057A07F /* GlobalModel.swift in Sources */,
-				BE18754B25EE17110009096F /* Constant.swift in Sources */,
 				682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */,
 				6844D01A25EF7E0400FE34B6 /* EffectViewRepresentable.swift in Sources */,
+				6844D02D25F0852300FE34B6 /* SolidButtonStyle.swift in Sources */,
 				6896A81E25D466A700B57872 /* ContentView.swift in Sources */,
 				68AD764F25EDAF59005A22F0 /* OnboardingView.swift in Sources */,
 				6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */,
@@ -282,6 +285,7 @@
 				688F08AF25ECCB8B00A36433 /* ARView.swift in Sources */,
 				BE68B83325EDCD0700FEDA90 /* BuildingHoursView.swift in Sources */,
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
+				6844D02A25F0848600FE34B6 /* Constant.swift in Sources */,
 				BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */,
 				BED74D6725EE396100EEFF05 /* StudyGroupView.swift in Sources */,
 				6896A81F25D466A700B57872 /* LandmarkDetail.swift in Sources */,
@@ -498,19 +502,19 @@
 				minimumVersion = 1.3.0;
 			};
 		};
-		6844D01525EF735A00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 1.0.4;
-			};
-		};
 		6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
 			requirement = {
 				branch = master;
+				kind = branch;
+			};
+		};
+		6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/dbarsamian/BottomSheet";
+			requirement = {
+				branch = main;
 				kind = branch;
 			};
 		};
@@ -535,15 +539,15 @@
 			package = 682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
 			productName = ARCL;
 		};
-		6844D01625EF735A00FE34B6 /* BottomSheet */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6844D01525EF735A00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */;
-			productName = BottomSheet;
-		};
 		6844D01D25F0436A00FE34B6 /* Introspect */ = {
 			isa = XCSwiftPackageProductDependency;
 			package = 6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
+		};
+		6844D02525F06D0C00FE34B6 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
 		};
 		6866C7A225E481B1006DB84D /* Drawer */ = {
 			isa = XCSwiftPackageProductDependency;

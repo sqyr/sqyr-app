@@ -43,6 +43,5 @@ struct BuildingHoursView_Previews: PreviewProvider {
     static var previews: some View {
         BuildingHoursView()
             .previewLayout(.sizeThatFits)
-            .padding()
     }
 }
