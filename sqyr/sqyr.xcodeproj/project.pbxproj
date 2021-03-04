@@ -12,6 +12,7 @@
 		1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */; };
 		6807457A25E488C40025FE38 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6807457825E488C40025FE38 /* QRScannerView.swift */; };
 		6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6807459625E4A0350025FE38 /* SearchBarView.swift */; };
+		681A5F5125F094FB00461B87 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681A5F5025F094FB00461B87 /* Launch Screen.storyboard */; };
 		681EAF4D25E4D58D00C39ACE /* ViewExtension.swift in Sources */ = {isa = PBXBuildFile; fileRef = 681EAF4C25E4D58D00C39ACE /* ViewExtension.swift */; };
 		682908DB25C8D8500046F4C7 /* ARCL in Frameworks */ = {isa = PBXBuildFile; productRef = 682908DA25C8D8500046F4C7 /* ARCL */; };
 		682908E125C8D8D60046F4C7 /* ARCLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARCLView.swift */; };
@@ -43,6 +44,7 @@
 		1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationPanelView.swift; sourceTree = "<group>"; };
 		6807457825E488C40025FE38 /* QRScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		6807459625E4A0350025FE38 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
+		681A5F5025F094FB00461B87 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
 		681EAF4C25E4D58D00C39ACE /* ViewExtension.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewExtension.swift; sourceTree = "<group>"; };
 		682908E025C8D8D60046F4C7 /* ARCLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLView.swift; sourceTree = "<group>"; };
 		682908E325C8DBF50046F4C7 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
@@ -207,6 +209,7 @@
 				6844D01025EF71F400FE34B6 /* Permissions.swift */,
 				6844D02925F0848600FE34B6 /* Constant.swift */,
 				6844D02C25F0852300FE34B6 /* SolidButtonStyle.swift */,
+				681A5F5025F094FB00461B87 /* Launch Screen.storyboard */,
 			);
 			path = "Supporting Files";
 			sourceTree = "<group>";
@@ -282,6 +285,7 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				681A5F5125F094FB00461B87 /* Launch Screen.storyboard in Resources */,
 				68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */,
 				68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */,
 			);
@@ -446,7 +450,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = BY6LM8QRC2;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -454,7 +458,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.steven-phun.sqyr";
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.sqyr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -470,7 +474,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = BY6LM8QRC2;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -478,7 +482,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				PRODUCT_BUNDLE_IDENTIFIER = "com.steven-phun.sqyr";
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.sqyr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
