@@ -26,20 +26,19 @@ struct StudyGroupView: View {
             }
             .padding(.horizontal)
             List {
-                ForEach(100 ..< 360) { room in
-                    let openHour = 1 + 12 // 12 hour format.
-                    let closeHour = 10 + 12 // 12 hour format.
-                    let time = Int.random(in: openHour ... closeHour)
-                    let hour12Format = time - 12
+                ForEach(100..<361) { room in
+                    let openHour = 8
+                    let closeHour = 10 + 12 // represents 10 PM.
+                    let randomHour = Int.random(in: openHour ... closeHour)
 
                     HStack(alignment: .center) {
                         Text("Room \(room)").bold().frame(width: 100, alignment: .leading)
                         Spacer()
-                        Text("Open Until \(hour12Format)PM")
-                            .font(.caption)
-                        Spacer()
-                        Image(systemName: isRoomClosedIcon(hour: time))
-                            .foregroundColor(isRoomClosedStatus(hour: time))
+                        if roomIsClosed(closedHour: randomHour) {
+                            roomIsCloseView(openHour: openHour)
+                        } else {
+                            roomIsOpenView(closeHour: closeHour)
+                        }
                     } //: HSTACK
                 } //: LOOP
             } //: LIST
@@ -49,18 +48,40 @@ struct StudyGroupView: View {
     }
 }
 
-func isClosed(hour: Int) -> Bool {
+func roomIsClosed(closedHour: Int) -> Bool {
     let currentHour = Calendar.current.component(.hour, from: Date())
 
-    return currentHour > 8 && currentHour < hour
+    return currentHour < 8 && currentHour < closedHour
+}
+    
+struct roomIsOpenView: View {
+    let closeHour: Int
+    
+    var body: some View {
+        roomRowView(text: "Open until \(closeHour - 12) PM", iconImage: "circlebadge.fill", iconColor: Color.green)
+    }
 }
 
-func isRoomClosedStatus(hour: Int) -> Color {
-    return isClosed(hour: hour) ? Color.green : Color.red
+struct roomIsCloseView: View {
+    let openHour: Int
+    
+    var body: some View {
+        roomRowView(text: "Closed until \(openHour) AM", iconImage: "lock.circle.fill", iconColor: Color.red)
+    }
 }
 
-func isRoomClosedIcon(hour: Int) -> String {
-    return isClosed(hour: hour) ? "circlebadge.fill" : "lock.circle.fill"
+struct roomRowView: View {
+    let text: String
+    let iconImage: String
+    let iconColor: Color
+    
+    var body: some View {
+        Text(text)
+            .font(.caption)
+        Spacer()
+        Image(systemName: iconImage)
+            .foregroundColor(iconColor)
+    }
 }
 
 struct StudyGroupView_Previews: PreviewProvider {
