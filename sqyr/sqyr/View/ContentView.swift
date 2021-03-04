@@ -30,6 +30,9 @@ struct ContentView: View {
                     .foregroundColor(.clear)
                     .background(EffectViewRepresentable(effect: UIBlurEffect(style: .systemThinMaterial)))
                     .edgesIgnoringSafeArea(.top)
+                    .onTapGesture {
+                        dismissKeyboard()
+                    }
             }
         }
         .fullScreenCover(isPresented: $showingOnboarding, content: {

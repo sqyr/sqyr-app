@@ -5,14 +5,14 @@
 //  Created by David Barsamian on 2/28/21.
 //
 
-import Drawer
 import BottomSheet
+import Drawer
 import SwiftUI
 
 struct NavigationDrawer: View {
     var geoProxy: GeometryProxy
     @State private var heights: [CGFloat] = [80]
-    @State private var bottomSheetPosition: BottomSheetPosition = BottomSheetPosition.bottom
+    @State private var bottomSheetPosition = BottomSheetPosition.bottom
     @State private var searchText: String = ""
     @ObservedObject var globalModel: GlobalModel
 
@@ -30,6 +30,9 @@ struct NavigationDrawer: View {
                 SearchBarView(text: $searchText, globalModel: globalModel)
             }, mainContent: {
                 NavigationPanelView(globalModel: globalModel)
+                    .gesture(TapGesture().onEnded({
+                        self.dismissKeyboard()
+                    }), including: globalModel.searchBarIsEditing ? .gesture : .subviews)
             })
     }
 }
