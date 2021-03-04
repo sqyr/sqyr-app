@@ -11,6 +11,15 @@
         }
       },
       {
+        "package": "BottomSheet",
+        "repositoryURL": "https://github.com/LucasMucGH/BottomSheet",
+        "state": {
+          "branch": null,
+          "revision": "39e70dd4db2a8e4955284875dbdea08adc570988",
+          "version": "1.0.4"
+        }
+      },
+      {
         "package": "PermissionsSwiftUI",
         "repositoryURL": "https://github.com/jevonmao/PermissionsSwiftUI",
         "state": {
@@ -26,6 +35,15 @@
           "branch": null,
           "revision": "2ef4f0a9e977169553c6c0aeacb4a160be38990e",
           "version": "0.1.1"
+        }
+      },
+      {
+        "package": "Introspect",
+        "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
+        "state": {
+          "branch": "master",
+          "revision": "894289d16be7d1af350d9c5cb84801991fa47059",
+          "version": null
         }
       }
     ]

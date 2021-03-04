@@ -6,22 +6,31 @@
 //
 
 import Drawer
+import BottomSheet
 import SwiftUI
 
 struct NavigationDrawer: View {
     var geoProxy: GeometryProxy
     @State private var heights: [CGFloat] = [80]
+    @State private var bottomSheetPosition: BottomSheetPosition = BottomSheetPosition.bottom
+    @State private var searchText: String = ""
     @ObservedObject var globalModel: GlobalModel
 
     var body: some View {
-        DrawerContent(geoProxy: geoProxy, heights: heights, globalModel: globalModel)
-            .onReceive(globalModel.objectWillChange) { _ in
-                if globalModel.searchBarIsEditing {
-                    heights = [geoProxy.size.height * 0.9]
-                } else {
-                    heights = [100, geoProxy.size.height * 0.9]
-                }
-            }
+//        DrawerContent(geoProxy: geoProxy, heights: heights, globalModel: globalModel)
+//            .onReceive(globalModel.objectWillChange) { _ in
+//                if globalModel.searchBarIsEditing {
+//                    heights = [geoProxy.size.height * 0.9]
+//                } else {
+//                    heights = [100, geoProxy.size.height * 0.9]
+//                }
+//            }
+        EmptyView()
+            .bottomSheet(bottomSheetPosition: $bottomSheetPosition, headerContent: {
+                SearchBarView(text: $searchText, globalModel: globalModel)
+            }, mainContent: {
+                NavigationPanelView(globalModel: globalModel)
+            })
     }
 }
 

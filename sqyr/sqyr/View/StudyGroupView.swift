@@ -17,15 +17,15 @@ struct StudyGroupView: View {
     var body: some View {
         VStack {
             // SEARCH AVAILABLE ROOMS
-            TitleView(icon: "", title: "Available Rooms")
+            LandmarkTitleView(icon: "", title: "Available Rooms")
             SearchBarView(text: $text, globalModel: globalModel)
             
             // SEARCH STUDY GROUPS
-            TitleView(icon: "", title: "Study Groups")
+            LandmarkTitleView(icon: "", title: "Study Groups")
             SearchBarView(text: $text, globalModel: globalModel)
             
             // DISPLAY ALL ROOMS
-            TitleView(icon: "", title: "All \(building) Rooms")
+            LandmarkTitleView(icon: "", title: "All \(building) Rooms")
                 .padding(.top, 50)
             GroupBox {
                 List {

@@ -6,21 +6,25 @@
 //
 
 import SwiftUI
+import Introspect
 
 struct NavigationPanelView: View {
-    
     let buildings = getBuildings()
     
-    @State var categorySelection: Category = .all
-    @State var text: String = ""
+    @State private var categorySelection: Category = .all
+    @State private var text: String = ""
     
     @ObservedObject var globalModel: GlobalModel
+    
+    init(globalModel: GlobalModel) {
+        self.globalModel = globalModel
+    }
     
     var body: some View {
         NavigationView {
             VStack {
-                SearchBarView(text: $text, globalModel: globalModel)
-                
+                // SearchBarView(text: $text, globalModel: globalModel)
+
                 Picker("Category", selection: $categorySelection) {
                     ForEach(Category.allCases, id: \.self) {
                         Text($0.rawValue).tag($0.rawValue)
@@ -28,27 +32,27 @@ struct NavigationPanelView: View {
                 }
                 .pickerStyle(SegmentedPickerStyle())
                 .padding()
-                
-                VStack {
-                    List {
-                        NavigationLink(destination: BuildingPopUpView(building: "TEGR")) {
+
+                List {
+                    NavigationLink(destination: LandmarkDetail(building: "TEGR")) {
+                        HStack {
+                            Image(systemName: "building.2.crop.circle.fill")
+                            Text("Engineering Building")
+                        } // : HSTACK
+                    } //: LINK
+                    ForEach(buildings, id: \.self) { building in
+                        NavigationLink(destination: LandmarkDetail(building: building)) {
                             HStack {
                                 Image(systemName: "building.2.crop.circle.fill")
-                                Text("Engineering Building")
-                            } // : HSTACK
+                                Text(building)
+                            } //: HSTACK
                         } //: LINK
-                        ForEach(buildings, id: \.self) { building in
-                            NavigationLink(destination: BuildingPopUpView(building: building)) {
-                                HStack {
-                                    Image(systemName: "building.2.crop.circle.fill")
-                                    Text(building)
-                                } //: HSTACK
-                            } //: LINK
-                        } //: LOOP
-                    } //: LIST
-                } //: VSTACK
+                    } //: LOOP
+                } //: LIST
+                .listStyle(InsetListStyle())
             } //: VSTACK
-            .navigationBarTitle("Landmarks")
+            .navigationBarTitle("")
+            .navigationBarHidden(true)
         } //: NAVIGATION
     }
 }

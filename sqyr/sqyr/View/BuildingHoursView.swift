@@ -10,8 +10,12 @@ import SwiftUI
 struct BuildingHoursView: View {
     var body: some View {
         GroupBox {
+            Label(
+                title: { Text("Hours of Operation").bold() },
+                icon: { Image(systemName: "clock") }
+)
             VStack {
-                LazyVGrid(columns: getGridLayout(), spacing: 10, content: {
+                LazyVGrid(columns: getGridLayout(), spacing: 6, content: {
                     ForEach(0..<getWeekday().count, id:\.self) { day in
                         Text(getWeekday()[day])
                             .fontWeight(.bold)

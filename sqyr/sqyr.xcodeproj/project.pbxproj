@@ -17,11 +17,14 @@
 		682908E125C8D8D60046F4C7 /* ARCLView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E025C8D8D60046F4C7 /* ARCLView.swift */; };
 		682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 682908E325C8DBF50046F4C7 /* ARCLViewController.swift */; };
 		6844D01125EF71F400FE34B6 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D01025EF71F400FE34B6 /* Permissions.swift */; };
+		6844D01725EF735A00FE34B6 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D01625EF735A00FE34B6 /* BottomSheet */; };
+		6844D01A25EF7E0400FE34B6 /* EffectViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D01925EF7E0400FE34B6 /* EffectViewRepresentable.swift */; };
+		6844D01E25F0436A00FE34B6 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D01D25F0436A00FE34B6 /* Introspect */; };
 		6866C7A325E481B1006DB84D /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = 6866C7A225E481B1006DB84D /* Drawer */; };
 		688F08A825ECC99C00A36433 /* NavigationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08A725ECC99C00A36433 /* NavigationDrawer.swift */; };
 		688F08AF25ECCB8B00A36433 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08AE25ECCB8B00A36433 /* ARView.swift */; };
 		6896A81E25D466A700B57872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81A25D466A700B57872 /* ContentView.swift */; };
-		6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81B25D466A700B57872 /* BuildingPopUpView.swift */; };
+		6896A81F25D466A700B57872 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81B25D466A700B57872 /* LandmarkDetail.swift */; };
 		68AD764F25EDAF59005A22F0 /* OnboardingView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68AD764E25EDAF59005A22F0 /* OnboardingView.swift */; };
 		68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68B96A6825C25DF20090E47D /* sqyrApp.swift */; };
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
@@ -30,7 +33,6 @@
 		BE18754B25EE17110009096F /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18754A25EE17110009096F /* Constant.swift */; };
 		BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18754D25EE18FB0009096F /* LocateClassroomView.swift */; };
 		BE68B83325EDCD0700FEDA90 /* BuildingHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */; };
-		BED74D6125EE2CF700EEFF05 /* TitleView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED74D6025EE2CF700EEFF05 /* TitleView.swift */; };
 		BED74D6725EE396100EEFF05 /* StudyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED74D6625EE396100EEFF05 /* StudyGroupView.swift */; };
 		BED74D7225EF013C00EEFF05 /* CreditView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED74D7125EF013C00EEFF05 /* CreditView.swift */; };
 /* End PBXBuildFile section */
@@ -44,10 +46,11 @@
 		682908E025C8D8D60046F4C7 /* ARCLView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLView.swift; sourceTree = "<group>"; };
 		682908E325C8DBF50046F4C7 /* ARCLViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARCLViewController.swift; sourceTree = "<group>"; };
 		6844D01025EF71F400FE34B6 /* Permissions.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = Permissions.swift; sourceTree = "<group>"; };
+		6844D01925EF7E0400FE34B6 /* EffectViewRepresentable.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EffectViewRepresentable.swift; sourceTree = "<group>"; };
 		688F08A725ECC99C00A36433 /* NavigationDrawer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NavigationDrawer.swift; sourceTree = "<group>"; };
 		688F08AE25ECCB8B00A36433 /* ARView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ARView.swift; sourceTree = "<group>"; };
 		6896A81A25D466A700B57872 /* ContentView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
-		6896A81B25D466A700B57872 /* BuildingPopUpView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = BuildingPopUpView.swift; sourceTree = "<group>"; };
+		6896A81B25D466A700B57872 /* LandmarkDetail.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = LandmarkDetail.swift; sourceTree = "<group>"; };
 		68AD764E25EDAF59005A22F0 /* OnboardingView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OnboardingView.swift; sourceTree = "<group>"; };
 		68B96A6525C25DF20090E47D /* sqyr.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = sqyr.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68B96A6825C25DF20090E47D /* sqyrApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = sqyrApp.swift; sourceTree = "<group>"; };
@@ -58,7 +61,6 @@
 		BE18754A25EE17110009096F /* Constant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; name = Constant.swift; path = sqyr/Helper/Constant.swift; sourceTree = SOURCE_ROOT; };
 		BE18754D25EE18FB0009096F /* LocateClassroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateClassroomView.swift; sourceTree = "<group>"; };
 		BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingHoursView.swift; sourceTree = "<group>"; };
-		BED74D6025EE2CF700EEFF05 /* TitleView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TitleView.swift; sourceTree = "<group>"; };
 		BED74D6625EE396100EEFF05 /* StudyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyGroupView.swift; sourceTree = "<group>"; };
 		BED74D7125EF013C00EEFF05 /* CreditView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreditView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
@@ -69,6 +71,8 @@
 			buildActionMask = 2147483647;
 			files = (
 				682908DB25C8D8500046F4C7 /* ARCL in Frameworks */,
+				6844D01725EF735A00FE34B6 /* BottomSheet in Frameworks */,
+				6844D01E25F0436A00FE34B6 /* Introspect in Frameworks */,
 				1D1A552125E7636100166B49 /* PermissionsSwiftUI in Frameworks */,
 				6866C7A325E481B1006DB84D /* Drawer in Frameworks */,
 			);
@@ -83,6 +87,7 @@
 				682908E025C8D8D60046F4C7 /* ARCLView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
 				6807459625E4A0350025FE38 /* SearchBarView.swift */,
+				6844D01925EF7E0400FE34B6 /* EffectViewRepresentable.swift */,
 			);
 			path = RepresentableViews;
 			sourceTree = "<group>";
@@ -113,12 +118,11 @@
 				688F08A725ECC99C00A36433 /* NavigationDrawer.swift */,
 				68AD764E25EDAF59005A22F0 /* OnboardingView.swift */,
 				1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */,
-				6896A81B25D466A700B57872 /* BuildingPopUpView.swift */,
+				6896A81B25D466A700B57872 /* LandmarkDetail.swift */,
 				BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */,
 				BE18754D25EE18FB0009096F /* LocateClassroomView.swift */,
 				BED74D6625EE396100EEFF05 /* StudyGroupView.swift */,
 				BED74D7125EF013C00EEFF05 /* CreditView.swift */,
-				BED74D6025EE2CF700EEFF05 /* TitleView.swift */,
 				6807458A25E494980025FE38 /* RepresentableViews */,
 			);
 			path = View;
@@ -200,6 +204,8 @@
 				682908DA25C8D8500046F4C7 /* ARCL */,
 				6866C7A225E481B1006DB84D /* Drawer */,
 				1D1A552025E7636100166B49 /* PermissionsSwiftUI */,
+				6844D01625EF735A00FE34B6 /* BottomSheet */,
+				6844D01D25F0436A00FE34B6 /* Introspect */,
 			);
 			productName = sqyr;
 			productReference = 68B96A6525C25DF20090E47D /* sqyr.app */;
@@ -232,6 +238,8 @@
 				682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				6866C7A125E481B1006DB84D /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 				1D1A551F25E7636100166B49 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
+				6844D01525EF735A00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 			);
 			productRefGroup = 68B96A6625C25DF20090E47D /* Products */;
 			projectDirPath = "";
@@ -260,9 +268,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				68C2061825E4DA860057A07F /* GlobalModel.swift in Sources */,
-				BED74D6125EE2CF700EEFF05 /* TitleView.swift in Sources */,
 				BE18754B25EE17110009096F /* Constant.swift in Sources */,
 				682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */,
+				6844D01A25EF7E0400FE34B6 /* EffectViewRepresentable.swift in Sources */,
 				6896A81E25D466A700B57872 /* ContentView.swift in Sources */,
 				68AD764F25EDAF59005A22F0 /* OnboardingView.swift in Sources */,
 				6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */,
@@ -276,7 +284,7 @@
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
 				BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */,
 				BED74D6725EE396100EEFF05 /* StudyGroupView.swift in Sources */,
-				6896A81F25D466A700B57872 /* BuildingPopUpView.swift in Sources */,
+				6896A81F25D466A700B57872 /* LandmarkDetail.swift in Sources */,
 				1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */,
 				6844D01125EF71F400FE34B6 /* Permissions.swift in Sources */,
 				1D1A551D25E7633100166B49 /* LocationAndCameraServices.swift in Sources */,
@@ -490,6 +498,22 @@
 				minimumVersion = 1.3.0;
 			};
 		};
+		6844D01525EF735A00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 1.0.4;
+			};
+		};
+		6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/siteline/SwiftUI-Introspect";
+			requirement = {
+				branch = master;
+				kind = branch;
+			};
+		};
 		6866C7A125E481B1006DB84D /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
 			isa = XCRemoteSwiftPackageReference;
 			repositoryURL = "https://github.com/sqyr/swiftui-drawer";
@@ -510,6 +534,16 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */;
 			productName = ARCL;
+		};
+		6844D01625EF735A00FE34B6 /* BottomSheet */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6844D01525EF735A00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			productName = BottomSheet;
+		};
+		6844D01D25F0436A00FE34B6 /* Introspect */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
+			productName = Introspect;
 		};
 		6866C7A225E481B1006DB84D /* Drawer */ = {
 			isa = XCSwiftPackageProductDependency;
