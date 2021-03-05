@@ -30,7 +30,7 @@ struct CreditView: View {
                                 .frame(width: 80, height: 80)
                             
                             // APP DESCRIPTION
-                            Text("Get directions by discovering important places on campus. Use the AR feature to check building or restaurant's location and hours. Meet, find, and create study groups with Sqyr.")
+                            Text("Sqyr using augmented-reality technology to display real-time 3-D directions and landmarks around California Baptist University. The app is designed to help students navigate campus and connect with others by creating or joining study groups in designated areas.")
                                 .font(.caption)
                         } //: HSTACK
                     } //: BOX
