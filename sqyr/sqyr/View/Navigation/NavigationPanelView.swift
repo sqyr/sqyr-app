@@ -38,6 +38,7 @@ struct NavigationPanelView: View {
                             title: { Text("Engineering Building") },
                             icon: { Image(systemName: "building.2.fill").foregroundColor(.primary) }
                         )
+                        .padding(.vertical, 12)
                     } //: LINK
                     ForEach(buildings, id: \.self) { building in
                         NavigationLink(destination: LandmarkDetail(building: building)) {
@@ -45,6 +46,7 @@ struct NavigationPanelView: View {
                                 title: { Text(building) },
                                 icon: { Image(systemName: "building.columns.fill").foregroundColor(.primary) }
                             )
+                            .padding(.vertical, 12)
                         } //: LINK
                     } //: LOOP
                 } //: LIST
