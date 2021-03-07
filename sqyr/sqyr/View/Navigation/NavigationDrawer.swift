@@ -9,6 +9,7 @@ import BottomSheet
 import Drawer
 import SwiftUI
 
+// MARK: - View
 struct NavigationDrawer: View {
     var geoProxy: GeometryProxy
     @State private var heights: [CGFloat] = [80]
@@ -16,27 +17,23 @@ struct NavigationDrawer: View {
     @State private var searchText: String = ""
     @ObservedObject var globalModel: GlobalModel
 
+    // MARK: - Views
     var body: some View {
-//        DrawerContent(geoProxy: geoProxy, heights: heights, globalModel: globalModel)
-//            .onReceive(globalModel.objectWillChange) { _ in
-//                if globalModel.searchBarIsEditing {
-//                    heights = [geoProxy.size.height * 0.9]
-//                } else {
-//                    heights = [100, geoProxy.size.height * 0.9]
-//                }
-//            }
         EmptyView()
-            .bottomSheet(bottomSheetPosition: $bottomSheetPosition, tapToExpand: true, headerContent: {
-                SearchBarView(text: $searchText, globalModel: globalModel)
+            .bottomSheet(bottomSheetPosition: $bottomSheetPosition, resizeable: true, headerContent: {
+                SearchBarView(text: $searchText, model: globalModel)
             }, mainContent: {
                 NavigationPanelView(globalModel: globalModel)
-                    .gesture(TapGesture().onEnded({
-                        self.dismissKeyboard()
-                    }), including: globalModel.searchBarIsEditing ? .gesture : .subviews)
+            })
+            .onChange(of: globalModel.searchBarIsEditing, perform: { _ in
+                if globalModel.searchBarIsEditing {
+                    bottomSheetPosition = .top
+                }
             })
     }
 }
 
+@available(*, deprecated, message: "This will be removed in a future version. Use a bottomSheet view modifier instead.")
 private struct DrawerContent: View {
     var geoProxy: GeometryProxy
     @State var heights: [CGFloat]

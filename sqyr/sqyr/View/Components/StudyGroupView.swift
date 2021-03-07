@@ -18,11 +18,11 @@ struct StudyGroupView: View {
             Group {
                 // SEARCH STUDY GROUPS
                 Text("Study Groups").font(.title2).bold().padding(.top)
-                SearchBarView(text: $text, globalModel: globalModel)
+                SearchBarView(text: $text, model: globalModel)
 
                 // DISPLAY ALL ROOMS
                 Text("All \(building) Rooms").font(.title2).bold()
-                SearchBarView(text: $text, globalModel: globalModel)
+                SearchBarView(text: $text, model: globalModel)
             }
             .padding(.horizontal)
             List {

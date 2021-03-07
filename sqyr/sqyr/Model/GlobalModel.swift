@@ -6,13 +6,10 @@
 //
 
 import Foundation
+import Combine
 
 class GlobalModel: ObservableObject {
-    @Published var searchBarIsEditing: Bool {
-        willSet {
-            objectWillChange.send()
-        }
-    }
+    @Published var searchBarIsEditing: Bool
     
     init() {
         searchBarIsEditing = false
