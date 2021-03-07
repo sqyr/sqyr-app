@@ -12,7 +12,7 @@ struct LandmarkDetail: View {
     @State var isShowingCredits: Bool = false
     
     var body: some View {
-        ScrollView {
+        ScrollView(.vertical, showsIndicators: false) {
             // BUILDING HOURS TITLE
             Label(
                 title: { Text(building).font(.title2).bold() },
