@@ -44,7 +44,7 @@ struct CreditView: View {
                         CreditItemView(title: "AR Developer", name: "David, True")
                         CreditItemView(title: "Backend Developer", name: "King Tomas")
                         CreditItemView(title: "UI Developer", name: "Lauren, Steven")
-                        CreditItemView(title: "Graphic Designer", name: "Clay Bakhoum")
+                        CreditItemView(title: "Digital Designer", name: "Clay Bakhoum")
                     } //: BOX
                     
                     // MARK: - APPLICATION INFO
