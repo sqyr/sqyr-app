@@ -27,6 +27,7 @@ struct CreditView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .cornerRadius(12)
+                                .shadow(radius: 8)
                                 .frame(width: 80, height: 80)
                             
                             // APP DESCRIPTION
