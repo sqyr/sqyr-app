@@ -13,9 +13,9 @@ struct LocateClassroomView: View {
     @State var selected = 0
     @State var scale: CGFloat = 1.0
     @State var isTapped: Bool = false
-    @State var pointTapped: CGPoint = CGPoint.zero
-    @State var draggedSize: CGSize = CGSize.zero
-    @State var previousDragged: CGSize = CGSize.zero
+    @State var tapLocation: CGPoint = CGPoint.zero
+    @State var dragSize: CGSize = CGSize.zero
+    @State var dragPrevious: CGSize = CGSize.zero
     @State var reset: Bool = true
     
     init(building: String) {
@@ -49,12 +49,12 @@ struct LocateClassroomView: View {
                         .resizable()
                         .scaledToFit()
                         .animation(.default)
-                        .offset(x: self.reset ? 0 : self.draggedSize.width, y: self.reset ? 0 : self.draggedSize.height)
+                        .offset(x: self.reset ? 0 : self.dragSize.width, y: self.reset ? 0 : self.dragSize.height)
                         .scaleEffect(self.scale)
                         .scaleEffect(1,
                                      anchor: UnitPoint(
-                                        x: self.pointTapped.x / reader.frame(in: .global).maxX,
-                                        y: self.pointTapped.y / reader.frame(in: .global).maxY
+                                        x: self.tapLocation.x / reader.frame(in: .global).maxX,
+                                        y: self.tapLocation.y / reader.frame(in: .global).maxY
                                      ))
                         .gesture(TapGesture(count: 1)
                                     .onEnded({
@@ -63,28 +63,28 @@ struct LocateClassroomView: View {
                                     .simultaneously(with: DragGesture(minimumDistance: 0, coordinateSpace: .global)
                                                         .onChanged({ (value) in
                                                             self.reset = false
-                                                            self.pointTapped = value.startLocation
-                                                            self.draggedSize = CGSize(
-                                                                width: value.translation.width + self.previousDragged.width,
-                                                                height: value.translation.height + self.previousDragged.height)
+                                                            self.tapLocation = value.startLocation
+                                                            self.dragSize = CGSize(
+                                                                width: value.translation.width + self.dragPrevious.width,
+                                                                height: value.translation.height + self.dragPrevious.height)
                                                         }).onEnded({ (value) in
                                                             let globalMaxX = reader.frame(in: .global).maxX
                                                             let offsetWidth = ((globalMaxX * self.scale) - globalMaxX) / 2
-                                                            let newDraggedWidth = self.draggedSize.width * self.scale
+                                                            let newDraggedWidth = self.dragSize.width * self.scale
                                                             if (newDraggedWidth > offsetWidth) {
-                                                                self.draggedSize = CGSize(
+                                                                self.dragSize = CGSize(
                                                                     width: offsetWidth / self.scale,
-                                                                    height: value.translation.height + self.previousDragged.height
+                                                                    height: value.translation.height + self.dragPrevious.height
                                                                 )
                                                             } else if (newDraggedWidth < -offsetWidth) {
-                                                                self.draggedSize = CGSize(
+                                                                self.dragSize = CGSize(
                                                                     width: -offsetWidth / self.scale,
-                                                                    height: value.translation.height + self.previousDragged.height
+                                                                    height: value.translation.height + self.dragPrevious.height
                                                                 )
                                                             } else {
-                                                                self.draggedSize = CGSize(
-                                                                    width: value.translation.width + self.previousDragged.width,
-                                                                    height: value.translation.height + self.previousDragged.height
+                                                                self.dragSize = CGSize(
+                                                                    width: value.translation.width + self.dragPrevious.width,
+                                                                    height: value.translation.height + self.dragPrevious.height
                                                                 )
                                                             }
                                                             //self.previousDragged = self.draggedSize
