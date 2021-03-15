@@ -17,6 +17,9 @@ struct NavigationPanelView: View {
 
     init(globalModel: GlobalModel) {
         self.globalModel = globalModel
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color("gold"))], for: .selected)
+        UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .normal)
+        UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color("gold"))]
     }
 
     var body: some View {
@@ -26,34 +29,35 @@ struct NavigationPanelView: View {
 
                 Picker("Category", selection: $categorySelection) {
                     ForEach(Category.allCases, id: \.self) {
-                        Text($0.rawValue).tag($0.rawValue)
+                        Text($0.rawValue)
+                            .tag($0.rawValue)
                     }
-                }
+                } //: PICKER
+                .background(Color("blue"))
                 .pickerStyle(SegmentedPickerStyle())
+                .foregroundColor(.red)
+                .cornerRadius(8)
                 .padding()
 
                 List {
-                    NavigationLink(destination: LandmarkDetail(building: "Gordon and Jill Bourns College of Engineering")) {
-                        Label(
-                            title: { Text("Engineering Building") },
-                            icon: { Image(systemName: "building.2.fill").foregroundColor(.primary) }
-                        )
-                        .padding(.vertical, 12)
-                    } //: LINK
                     ForEach(buildings, id: \.self) { building in
                         NavigationLink(destination: LandmarkDetail(building: building)) {
-                            Label(
-                                title: { Text(building) },
-                                icon: { Image(systemName: "building.columns.fill").foregroundColor(.primary) }
-                            )
+                            HStack {
+                                Image(systemName: "building.2.crop.circle.fill")
+                                    .font(.title2)
+                                Text("Engineering Building")
+                                    .fontWeight(.bold)
+                            } //: HSTACK
+                            .foregroundColor(Color("blue"))
                             .padding(.vertical, 12)
                         } //: LINK
                     } //: LOOP
                 } //: LIST
                 .listStyle(InsetListStyle())
+                .padding(.horizontal)
+
             } //: VSTACK
-            .navigationBarTitle("")
-            .navigationBarHidden(true)
+            .navigationBarTitle("Landmarks")
         } //: NAVIGATION
     }
 }

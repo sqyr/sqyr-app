@@ -27,6 +27,7 @@ struct CreditView: View {
                                 .resizable()
                                 .scaledToFit()
                                 .cornerRadius(12)
+                                .shadow(radius: 8)
                                 .frame(width: 80, height: 80)
                             
                             // APP DESCRIPTION
@@ -43,6 +44,7 @@ struct CreditView: View {
                         CreditItemView(title: "AR Developer", name: "David, True")
                         CreditItemView(title: "Backend Developer", name: "King Tomas")
                         CreditItemView(title: "UI Developer", name: "Lauren, Steven")
+                        CreditItemView(title: "Digital Designer", name: "Clay Bakhoum")
                     } //: BOX
                     
                     // MARK: - APPLICATION INFO

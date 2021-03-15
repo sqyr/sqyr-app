@@ -10,20 +10,22 @@ import SwiftUI
 struct BuildingHoursView: View {
     var body: some View {
         GroupBox {
-            Label(
-                title: { Text("Hours of Operation").bold() },
-                icon: { Image(systemName: "clock") }
-)
+            HStack {
+                Image(systemName: "clock")
+                Text("Hours of Operation")
+                    .fontWeight(.bold)
+            } //: HSTACK
             VStack {
-                LazyVGrid(columns: getGridLayout(), spacing: 6, content: {
+                LazyVGrid(columns: getGridLayout(), spacing: 6) {
                     ForEach(0..<getWeekday().count, id:\.self) { day in
                         Text(getWeekday()[day])
                             .fontWeight(.bold)
                         Text(getTime()[day])
                     }
-                })
-            }
-        }
+                } //: GRID
+            } //: VSTACK
+        } //: BOX
+        .foregroundColor(.secondary)
     }
 }
 

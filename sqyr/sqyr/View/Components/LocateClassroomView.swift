@@ -9,6 +9,9 @@ import SwiftUI
 
 struct LocateClassroomView: View {
     let building: String
+    let scale: CGFloat = 1.0
+    
+    @State var lastScaleValue: CGFloat = 1.0
     
     var body: some View {
 

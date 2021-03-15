@@ -18,6 +18,7 @@ struct LandmarkDetail: View {
                 title: { Text(building).font(.title2).bold() },
                 icon: { Image(systemName: "building.2.crop.circle.fill").font(.title2) }
             )
+            .foregroundColor(Color("gold"))
                 
             // BUILDING HOURS CONTENT
             BuildingHoursView()
@@ -27,10 +28,12 @@ struct LandmarkDetail: View {
                 title: { Text("About").font(.title3).bold() },
                 icon: { Image(systemName: "info.circle.fill").font(.title3) }
             )
+            .foregroundColor(Color("gold"))
             .padding()
             
             GroupBox {
                 Text("The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab.")
+                    .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
                 
@@ -39,6 +42,7 @@ struct LandmarkDetail: View {
                 title: { Text("Actions").font(.title3).bold() },
                 icon: { Image(systemName: "ellipsis.circle.fill").font(.title3) }
             )
+            .foregroundColor(Color("gold"))
             .padding()
                 
             // OPTIONAL ACTION CONTENT
@@ -48,13 +52,13 @@ struct LandmarkDetail: View {
                     Text("Study Groups")
                         .padding()
                 }
-                .buttonStyle(SolidButtonStyle(backgroundColor: .blue, foregroundColor: .white))
+                .buttonStyle(SolidButtonStyle(backgroundColor: Color("blue"), foregroundColor: .white))
                 Spacer()
                 NavigationLink(destination: LocateClassroomView(building: "TEGR")) {
                     Text("Find My Classroom")
                         .padding()
                 }
-                .buttonStyle(SolidButtonStyle(backgroundColor: .purple, foregroundColor: .white))
+                .buttonStyle(SolidButtonStyle(backgroundColor: Color("blue"), foregroundColor: .white))
                 Spacer()
             }
             .padding(.bottom)
@@ -66,7 +70,7 @@ struct LandmarkDetail: View {
             Button(action: {
                 isShowingCredits = true
             }) {
-                Image(systemName: "c.circle")
+                Image(systemName: "paperclip")
             } //: BUTTON
             .sheet(isPresented: $isShowingCredits) {
                 CreditView()
