@@ -6,7 +6,7 @@
 
 import PermissionsSwiftUI
 import SwiftUI
-
+// lol imagine coding lol
 // MARK: - View
 
 struct ContentView: View {
