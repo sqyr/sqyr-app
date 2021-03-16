@@ -7,23 +7,27 @@ import Vapor
 func routes(_ app: Application) throws {
     
     // Adding landmarks to DB
+    // localhost:8080/Landmarks
     app.post("Landmarks"){req -> EventLoopFuture<Landmark> in
         let landmark = try req.content.decode(Landmark.self) // content = body of http request
         return landmark.create(on: req.db).map {landmark}
     }
     
     // Returns all landmarks with their classrooms
+    // localhost:8080/LandMarks
     app.get("Landmarks"){req in
         Landmark.query(on: req.db).with(\.$classRoomsId).all()
     }
     
     // Return a landmark by ID
+    // localhost:8080/Landmarks/#
     app.get("Landmarks", ":LandMarkID") {req -> EventLoopFuture<Landmark> in
         Landmark.find(req.parameters.get("LandMarkID"), on: req.db)
             .unwrap(or: Abort(.notFound))
     }
     
     // Update a landmark
+    // localhost:8080/Landmarks/#
     app.put("Landmarks"){req -> EventLoopFuture<HTTPStatus> in
         let landmark = try req.content.decode(Landmark.self)
         return Landmark.find(landmark.id, on: req.db)
@@ -41,6 +45,7 @@ func routes(_ app: Application) throws {
     }
     
     // Delete a landmark
+    // localhost:8080/Landmarks/#
     app.delete("Landmarks", ":LandMarkID"){ req -> EventLoopFuture<HTTPStatus> in
         Landmark.find(req.parameters.get("LandMarkID"), on: req.db)
             .unwrap(or: Abort(.notFound))
@@ -50,23 +55,27 @@ func routes(_ app: Application) throws {
     }
     
     // Creates a Classroom
+    // localhost:8080/ClassRoom
     app.post("ClassRoom"){req -> EventLoopFuture<ClassRoom> in
         let classRoom = try req.content.decode(ClassRoom.self)
         return classRoom.create(on: req.db).map {classRoom}
     }
     
     // Get all Classrooms
+    // localhost:8080/ClassRoom
     app.get("ClassRoom"){req in
         ClassRoom.query(on: req.db).all()
     }
     
     // Get a Classroom by ID
+    // localhost:8080/ClassRoom/#
     app.get("ClassRoom", ":RoomID") {req -> EventLoopFuture<ClassRoom> in
         ClassRoom.find(req.parameters.get("RoomID"), on: req.db)
             .unwrap(or: Abort(.notFound))
     }
     
     // Update a classroom
+    // localhost:8080/ClassRoom/#
     app.put("ClassRoom"){req -> EventLoopFuture<HTTPStatus> in
         let classRoom = try req.content.decode(ClassRoom.self)
         return ClassRoom.find(classRoom.id, on: req.db)
@@ -79,6 +88,7 @@ func routes(_ app: Application) throws {
     }
     
     // Delete a classroom
+    // localhost:8080/ClassRoom/#
     app.delete("ClassRoom", ":RoomID"){ req -> EventLoopFuture<HTTPStatus> in
         ClassRoom.find(req.parameters.get("RoomID"), on: req.db)
             .unwrap(or: Abort(.notFound))
