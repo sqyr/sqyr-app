@@ -33,6 +33,11 @@
 		68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6C25C25DF30090E47D /* Assets.xcassets */; };
 		68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */; };
 		68C2061825E4DA860057A07F /* GlobalModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C2061725E4DA860057A07F /* GlobalModel.swift */; };
+		73749BE62602D928002BFDBE /* HTTPLandmarkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BE52602D927002BFDBE /* HTTPLandmarkClient.swift */; };
+		73749BE92602DA20002BFDBE /* LandMark.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BE82602DA20002BFDBE /* LandMark.swift */; };
+		73749BEC2602E703002BFDBE /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BEB2602E703002BFDBE /* Classroom.swift */; };
+		73749BEF2602F0B9002BFDBE /* Studyroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BEE2602F0B9002BFDBE /* Studyroom.swift */; };
+		73749BF22602F0FD002BFDBE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BF12602F0FD002BFDBE /* User.swift */; };
 		BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18754D25EE18FB0009096F /* LocateClassroomView.swift */; };
 		BE68B83325EDCD0700FEDA90 /* BuildingHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */; };
 		BED74D6725EE396100EEFF05 /* StudyGroupView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BED74D6625EE396100EEFF05 /* StudyGroupView.swift */; };
@@ -63,6 +68,11 @@
 		68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		68B96A7125C25DF30090E47D /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68C2061725E4DA860057A07F /* GlobalModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GlobalModel.swift; sourceTree = "<group>"; };
+		73749BE52602D927002BFDBE /* HTTPLandmarkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLandmarkClient.swift; sourceTree = "<group>"; };
+		73749BE82602DA20002BFDBE /* LandMark.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandMark.swift; sourceTree = "<group>"; };
+		73749BEB2602E703002BFDBE /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
+		73749BEE2602F0B9002BFDBE /* Studyroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Studyroom.swift; sourceTree = "<group>"; };
+		73749BF12602F0FD002BFDBE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
 		BE18754D25EE18FB0009096F /* LocateClassroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateClassroomView.swift; sourceTree = "<group>"; };
 		BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingHoursView.swift; sourceTree = "<group>"; };
 		BED74D6625EE396100EEFF05 /* StudyGroupView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyGroupView.swift; sourceTree = "<group>"; };
@@ -97,6 +107,10 @@
 			isa = PBXGroup;
 			children = (
 				68C2061725E4DA860057A07F /* GlobalModel.swift */,
+				73749BE82602DA20002BFDBE /* LandMark.swift */,
+				73749BEB2602E703002BFDBE /* Classroom.swift */,
+				73749BEE2602F0B9002BFDBE /* Studyroom.swift */,
+				73749BF12602F0FD002BFDBE /* User.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -183,6 +197,7 @@
 		68B96A6725C25DF20090E47D /* sqyr */ = {
 			isa = PBXGroup;
 			children = (
+				73749BE42602D8FA002BFDBE /* HTTP Clients */,
 				682908DD25C8D8920046F4C7 /* Model */,
 				682908DF25C8D89A0046F4C7 /* Controller */,
 				682908DE25C8D8960046F4C7 /* View */,
@@ -201,6 +216,14 @@
 				68B96A6F25C25DF30090E47D /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		73749BE42602D8FA002BFDBE /* HTTP Clients */ = {
+			isa = PBXGroup;
+			children = (
+				73749BE52602D927002BFDBE /* HTTPLandmarkClient.swift */,
+			);
+			path = "HTTP Clients";
 			sourceTree = "<group>";
 		};
 		BED74D6D25EEF4E500EEFF05 /* Supporting Files */ = {
@@ -301,7 +324,9 @@
 				68C2061825E4DA860057A07F /* GlobalModel.swift in Sources */,
 				682908E425C8DBF50046F4C7 /* ARCLViewController.swift in Sources */,
 				6844D01A25EF7E0400FE34B6 /* EffectViewRepresentable.swift in Sources */,
+				73749BE92602DA20002BFDBE /* LandMark.swift in Sources */,
 				6844D02D25F0852300FE34B6 /* SolidButtonStyle.swift in Sources */,
+				73749BF22602F0FD002BFDBE /* User.swift in Sources */,
 				6896A81E25D466A700B57872 /* ContentView.swift in Sources */,
 				68AD764F25EDAF59005A22F0 /* OnboardingView.swift in Sources */,
 				6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */,
@@ -315,10 +340,13 @@
 				68B96A6925C25DF20090E47D /* sqyrApp.swift in Sources */,
 				6844D02A25F0848600FE34B6 /* Constant.swift in Sources */,
 				BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */,
+				73749BE62602D928002BFDBE /* HTTPLandmarkClient.swift in Sources */,
 				BED74D6725EE396100EEFF05 /* StudyGroupView.swift in Sources */,
+				73749BEC2602E703002BFDBE /* Classroom.swift in Sources */,
 				6896A81F25D466A700B57872 /* LandmarkDetail.swift in Sources */,
 				1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */,
 				6844D01125EF71F400FE34B6 /* Permissions.swift in Sources */,
+				73749BEF2602F0B9002BFDBE /* Studyroom.swift in Sources */,
 				1D1A551D25E7633100166B49 /* LocationAndCameraServices.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
