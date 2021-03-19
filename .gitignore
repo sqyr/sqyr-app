@@ -57,3 +57,4 @@ build/
 *.dat
 *.dep
 /sqyr/sqyr.xcodeproj/project.xcworkspace/xcuserdata/dbarsamian.xcuserdatad/UserInterfaceState.xcuserstate
+/sqyr-server/SQYR/.build

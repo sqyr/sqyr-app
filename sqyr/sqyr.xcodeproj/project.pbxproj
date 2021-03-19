@@ -23,7 +23,6 @@
 		6844D02625F06D0C00FE34B6 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D02525F06D0C00FE34B6 /* BottomSheet */; };
 		6844D02A25F0848600FE34B6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D02925F0848600FE34B6 /* Constant.swift */; };
 		6844D02D25F0852300FE34B6 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D02C25F0852300FE34B6 /* SolidButtonStyle.swift */; };
-		6866C7A325E481B1006DB84D /* Drawer in Frameworks */ = {isa = PBXBuildFile; productRef = 6866C7A225E481B1006DB84D /* Drawer */; };
 		688F08A825ECC99C00A36433 /* NavigationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08A725ECC99C00A36433 /* NavigationDrawer.swift */; };
 		688F08AF25ECCB8B00A36433 /* ARView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08AE25ECCB8B00A36433 /* ARView.swift */; };
 		6896A81E25D466A700B57872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81A25D466A700B57872 /* ContentView.swift */; };
@@ -88,7 +87,6 @@
 				682908DB25C8D8500046F4C7 /* ARCL in Frameworks */,
 				6844D01E25F0436A00FE34B6 /* Introspect in Frameworks */,
 				1D1A552125E7636100166B49 /* PermissionsSwiftUI in Frameworks */,
-				6866C7A325E481B1006DB84D /* Drawer in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -255,7 +253,6 @@
 			name = sqyr;
 			packageProductDependencies = (
 				682908DA25C8D8500046F4C7 /* ARCL */,
-				6866C7A225E481B1006DB84D /* Drawer */,
 				1D1A552025E7636100166B49 /* PermissionsSwiftUI */,
 				6844D01D25F0436A00FE34B6 /* Introspect */,
 				6844D02525F06D0C00FE34B6 /* BottomSheet */,
@@ -289,7 +286,6 @@
 			mainGroup = 68B96A5C25C25DF10090E47D;
 			packageReferences = (
 				682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
-				6866C7A125E481B1006DB84D /* XCRemoteSwiftPackageReference "swiftui-drawer" */,
 				1D1A551F25E7636100166B49 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
 				6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
 				6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */,
@@ -478,7 +474,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = 27Z5A2L8R8;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -503,7 +499,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = 27Z5A2L8R8;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -576,14 +572,6 @@
 				kind = branch;
 			};
 		};
-		6866C7A125E481B1006DB84D /* XCRemoteSwiftPackageReference "swiftui-drawer" */ = {
-			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/sqyr/swiftui-drawer";
-			requirement = {
-				kind = upToNextMajorVersion;
-				minimumVersion = 0.1.0;
-			};
-		};
 /* End XCRemoteSwiftPackageReference section */
 
 /* Begin XCSwiftPackageProductDependency section */
@@ -606,11 +594,6 @@
 			isa = XCSwiftPackageProductDependency;
 			package = 6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
-		};
-		6866C7A225E481B1006DB84D /* Drawer */ = {
-			isa = XCSwiftPackageProductDependency;
-			package = 6866C7A125E481B1006DB84D /* XCRemoteSwiftPackageReference "swiftui-drawer" */;
-			productName = Drawer;
 		};
 /* End XCSwiftPackageProductDependency section */
 	};
