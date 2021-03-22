@@ -10,7 +10,10 @@ import SwiftUI
 struct StudyGroupView: View {
     let building: String
     
-    @State var text: String = ""
+    @State var studyGroupText: String = ""
+    @State var studyRoomText: String = ""
+    let studyGroupPlaceholder: String = "Search for a Study Group"
+    let studyRoomPlaceholder: String = "Search for a Study Room"
     @State var disclosureGroupExpand: Bool = true
     @State var username: String = ""
     @ObservedObject var globalModel: GlobalModel
@@ -19,16 +22,10 @@ struct StudyGroupView: View {
         VStack {
             Group {
                 // SEARCH STUDY GROUPS
-                Text("Study Groups")
-                    .font(.title2)
-                    .bold()
-                    .padding(.top)
-                    .foregroundColor(Color("blue"))
-                SearchBarView(text: $text, model: globalModel)
+                StudyGroupSearchBar(title: "Study Groups", placeholder: self.studyGroupPlaceholder,  text: $studyGroupText)
                 
-                // DISPLAY ALL ROOMS
-                Text("All \(building) Rooms").font(.title2).bold().foregroundColor(Color("blue"))
-                SearchBarView(text: $text, model: globalModel)
+                // SEARCH ALL ROOMS
+                StudyGroupSearchBar(title: "All \(building) Rooms", placeholder: self.studyRoomPlaceholder, text: $studyRoomText)
             }
             .padding(.horizontal)
             List {
@@ -109,6 +106,54 @@ struct roomRowView: View {
         Spacer()
         Image(systemName: iconImage)
             .foregroundColor(iconColor)
+    }
+}
+
+struct StudyGroupSearchBar: View {
+    let title: String
+    let placeholder: String
+    @State private var isEditing: Bool = false
+    @Binding var text: String
+    
+    var body: some View {
+        VStack {
+            // TITLE
+            Text(self.title)
+                .font(.title2)
+                .bold()
+                .padding(.top)
+                .foregroundColor(Color("blue"))
+           
+            // SEARCH BAR
+            HStack {
+                TextField(self.placeholder, text: $text)
+                    .padding(15)
+                    .padding(.horizontal, 25)
+                    .background(Color(.systemGray6))
+                    .foregroundColor(.black)
+                    .cornerRadius(8)
+                    .overlay(
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading, 15)
+                            
+                            if isEditing {
+                                Button(action: {
+                                    self.text = ""
+                                }) {
+                                    Image(systemName: "multiply.circle.fill")
+                                        .foregroundColor(.gray)
+                                        .padding(.trailing, 8)
+                                } // : BUTTON - "X" CANCEL
+                            }
+                        } //: HSTACK
+                    ).onTapGesture {
+                        self.isEditing = true
+                    }
+            } //: HSTACK
+        } //: VSTACK
     }
 }
 
