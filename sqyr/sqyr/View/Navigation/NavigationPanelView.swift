@@ -33,9 +33,8 @@ struct NavigationPanelView: View {
                             .tag($0.rawValue)
                     }
                 } //: PICKER
-                .background(Color("blue"))
                 .pickerStyle(SegmentedPickerStyle())
-                .foregroundColor(.red)
+                .background(Color("blue"))
                 .cornerRadius(8)
                 .padding()
 

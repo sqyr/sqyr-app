@@ -14,22 +14,13 @@ struct LandmarkDetail: View {
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             // BUILDING HOURS TITLE
-            Label(
-                title: { Text(building).font(.title2).bold() },
-                icon: { Image(systemName: "building.2.crop.circle.fill").font(.title2) }
-            )
-            .foregroundColor(Color("gold"))
+            LandmarkTitleView(icon: "building.2.crop.circle.fill", title: building)
                 
             // BUILDING HOURS CONTENT
             BuildingHoursView()
             
             // BUILDING INFORMATION CONTENT
-            Label(
-                title: { Text("About").font(.title3).bold() },
-                icon: { Image(systemName: "info.circle.fill").font(.title3) }
-            )
-            .foregroundColor(Color("gold"))
-            .padding()
+            LandmarkTitleView(icon: "info.circle.fill", title: "About")
             
             GroupBox {
                 Text("The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab.")
@@ -38,12 +29,7 @@ struct LandmarkDetail: View {
             }
                 
             // OPTIONAL ACTION TITLE
-            Label(
-                title: { Text("Actions").font(.title3).bold() },
-                icon: { Image(systemName: "ellipsis.circle.fill").font(.title3) }
-            )
-            .foregroundColor(Color("gold"))
-            .padding()
+            LandmarkTitleView(icon: "ellipsis.circle.fill", title: "Actions")
                 
             // OPTIONAL ACTION CONTENT
             HStack {
@@ -92,6 +78,8 @@ struct LandmarkTitleView: View {
                 .font(.title3)
                 .fontWeight(.bold)
         } //: HSTACK
+        .foregroundColor(Color("gold"))
+        .padding()
     }
 }
 
