@@ -97,22 +97,6 @@ struct StudyGroupView: View {
     }
 }
 
-
-
-struct roomRowView: View {
-    let text: String
-    let iconImage: String
-    let iconColor: Color
-    
-    var body: some View {
-        Text(text)
-            .font(.caption)
-        Spacer()
-        Image(systemName: iconImage)
-            .foregroundColor(iconColor)
-    }
-}
-
 struct StudyGroupTitle: View {
     let title: String
     
