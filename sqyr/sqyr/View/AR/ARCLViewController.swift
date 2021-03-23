@@ -6,18 +6,24 @@
 //
 
 import ARKit_CoreLocation
+import ARKit
 import CoreLocation
 import Foundation
 import UIKit
 
 class ARCLViewController: UIViewController {
     var sceneLocationView = SceneLocationView()
+    var coachingOverlay = ARCoachingOverlayView()
     
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        view.addSubview(coachingOverlay)
+        
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
+        
+        
     }
     
     override func viewDidLayoutSubviews() {
@@ -38,6 +44,17 @@ class ARCLViewController: UIViewController {
         labelledView = UIView.prettyLabelledView(text: "California Baptist University")
         annotationNode = LocationAnnotationNode(location: location, view: labelledView)
         sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        
+        coachingOverlay.session = sceneLocationView.session
+        coachingOverlay.translatesAutoresizingMaskIntoConstraints = false
+        NSLayoutConstraint.activate([
+            coachingOverlay.centerXAnchor.constraint(equalTo: view.centerXAnchor),
+            coachingOverlay.centerYAnchor.constraint(equalTo: view.centerYAnchor),
+            coachingOverlay.widthAnchor.constraint(equalTo: view.widthAnchor),
+            coachingOverlay.heightAnchor.constraint(equalTo: view.heightAnchor)
+        ])
+        coachingOverlay.activatesAutomatically = true
+        coachingOverlay.goal = .horizontalPlane
     }
 }
 
