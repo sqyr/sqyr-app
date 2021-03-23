@@ -6,7 +6,7 @@
 
 import PermissionsSwiftUI
 import SwiftUI
-// lol imagine coding lol
+
 // MARK: - View
 
 struct ContentView: View {
@@ -29,7 +29,7 @@ struct ContentView: View {
 
         ZStack {
             if showingAR {
-                ARView()
+                ARCLView()
                     .edgesIgnoringSafeArea(.all)
                     .gesture(resignFRGesture, including: .all)
                     .animation(.easeIn)
