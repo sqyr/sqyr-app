@@ -9,11 +9,11 @@ import SwiftUI
 
 struct StudyGroupView: View {
     let building: String
-    
-    @State var studyGroupText: String = ""
-    @State var studyRoomText: String = ""
     let studyGroupPlaceholder: String = "Search for a Study Group"
     let studyRoomPlaceholder: String = "Search for a Study Room"
+    
+    @State var studyGroupSearchText: String = ""
+    @State var studyRoomSearchText: String = ""
     @State var disclosureGroupExpand: Bool = true
     @State var username: String = ""
     @ObservedObject var globalModel: GlobalModel
@@ -21,17 +21,17 @@ struct StudyGroupView: View {
     var body: some View {
         VStack {
             Group {
-                // SEARCH STUDY GROUPS
-                StudyGroupSearchBar(title: "Study Groups", placeholder: self.studyGroupPlaceholder,  text: $studyGroupText)
-                
                 // SEARCH ALL ROOMS
-                StudyGroupSearchBar(title: "All \(building) Rooms", placeholder: self.studyRoomPlaceholder, text: $studyRoomText)
+                StudyGroupSearchBar(title: "All \(building) Rooms", placeholder: self.studyRoomPlaceholder, text: $studyRoomSearchText)
+                
+                // SEARCH STUDY GROUPS
+                StudyGroupSearchBar(title: "Study Groups", placeholder: self.studyGroupPlaceholder,  text: $studyGroupSearchText)
             }
             .padding(.horizontal)
             List {
-                ForEach(100..<361) { room in
+                ForEach((100..<361).filter({ "\($0)".contains(self.studyRoomSearchText.lowercased()) || self.studyRoomSearchText.isEmpty }), id: \.self) { room in
                     DisclosureGroup("Room \(room)") {
-                        ForEach(0..<2) { group in
+                        ForEach((0..<2).filter({ "\($0)".contains(self.studyGroupSearchText.lowercased()) || self.studyGroupSearchText.isEmpty }), id: \.self) { group in
                             DisclosureGroup("Study Group \(group)") {
                                 ForEach(0..<3) { user in
                                     Text("Student \(user)")
@@ -112,7 +112,7 @@ struct roomRowView: View {
 struct StudyGroupSearchBar: View {
     let title: String
     let placeholder: String
-    @State private var isEditing: Bool = false
+    @State private var isSearching: Bool = false
     @Binding var text: String
     
     var body: some View {
@@ -139,21 +139,35 @@ struct StudyGroupSearchBar: View {
                                 .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
                                 .padding(.leading, 15)
                             
-                            if isEditing {
+                            if isSearching {
                                 Button(action: {
                                     self.text = ""
                                 }) {
                                     Image(systemName: "multiply.circle.fill")
                                         .foregroundColor(.gray)
                                         .padding(.trailing, 8)
-                                } // : BUTTON - "X" CANCEL
+                                } // : BUTTON - "X"
                             }
                         } //: HSTACK
                     ).onTapGesture {
-                        self.isEditing = true
+                        self.isSearching = true
+                    }
+                
+                    if isSearching {
+                        Button(action: {
+                            self.isSearching = false
+                            self.text = ""
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }) {
+                            Text("Cancel")
+                        } //: BUTTON - CANCEL
+                        .padding(.trailing, 10)
+                        .transition(.move(edge: .trailing))
+                        .animation(.default)
                     }
             } //: HSTACK
         } //: VSTACK
+        .padding(.vertical)
     }
 }
 
