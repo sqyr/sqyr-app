@@ -22,12 +22,16 @@ struct StudyGroupView: View {
         VStack {
             Group {
                 // SEARCH ALL ROOMS
-                StudyGroupSearchBar(title: "All \(building) Rooms", placeholder: self.studyRoomPlaceholder, text: $studyRoomSearchText)
+                StudyGroupTitle(title: "All \(building) Rooms")
+                StudyGroupSearchBar(placeholder: self.studyRoomPlaceholder, text: $studyRoomSearchText)
                 
                 // SEARCH STUDY GROUPS
-                StudyGroupSearchBar(title: "Study Groups", placeholder: self.studyGroupPlaceholder,  text: $studyGroupSearchText)
+                StudyGroupTitle(title: "Study Groups")
+                StudyGroupSearchBar(placeholder: self.studyGroupPlaceholder,  text: $studyGroupSearchText)
             }
             .padding(.horizontal)
+            
+            // LIST OF ROOMS
             List {
                 ForEach((100..<361).filter({ "\($0)".contains(self.studyRoomSearchText.lowercased()) || self.studyRoomSearchText.isEmpty }), id: \.self) { room in
                     DisclosureGroup("Room \(room)") {
@@ -109,20 +113,26 @@ struct roomRowView: View {
     }
 }
 
-struct StudyGroupSearchBar: View {
+struct StudyGroupTitle: View {
     let title: String
+    
+    var body: some View {
+        Text(self.title)
+            .font(.title2)
+            .bold()
+            .padding(.top)
+            .foregroundColor(Color("blue"))
+    }
+}
+
+struct StudyGroupSearchBar: View {
     let placeholder: String
     @State private var isSearching: Bool = false
     @Binding var text: String
     
     var body: some View {
         VStack {
-            // TITLE
-            Text(self.title)
-                .font(.title2)
-                .bold()
-                .padding(.top)
-                .foregroundColor(Color("blue"))
+
            
             // SEARCH BAR
             HStack {
