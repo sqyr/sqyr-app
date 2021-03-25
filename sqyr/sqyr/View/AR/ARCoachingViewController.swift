@@ -26,6 +26,7 @@ class ARCoachingViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        coachingOverlay.activatesAutomatically = false
         view.addSubview(coachingOverlay)
     }
     

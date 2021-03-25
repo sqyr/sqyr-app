@@ -478,7 +478,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = BY6LM8QRC2;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -488,8 +488,6 @@
 				);
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbarsam.sqyr;
-				PRODUCT_BUNDLE_IDENTIFIER = com.truesarmiento.sqyr;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.steven-phun.sqyr";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -505,7 +503,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = BY6LM8QRC2;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -515,8 +513,6 @@
 				);
 				MARKETING_VERSION = 0.1.0;
 				PRODUCT_BUNDLE_IDENTIFIER = com.dbarsam.sqyr;
-				PRODUCT_BUNDLE_IDENTIFIER = com.truesarmiento.sqyr;
-				PRODUCT_BUNDLE_IDENTIFIER = "com.steven-phun.sqyr";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;

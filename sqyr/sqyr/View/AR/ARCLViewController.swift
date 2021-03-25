@@ -18,12 +18,10 @@ class ARCLViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         
-        view.addSubview(coachingOverlay)
-        
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
         
-        
+        view.addSubview(coachingOverlay)
     }
     
     override func viewDidLayoutSubviews() {
