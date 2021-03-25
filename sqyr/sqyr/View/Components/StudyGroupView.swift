@@ -9,8 +9,11 @@ import SwiftUI
 
 struct StudyGroupView: View {
     let building: String
+    let studyGroupPlaceholder: String = "Search for a Study Group"
+    let studyRoomPlaceholder: String = "Search for a Study Room"
     
-    @State var text: String = ""
+    @State var studyGroupSearchText: String = ""
+    @State var studyRoomSearchText: String = ""
     @State var disclosureGroupExpand: Bool = true
     @State var username: String = ""
     @ObservedObject var globalModel: GlobalModel
@@ -18,23 +21,21 @@ struct StudyGroupView: View {
     var body: some View {
         VStack {
             Group {
-                // SEARCH STUDY GROUPS
-                Text("Study Groups")
-                    .font(.title2)
-                    .bold()
-                    .padding(.top)
-                    .foregroundColor(Color("blue"))
-                SearchBarView(text: $text, model: globalModel)
+                // SEARCH ALL ROOMS
+                StudyGroupTitle(title: "All \(building) Rooms")
+                StudyGroupSearchBar(placeholder: self.studyRoomPlaceholder, text: $studyRoomSearchText)
                 
-                // DISPLAY ALL ROOMS
-                Text("All \(building) Rooms").font(.title2).bold().foregroundColor(Color("blue"))
-                SearchBarView(text: $text, model: globalModel)
+                // SEARCH STUDY GROUPS
+                StudyGroupTitle(title: "Study Groups")
+                StudyGroupSearchBar(placeholder: self.studyGroupPlaceholder,  text: $studyGroupSearchText)
             }
             .padding(.horizontal)
+            
+            // LIST OF ROOMS
             List {
-                ForEach(100..<361) { room in
+                ForEach((100..<361).filter({ "\($0)".contains(self.studyRoomSearchText.lowercased()) || self.studyRoomSearchText.isEmpty }), id: \.self) { room in
                     DisclosureGroup("Room \(room)") {
-                        ForEach(0..<2) { group in
+                        ForEach((0..<2).filter({ "\($0)".contains(self.studyGroupSearchText.lowercased()) || self.studyGroupSearchText.isEmpty }), id: \.self) { group in
                             DisclosureGroup("Study Group \(group)") {
                                 ForEach(0..<3) { user in
                                     Text("Student \(user)")
@@ -96,19 +97,71 @@ struct StudyGroupView: View {
     }
 }
 
-
-
-struct roomRowView: View {
-    let text: String
-    let iconImage: String
-    let iconColor: Color
+struct StudyGroupTitle: View {
+    let title: String
     
     var body: some View {
-        Text(text)
-            .font(.caption)
-        Spacer()
-        Image(systemName: iconImage)
-            .foregroundColor(iconColor)
+        Text(self.title)
+            .font(.title2)
+            .bold()
+            .padding(.top)
+            .foregroundColor(Color("blue"))
+    }
+}
+
+struct StudyGroupSearchBar: View {
+    let placeholder: String
+    @State private var isSearching: Bool = false
+    @Binding var text: String
+    
+    var body: some View {
+        VStack {
+
+           
+            // SEARCH BAR
+            HStack {
+                TextField(self.placeholder, text: $text)
+                    .padding(15)
+                    .padding(.horizontal, 25)
+                    .background(Color(.systemGray6))
+                    .foregroundColor(.black)
+                    .cornerRadius(8)
+                    .overlay(
+                        HStack {
+                            Image(systemName: "magnifyingglass")
+                                .foregroundColor(.gray)
+                                .frame(minWidth: 0, maxWidth: .infinity, alignment: .leading)
+                                .padding(.leading, 15)
+                            
+                            if isSearching {
+                                Button(action: {
+                                    self.text = ""
+                                }) {
+                                    Image(systemName: "multiply.circle.fill")
+                                        .foregroundColor(.gray)
+                                        .padding(.trailing, 8)
+                                } // : BUTTON - "X"
+                            }
+                        } //: HSTACK
+                    ).onTapGesture {
+                        self.isSearching = true
+                    }
+                
+                    if isSearching {
+                        Button(action: {
+                            self.isSearching = false
+                            self.text = ""
+                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                        }) {
+                            Text("Cancel")
+                        } //: BUTTON - CANCEL
+                        .padding(.trailing, 10)
+                        .transition(.move(edge: .trailing))
+                        .animation(.default)
+                    }
+            } //: HSTACK
+        } //: VSTACK
+        .padding(.vertical)
     }
 }
 
