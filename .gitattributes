@@ -1,1 +1,2 @@
 *.pbxproj binary merge=union
+*.png filter=lfs diff=lfs merge=lfs -text
