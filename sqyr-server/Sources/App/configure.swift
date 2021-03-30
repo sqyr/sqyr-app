@@ -17,7 +17,7 @@ public func configure(_ app: Application) throws {
 //
 //    app.migrations.add(CreateTodo())
     
-    app.databases.use(.postgres(hostname: "localhost", username: "postgres", password: "", database: "sqyrdb"), as: .psql)
+    app.databases.use(.postgres(hostname: "localhost", username: "sqyr", password: "9yg8Fd-A", database: "sqyr"), as: .psql)
 
     app.migrations.add(CreateLandmark())
     app.migrations.add(CreateClassroom())
