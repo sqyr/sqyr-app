@@ -1,0 +1,259 @@
+[
+    {
+        "name": "TEGR",
+        "description": "The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab.",
+        "hours":
+        {
+            "mon_start": "8:00",
+            "mon_end": "21:00",
+            "tue_start": "8:00",
+            "tue_end": "21:00",
+            "wed_start": "8:00",
+            "wed_end": "21:00",
+            "thu_start": "8:00",
+            "thu_end": "21:00",
+            "fri_start": "8:00",
+            "fri_end": "21:00",
+            "sat_start": null,
+            "sat_end": null,
+            "sun_start": null,
+            "sun_end": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Academic",
+        "image": "tegr",
+        "showInfoLeft": true,
+        "icon": "info.circle.fill"
+        "floorPlanImage":
+        {
+            "level 1": "tegr_floor1",
+            "level 2": "tegr_floor2",
+            "level 3": "tegr_floor3",
+        },
+        "rooms":
+        {
+            "basement": null,
+            "level1": (101,123);
+            "level2": (201, 230),
+            "level3": (301, 305),
+            "level4": null,
+        }
+        "studyGroups":
+        {
+            "room101":
+            [
+                "junior design":
+                {
+                    "student1",
+                    "student2"
+                }
+            ],
+        }
+    },
+    
+    {
+        "name": "Business",
+        "description": "The School of Business features classrooms, offices, and a conference room. Stop by the building to see the trading room with a real-time stock visual.",
+        "hours":
+        {
+            "mon_start": "8:00",
+            "mon_end": "21:00",
+            "tue_start": "8:00",
+            "tue_end": "21:00",
+            "wed_start": "8:00",
+            "wed_end": "21:00",
+            "thu_start": "8:00",
+            "thu_end": "21:00",
+            "fri_start": "8:00",
+            "fri_end": "21:00",
+            "sat_start": null,
+            "sat_end": null,
+            "sun_start": null,
+            "sun_end": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Academic",
+        "image": "business",
+        "showInfoLeft": true,
+        "icon": "info.circle.fill"
+        "floorPlanImage":
+        {
+            "level 1": "bus_floor1",
+            "level 2": "bus_floor2",
+        },
+        "rooms":
+        {
+            "basement": null,
+            "level1": (101,123);
+            "level2": (201, 230),
+            "level3": null,
+            "level4": null,
+        }
+        "studyGroups":
+        {
+            "roomExample":
+            [
+                "example group":
+                {
+                    "studentEx1",
+                    "studentEx2"
+                }
+            ],
+        }
+    },
+    
+    {
+        "name": "James",
+        "description": "The James bulding was the original California Baptist College before it changed into California Baptist University.",
+        "hours":
+        {
+            "mon_start": "8:00",
+            "mon_end": "21:00",
+            "tue_start": "8:00",
+            "tue_end": "21:00",
+            "wed_start": "8:00",
+            "wed_end": "21:00",
+            "thu_start": "8:00",
+            "thu_end": "21:00",
+            "fri_start": "8:00",
+            "fri_end": "21:00",
+            "sat_start": null,
+            "sat_end": null,
+            "sun_start": null,
+            "sun_end": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Academic",
+        "image": "james",
+        "showInfoLeft": true,
+        "icon": "info.circle.fill"
+        "floorPlanImage":
+        {
+            "basement": "james_basement",
+            "level 1": "james_floor1",
+            "level 2": "james_floor2",
+            "level 1": "james_floor1",
+            "level 2": "james_floor2",
+        },
+        "rooms":
+        {
+            "basement": (36, 82),
+            "level1": (125, 156);
+            "level2": (239, 267),
+            "level3": (332, 362),
+            "level4": null,
+        }
+        "studyGroups":
+        {
+            null:
+            [
+                "example group":
+                {
+                    "studentEx1",
+                    "studentEx2"
+                }
+            ],
+        }
+    },
+    
+    {
+        "name": "El Monte Grill",
+        "description": "El Monte Grill is a build your own mexican style restaurant. It features burritos, bowls, tacos, sopas, and more.",
+        "hours":
+        {
+            "mon_start": "11:00",
+            "mon_end": "19:00",
+            "tue_start": "11:00",
+            "tue_end": "19:00",
+            "wed_start": "11:00",
+            "wed_end": "19:00",
+            "thu_start": "11:00",
+            "thu_end": "19:00",
+            "fri_start": "11:00",
+            "fri_end": "19:00",
+            "sat_start": "12:00",
+            "sat_end": "6:30",
+            "sun_start": null,
+            "sun_end": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Social",
+        "image": "elMonteGrill",
+        "showInfoLeft": true,
+        "icon": "info.circle.fill"
+        "floorPlanImage":
+        {
+            "level 1": null,
+            "level 2": null,
+            "level 1": null,
+            "level 2": null,
+        },
+        "rooms":
+        {
+            "basement": null,
+            "level1": null;
+            "level2": null,
+            "level3": null,
+            "level4": null,
+        }
+        "studyGroups":
+        {
+            null:
+            [
+            ],
+        }
+    }
+    
+    {
+        "name": "Chick-fil-A",
+        "description": "The restaurant on campus that has chicken blessed from the Lord Jesus himself.",
+        "hours":
+        {
+            "mon_start": "8:00",
+            "mon_end": "8:00",
+            "tue_start": "8:00",
+            "tue_end": "8:00",
+            "wed_start": "8:00",
+            "wed_end": "8:00",
+            "thu_start": "8:00",
+            "thu_end": "8:00",
+            "fri_start": "8:00",
+            "fri_end": "7:00",
+            "sat_start": "11:00",
+            "sat_end": "7:00",
+            "sun_start": null,
+            "sun_end": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Social",
+        "image": "chickFilA",
+        "showInfoLeft": true,
+        "icon": "info.circle.fill"
+        "floorPlanImage":
+        {
+            "level 1": null,
+            "level 2": null,
+            "level 1": null,
+            "level 2": null,
+        },
+        "rooms":
+        {
+            "basement": null,
+            "level1": null;
+            "level2": null,
+            "level3": null,
+            "level4": null,
+        }
+        "studyGroups":
+        {
+            null:
+            [
+            ],
+        }
+    }
+]
