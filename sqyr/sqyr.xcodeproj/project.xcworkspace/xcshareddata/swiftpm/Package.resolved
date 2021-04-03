@@ -12,10 +12,10 @@
       },
       {
         "package": "BottomSheet",
-        "repositoryURL": "https://github.com/dbarsamian/BottomSheet",
+        "repositoryURL": "https://github.com/LucasMucGH/BottomSheet",
         "state": {
           "branch": "main",
-          "revision": "751029d392b4208a0ab98152a5b3cc3a8ad09195",
+          "revision": "5b5e42a3ff21af6f4bd7f2093e848017369d2b8e",
           "version": null
         }
       },

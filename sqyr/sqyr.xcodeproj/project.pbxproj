@@ -21,9 +21,9 @@
 		6844D01125EF71F400FE34B6 /* Permissions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D01025EF71F400FE34B6 /* Permissions.swift */; };
 		6844D01A25EF7E0400FE34B6 /* EffectViewRepresentable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D01925EF7E0400FE34B6 /* EffectViewRepresentable.swift */; };
 		6844D01E25F0436A00FE34B6 /* Introspect in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D01D25F0436A00FE34B6 /* Introspect */; };
-		6844D02625F06D0C00FE34B6 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 6844D02525F06D0C00FE34B6 /* BottomSheet */; };
 		6844D02A25F0848600FE34B6 /* Constant.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D02925F0848600FE34B6 /* Constant.swift */; };
 		6844D02D25F0852300FE34B6 /* SolidButtonStyle.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6844D02C25F0852300FE34B6 /* SolidButtonStyle.swift */; };
+		687BBB73261827C7007DBAE8 /* BottomSheet in Frameworks */ = {isa = PBXBuildFile; productRef = 687BBB72261827C7007DBAE8 /* BottomSheet */; };
 		688F08A825ECC99C00A36433 /* NavigationDrawer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 688F08A725ECC99C00A36433 /* NavigationDrawer.swift */; };
 		6896A81E25D466A700B57872 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81A25D466A700B57872 /* ContentView.swift */; };
 		6896A81F25D466A700B57872 /* LandmarkDetail.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6896A81B25D466A700B57872 /* LandmarkDetail.swift */; };
@@ -87,8 +87,8 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
-				6844D02625F06D0C00FE34B6 /* BottomSheet in Frameworks */,
 				682908DB25C8D8500046F4C7 /* ARCL in Frameworks */,
+				687BBB73261827C7007DBAE8 /* BottomSheet in Frameworks */,
 				6844D01E25F0436A00FE34B6 /* Introspect in Frameworks */,
 				1D1A552125E7636100166B49 /* PermissionsSwiftUI in Frameworks */,
 			);
@@ -269,7 +269,7 @@
 				682908DA25C8D8500046F4C7 /* ARCL */,
 				1D1A552025E7636100166B49 /* PermissionsSwiftUI */,
 				6844D01D25F0436A00FE34B6 /* Introspect */,
-				6844D02525F06D0C00FE34B6 /* BottomSheet */,
+				687BBB72261827C7007DBAE8 /* BottomSheet */,
 			);
 			productName = sqyr;
 			productReference = 68B96A6525C25DF20090E47D /* sqyr.app */;
@@ -302,7 +302,7 @@
 				682908D925C8D8500046F4C7 /* XCRemoteSwiftPackageReference "ARKit-CoreLocation" */,
 				1D1A551F25E7636100166B49 /* XCRemoteSwiftPackageReference "PermissionsSwiftUI" */,
 				6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */,
-				6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */,
+				687BBB71261827C7007DBAE8 /* XCRemoteSwiftPackageReference "BottomSheet" */,
 			);
 			productRefGroup = 68B96A6625C25DF20090E47D /* Products */;
 			projectDirPath = "";
@@ -580,9 +580,9 @@
 				kind = branch;
 			};
 		};
-		6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
+		687BBB71261827C7007DBAE8 /* XCRemoteSwiftPackageReference "BottomSheet" */ = {
 			isa = XCRemoteSwiftPackageReference;
-			repositoryURL = "https://github.com/dbarsamian/BottomSheet";
+			repositoryURL = "https://github.com/LucasMucGH/BottomSheet";
 			requirement = {
 				branch = main;
 				kind = branch;
@@ -606,9 +606,9 @@
 			package = 6844D01C25F0436A00FE34B6 /* XCRemoteSwiftPackageReference "SwiftUI-Introspect" */;
 			productName = Introspect;
 		};
-		6844D02525F06D0C00FE34B6 /* BottomSheet */ = {
+		687BBB72261827C7007DBAE8 /* BottomSheet */ = {
 			isa = XCSwiftPackageProductDependency;
-			package = 6844D02425F06D0C00FE34B6 /* XCRemoteSwiftPackageReference "BottomSheet" */;
+			package = 687BBB71261827C7007DBAE8 /* XCRemoteSwiftPackageReference "BottomSheet" */;
 			productName = BottomSheet;
 		};
 /* End XCSwiftPackageProductDependency section */

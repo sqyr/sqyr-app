@@ -10,9 +10,10 @@ import SwiftUI
 // MARK: - View
 
 struct ContentView: View {
-    @State var showingDrawer: Bool = true
-    @State var showingOnboarding: Bool = true
-    @State var showingAR: Bool = false // TODO: change this based on permissions granted
+    @State private var showingDrawer: Bool = true
+    @State private var showingOnboarding: Bool = false
+    @State private var showingAR: Bool = false // TODO: change this based on permissions granted
+    @State private var appVersion: String? = UserDefaults.standard.string(forKey: "appVersion")
 
     @ObservedObject var globalModel = GlobalModel()
 
@@ -43,12 +44,23 @@ struct ContentView: View {
                     .edgesIgnoringSafeArea(.top)
             }
         }
+        .onAppear {
+            checkForUpdate()
+            showingAR = true
+        }
         .fullScreenCover(isPresented: $showingOnboarding, content: {
             OnboardingView()
-                .onDisappear {
-                    showingAR = true
-                }
         })
+    }
+    
+    private func checkForUpdate() {
+        let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
+        
+        if self.appVersion == nil {
+            self.showingOnboarding = true
+            UserDefaults.standard.set(currentVersion, forKey: "appVersion")
+            self.appVersion = currentVersion
+        }
     }
 }
 
