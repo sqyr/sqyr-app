@@ -21,19 +21,17 @@ struct ContentView: View {
 
     var body: some View {
         // MARK: - Gestures
-
         let resignFRGesture = TapGesture().onEnded {
             resignFirstResponder()
         }
 
         // MARK: - Views
-
         ZStack {
             if showingAR {
                 ARCLView()
                     .edgesIgnoringSafeArea(.all)
                     .gesture(resignFRGesture, including: .all)
-                    .animation(.easeIn)
+                    .background(Color(UIColor.systemBackground))
             }
             GeometryReader { geo in
                 NavigationDrawer(geoProxy: geo, globalModel: globalModel)
