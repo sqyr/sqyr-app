@@ -22,13 +22,19 @@ struct NavigationDrawer: View {
             resignFirstResponder()
         }
         
+        let expandGesture = TapGesture().onEnded {
+            bottomSheetPosition = .top
+        }
+        
         EmptyView()
             .bottomSheet(bottomSheetPosition: $bottomSheetPosition, resizeable: true, headerContent: {
                 SearchBarView(text: $searchText, model: globalModel)
             }, mainContent: {
                 NavigationPanelView(globalModel: globalModel)
                     .gesture(resignFRGesture, including: globalModel.searchBarIsEditing ? .gesture : .none)
+                    .gesture(expandGesture, including: bottomSheetPosition == .middle ? .all : .subviews)
             })
+            
             .onChange(of: globalModel.searchBarIsEditing, perform: { _ in
                 if globalModel.searchBarIsEditing {
                     bottomSheetPosition = .top
