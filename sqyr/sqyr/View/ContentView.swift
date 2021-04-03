@@ -28,11 +28,13 @@ struct ContentView: View {
 
         // MARK: - Views
         ZStack {
-            if showingAR {
+            if checkPermissions() {
                 ARCLView()
                     .edgesIgnoringSafeArea(.all)
                     .gesture(resignFRGesture, including: .all)
                     .background(Color(UIColor.systemBackground))
+            } else {
+                MissingPermissionsView()
             }
             GeometryReader { geo in
                 NavigationDrawer(geoProxy: geo, globalModel: globalModel)
@@ -45,12 +47,15 @@ struct ContentView: View {
         }
         .onAppear {
             checkForUpdate()
+            if !checkPermissions() {
+                showingPermissions = true
+            }
             showingAR = true
         }
         .fullScreenCover(isPresented: $showingOnboarding, content: {
             OnboardingView()
         })
-        .JMModal(showModal: $showingPermissions, for: [.camera, .location])
+        .JMModal(showModal: $showingPermissions, for: [.camera, .location], restrictDismissal: true)
         .setPermissionComponent(for: .camera, description: "Sqyr needs to overlay an augmented reality guide over your camera.")
         .setPermissionComponent(for: .location, description: "Sqyr needs to get your location to display relevant landmark guides.")
         .changeBottomDescriptionTo("Sqyr needs these permissions for all the features and functionality to work. Without camera permission, you can't see the augmented reality guide. Without location permision, you can't get accurate guidance to locations.")
@@ -65,6 +70,10 @@ struct ContentView: View {
             UserDefaults.standard.set(currentVersion, forKey: "appVersion")
             self.appVersion = currentVersion
         }
+    }
+    
+    private func checkPermissions() -> Bool {
+        return PermissionsUtility.checkPermission(for: .camera) && (PermissionsUtility.checkPermission(for: .location) || PermissionsUtility.checkPermission(for: .locationAlways))
     }
 }
 

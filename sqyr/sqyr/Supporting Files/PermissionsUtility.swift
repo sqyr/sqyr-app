@@ -6,14 +6,34 @@
 //
 
 import Foundation
-import CoreBluetooth
 import CoreLocation
 import AVFoundation
 import PermissionsSwiftUI
 import SwiftUI
 
-struct PermissionsUtility {
+final class PermissionsUtility {
     static func checkPermission(for permission: PermissionType) -> Bool {
-        return false
+        switch permission {
+        case .camera:
+            switch AVCaptureDevice.authorizationStatus(for: .video) {
+            case .authorized:
+                return true
+            default: return false
+            }
+        case .location:
+            let locationManager = CLLocationManager()
+            switch locationManager.authorizationStatus {
+            case .authorizedWhenInUse: return true
+            default: return false
+            }
+        case .locationAlways:
+            let locationManager = CLLocationManager()
+            switch locationManager.authorizationStatus {
+            case.authorizedAlways: return true
+            default: return false
+            }
+        default: return false
+        }
+        
     }
 }
