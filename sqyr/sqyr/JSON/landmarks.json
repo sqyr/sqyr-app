@@ -1,0 +1,51 @@
+[
+    {
+        "id": 1,
+        "name": "TEGR",
+        "description": "The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab.",
+        "hours":
+        {
+            "monStart": "8:00",
+            "monEnd": "21:00",
+            "tueStart": "8:00",
+            "tueEnd": "21:00",
+            "wedStart": "8:00",
+            "wedEnd": "21:00",
+            "thuStart": "8:00",
+            "thuEnd": "21:00",
+            "friStart": "8:00",
+            "friEnd": "21:00",
+            "satStart": null,
+            "satEnd": null,
+            "sunStart": null,
+            "sunEnd": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Academic",
+        "image": "tegr",
+        "showInfoLeft": true,
+        "icon": "building.2.crop.circle.fill",
+        "floorPlanImage":
+        {
+            "basement": null,
+            "level1": "tegr_floor1",
+            "level2": "tegr_floor2",
+            "level3": "tegr_floor3",
+        },
+        "rooms":
+        {
+            "basementStart": null,
+            "basementEnd": null,
+            "level1Start": 101,
+            "level1End": 123,
+            "level2Start": 201,
+            "level2End": 230,
+            "level3Start": 301,
+            "level3End": 305,
+            "level4Start": null,
+            "level4End": null,
+        },
+        "studyGroups": ["dummy value"],
+    },
+]
