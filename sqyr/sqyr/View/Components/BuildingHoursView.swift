@@ -19,10 +19,10 @@ struct BuildingHoursView: View {
             } //: HSTACK
             VStack {
                 LazyVGrid(columns: getGridLayout(), spacing: 6) {
-                    ForEach(0..<getWeekday().count, id:\.self) { day in
-                        Text(getWeekday()[day])
+                    ForEach(0..<7) { day in
+                        Text(landmark.getHours[day].dayOfWeek)
                             .fontWeight(.bold)
-                        Text(getTime()[day])
+                        Text(landmark.getHours[day].openHours)
                     }
                 } //: GRID
             } //: VSTACK
@@ -35,13 +35,7 @@ func getGridLayout() -> [GridItem] {
     return Array(repeating: GridItem(.flexible(), spacing: 2), count: 2)
 }
 
-func getWeekday() -> [String] {
-    return ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday", "Sunday"]
-}
 
-func getTime() -> [String] {
-    return ["8:00AM - 5:00PM", "8:00AM - 5:00PM", "8:00AM - 5:00PM", "8:00AM - 5:00PM", "8:00AM - 5:00PM", "Closed", "Closed"]
-}
 
 struct BuildingHoursView_Previews: PreviewProvider {
     static var previews: some View {
