@@ -27,24 +27,26 @@ struct LandmarkJson: Codable {
     let studyGroups: [String]
 
     // MARK: - COMPUTED PROPERTIES
-
+    var getHours: [LandMarkHours] {
+        [LandMarkHours(dayOfWeek: "Monday", openHours: hours.mon ?? "Closed"),
+         LandMarkHours(dayOfWeek: "Tuesday", openHours: hours.tue ?? "Closed"),
+         LandMarkHours(dayOfWeek: "Wednesday", openHours: hours.wed ?? "Closed"),
+         LandMarkHours(dayOfWeek: "Thursday", openHours: hours.thu ?? "Closed"),
+         LandMarkHours(dayOfWeek: "Friday", openHours: hours.fri ?? "Closed"),
+         LandMarkHours(dayOfWeek: "Saturday", openHours: hours.sat ?? "Closed"),
+         LandMarkHours(dayOfWeek: "Sunday", openHours: hours.sun ?? "Closed"),
+        ]
+    }
+    
     // MARK: - HELPER DATA MODEL
-
     struct CodableHoursJson: Codable {
-        let monStart: String
-        let monEnd: String
-        let tueStart: String
-        let tueEnd: String
-        let wedStart: String
-        let wedEnd: String
-        let thuStart: String
-        let thuEnd: String
-        let friStart: String
-        let friEnd: String
-        let satStart: String?
-        let satEnd: String?
-        let sunStart: String?
-        let sunEnd: String?
+        let mon: String?
+        let tue: String?
+        let wed: String?
+        let thu: String?
+        let fri: String?
+        let sat: String?
+        let sun: String?
     }
 
     struct CodableFloorPlanImageJson: Codable {
@@ -65,6 +67,12 @@ struct LandmarkJson: Codable {
         let level3End: Int
         let level4Start: Int?
         let level4End: Int?
+    }
+    
+    // MARK: - HELPER STRUCTS
+    struct LandMarkHours {
+        let dayOfWeek: String
+        let openHours: String
     }
 }
 
