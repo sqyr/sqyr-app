@@ -7,6 +7,10 @@
 
 import SwiftUI
 
+// MARK: - DATA
+
+let landmarks: [LandmarkJson] = Bundle.main.decode("landmarks.json")
+
 // MARK: - IMAGE
 
 func floorPlanImage(building: String, floor: Int) -> String {
