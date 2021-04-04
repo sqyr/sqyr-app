@@ -22,9 +22,9 @@ struct LandmarkJson: Codable {
     let image: String
     let showInfoLeft: Bool
     let icon: String
-    let floorPlanImage: CodableFloorPlanImageJson
-    let rooms: CodableRoomsJson
-    let studyGroups: [String]
+    let floorPlanImage: CodableFloorPlanImageJson?
+    let rooms: CodableRoomsJson?
+    let studyGroups: [String]?
 
     // MARK: - COMPUTED PROPERTIES
     var getHours: [LandmarkHours] {
@@ -41,24 +41,26 @@ struct LandmarkJson: Codable {
     var getFloorPlanImage: [LandmarkFloorPlanImage] {
         var images: [LandmarkFloorPlanImage] = []
         
-        if floorPlanImage.basement != nil {
-            images.append(LandmarkFloorPlanImage(title: "Basement", image: floorPlanImage.basement!))
-        }
-        
-        if floorPlanImage.level1 != nil {
-            images.append(LandmarkFloorPlanImage(title: "Level 1", image: floorPlanImage.level1!))
-        }
-        
-        if floorPlanImage.level2 != nil {
-            images.append(LandmarkFloorPlanImage(title: "Level 2", image: floorPlanImage.level2!))
-        }
-        
-        if floorPlanImage.level3 != nil {
-            images.append(LandmarkFloorPlanImage(title: "Level 3", image: floorPlanImage.level3!))
-        }
-        
-        if floorPlanImage.level4 != nil {
-            images.append(LandmarkFloorPlanImage(title: "Level 4", image: floorPlanImage.level4!))
+        if floorPlanImage != nil {
+            if floorPlanImage!.basement != nil {
+                images.append(LandmarkFloorPlanImage(title: "Basement", image: floorPlanImage!.basement!))
+            }
+            
+            if floorPlanImage!.level1 != nil {
+                images.append(LandmarkFloorPlanImage(title: "Level 1", image: floorPlanImage!.level1!))
+            }
+            
+            if floorPlanImage!.level2 != nil {
+                images.append(LandmarkFloorPlanImage(title: "Level 2", image: floorPlanImage!.level2!))
+            }
+            
+            if floorPlanImage!.level3 != nil {
+                images.append(LandmarkFloorPlanImage(title: "Level 3", image: floorPlanImage!.level3!))
+            }
+            
+            if floorPlanImage!.level4 != nil {
+                images.append(LandmarkFloorPlanImage(title: "Level 4", image: floorPlanImage!.level4!))
+            }
         }
         
         return images

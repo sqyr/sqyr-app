@@ -29,23 +29,32 @@ struct LandmarkDetail: View {
             }
                 
             // OPTIONAL ACTION TITLE
-            LandmarkTitleView(icon: "ellipsis.circle.fill", title: "Actions")
+            if landmark.studyGroups != nil && landmark.floorPlanImage != nil {
+                LandmarkTitleView(icon: "ellipsis.circle.fill", title: "Actions")
+            }
                 
             // OPTIONAL ACTION CONTENT
             HStack {
-                Spacer()
-                NavigationLink(destination: StudyGroupView(landmark: landmark, globalModel: GlobalModel())) {
-                    Text("Study Groups")
-                        .padding()
+                // STUDY GROUP BUTTON
+                if landmark.studyGroups != nil {
+                    Spacer()
+                    NavigationLink(destination: StudyGroupView(landmark: landmark, globalModel: GlobalModel())) {
+                        Text("Study Groups")
+                            .padding()
+                    }
+                    .buttonStyle(SolidButtonStyle(backgroundColor: Color("blue"), foregroundColor: .white))
                 }
-                .buttonStyle(SolidButtonStyle(backgroundColor: Color("blue"), foregroundColor: .white))
-                Spacer()
-                NavigationLink(destination: LocateClassroomView(landmark: landmark)) {
-                    Text("Find My Classroom")
-                        .padding()
+                
+                // FLOOR PLAN BUTTON
+                if landmark.floorPlanImage != nil {
+                    Spacer()
+                    NavigationLink(destination: LocateClassroomView(landmark: landmark)) {
+                        Text("Find My Classroom")
+                            .padding()
+                    }
+                    .buttonStyle(SolidButtonStyle(backgroundColor: Color("blue"), foregroundColor: .white))
+                    Spacer()
                 }
-                .buttonStyle(SolidButtonStyle(backgroundColor: Color("blue"), foregroundColor: .white))
-                Spacer()
             }
             .padding(.bottom)
         } //: SCROLLVIEW
@@ -86,5 +95,6 @@ struct LandmarkTitleView: View {
 struct BuildingPopUpView_Previews: PreviewProvider {
     static var previews: some View {
         LandmarkDetail(landmark: landmarks[0])
+        LandmarkDetail(landmark: landmarks[3])
     }
 }
