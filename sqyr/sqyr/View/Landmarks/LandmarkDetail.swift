@@ -40,7 +40,7 @@ struct LandmarkDetail: View {
                 }
                 .buttonStyle(SolidButtonStyle(backgroundColor: Color("blue"), foregroundColor: .white))
                 Spacer()
-                NavigationLink(destination: LocateClassroomView(building: "TEGR")) {
+                NavigationLink(destination: LocateClassroomView(landmark: landmark)) {
                     Text("Find My Classroom")
                         .padding()
                 }

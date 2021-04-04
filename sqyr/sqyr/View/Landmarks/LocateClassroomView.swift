@@ -8,8 +8,7 @@
 import SwiftUI
 
 struct LocateClassroomView: View {
-    let building: String
-    let levels = ["Level 1", "Level 2", "Level 3"]
+    let landmark: LandmarkJson
     @State var selected = 0
     @State var scale: CGFloat = 1.0
     @State var isTapped: Bool = false
@@ -18,8 +17,8 @@ struct LocateClassroomView: View {
     @State var dragPrevious: CGSize = CGSize.zero
     @State var reset: Bool = true
     
-    init(building: String) {
-        self.building = building
+    init(landmark: LandmarkJson) {
+        self.landmark = landmark
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color("gold"))], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .normal)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color("gold"))]
@@ -31,8 +30,8 @@ struct LocateClassroomView: View {
                 VStack {
                     HStack {
                         Picker(selection: $selected, label: Text("Select Any Level")) {
-                            ForEach(0..<levels.count) { index in
-                                Text(levels[index]).tag(index)
+                            ForEach(0..<landmark.getFloorPlanImage.count) { index in
+                                Text(landmark.getFloorPlanImage[index].title).tag(index)
                             }
                         } //: PICKER
                         .pickerStyle(SegmentedPickerStyle())
@@ -41,11 +40,11 @@ struct LocateClassroomView: View {
                         .padding()
                     } //: HSTACK
                     
-                    Text("Level \(selected + 1)")
+                    Text(landmark.getFloorPlanImage[self.selected].title)
                         .fontWeight(.bold)
                         .padding()
                     
-                    Image(floorPlanImage(building: building, floor: selected + 1))
+                    Image(landmark.getFloorPlanImage[self.selected].image)
                         .resizable()
                         .scaledToFit()
                         .animation(.default)
@@ -98,12 +97,12 @@ struct LocateClassroomView: View {
                 } //: VSTACK
             } //: SCROLL
         } //: GEOMETRY
-        .navigationBarTitle("\(building) Floor Plan", displayMode: .inline)
+        .navigationBarTitle("\(landmark.name) Floor Plan", displayMode: .inline)
     }
 }
 
 struct LocateClassroomView_Previews: PreviewProvider {
     static var previews: some View {
-        LocateClassroomView(building: "TEGR")
+        LocateClassroomView(landmark: landmarks[0])
     }
 }
