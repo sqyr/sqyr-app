@@ -152,5 +152,28 @@
         "rooms": null,
         "studyGroups": null,
     },
-    
+    {
+        "id": 5,
+        "name": "Chick-fil-A",
+        "description": "The restaurant on campus that has chicken blessed from the Lord Jesus himself.",
+        "hours":
+        {
+            "mon": "8:00 AM - 8:00 PM",
+            "tue": "8:00 AM - 8:00 PM",
+            "wed": "8:00 AM - 8:00 PM",
+            "thu": "8:00 AM - 8:00 PM",
+            "fri": "8:00 AM - 7:00 PM",
+            "sat": "11:00 AM - 7:00 PM",
+            "sun": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Social",
+        "image": "chick_fil-a",
+        "showInfoLeft": true,
+        "icon": "bag.circle.fill",
+        "floorPlanImage": null,
+        "rooms": null,
+        "studyGroups": null,
+    },
 ]
