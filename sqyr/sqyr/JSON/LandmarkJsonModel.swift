@@ -81,12 +81,12 @@ struct LandmarkJson: Codable {
     struct CodableRoomsJson: Codable {
         let basementStart: Int?
         let basementEnd: Int?
-        let level1Start: Int
-        let level1End: Int
-        let level2Start: Int
-        let level2End: Int
-        let level3Start: Int
-        let level3End: Int
+        let level1Start: Int?
+        let level1End: Int?
+        let level2Start: Int?
+        let level2End: Int?
+        let level3Start: Int?
+        let level3End: Int?
         let level4Start: Int?
         let level4End: Int?
     }
