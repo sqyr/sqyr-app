@@ -10,7 +10,7 @@ import SwiftUI
 struct StudyGroupView: View {
     let landmark: LandmarkJson
     let studyGroupPlaceholder: String = "Search for a Study Group"
-    let studyRoomPlaceholder: String = "Search for a Study Room"
+    let studyRoomPlaceholder: String = "Search for a Room"
     
     @State var studyGroupSearchText: String = ""
     @State var studyRoomSearchText: String = ""
@@ -33,7 +33,7 @@ struct StudyGroupView: View {
             
             // LIST OF ROOMS
             List {
-                ForEach((100..<361).filter({ "\($0)".contains(self.studyRoomSearchText.lowercased()) || self.studyRoomSearchText.isEmpty }), id: \.self) { room in
+                ForEach((landmark.getLandmarkRoomNumbers).filter({ "\($0)".contains(self.studyRoomSearchText.lowercased()) || self.studyRoomSearchText.isEmpty }), id: \.self) { room in
                     DisclosureGroup("Room \(room)") {
                         ForEach((0..<2).filter({ "\($0)".contains(self.studyGroupSearchText.lowercased()) || self.studyGroupSearchText.isEmpty }), id: \.self) { group in
                             DisclosureGroup("Study Group \(group)") {

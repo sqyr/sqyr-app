@@ -66,6 +66,43 @@ struct LandmarkJson: Codable {
         return images
     }
     
+    var getLandmarkRoomNumbers : [Int] {
+        let unwrapRooms = rooms!
+        var array: [Int] = []
+        
+        if unwrapRooms.basementStart != nil && unwrapRooms.basementEnd != nil {
+            for room in unwrapRooms.basementStart!...unwrapRooms.basementEnd! {
+                array.append(room)
+            }
+        }
+        
+        if unwrapRooms.level1Start != nil && unwrapRooms.level1End != nil {
+            for room in unwrapRooms.level1Start!...unwrapRooms.level1End! {
+                array.append(room)
+            }
+        }
+        
+        if unwrapRooms.level2Start != nil && unwrapRooms.level2End != nil {
+            for room in unwrapRooms.level2Start!...unwrapRooms.level2End! {
+                array.append(room)
+            }
+        }
+        
+        if unwrapRooms.level3Start != nil && unwrapRooms.level3End != nil {
+            for room in unwrapRooms.level3Start!...unwrapRooms.level3End! {
+                array.append(room)
+            }
+        }
+        
+        if unwrapRooms.level4Start != nil && unwrapRooms.level4End != nil {
+            for room in unwrapRooms.level4Start!...unwrapRooms.level4End! {
+                array.append(room)
+            }
+        }
+        
+        return array
+    }
+    
     // MARK: - HELPER DATA MODEL
     struct CodableHoursJson: Codable {
         let mon: String?
