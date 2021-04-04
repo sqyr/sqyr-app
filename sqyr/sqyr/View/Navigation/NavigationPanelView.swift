@@ -8,8 +8,6 @@
 import SwiftUI
 
 struct NavigationPanelView: View {
-    let buildings = getBuildings()
-
     @State private var categorySelection: Category = .all
     @State private var text: String = ""
 
@@ -39,12 +37,12 @@ struct NavigationPanelView: View {
                 .padding()
 
                 List {
-                    ForEach(buildings, id: \.self) { building in
-                        NavigationLink(destination: LandmarkDetail(building: building)) {
+                    ForEach(landmarks, id: \.id) { landmark in
+                        NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
                             HStack {
-                                Image(systemName: "building.2.crop.circle.fill")
+                                Image(systemName: landmark.icon)
                                     .font(.title2)
-                                Text("Engineering Building")
+                                Text(landmark.name)
                                     .fontWeight(.bold)
                             } //: HSTACK
                             .foregroundColor(Color("blue"))
@@ -61,26 +59,16 @@ struct NavigationPanelView: View {
     }
 }
 
-func getBuildings() -> [String] {
-    var arrayOfBuildings = [String]()
-
-    for i in 1 ... 10 {
-        arrayOfBuildings.append("Building #\(i)")
-    }
-
-    return arrayOfBuildings
-}
-
-struct NavigationPanelView_Previews: PreviewProvider {
-    static var previews: some View {
-        NavigationPanelView(globalModel: GlobalModel())
-    }
-}
-
 enum Category: String, CaseIterable {
     case all = "All"
     case academic = "Academic"
     case social = "Social"
 
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
+}
+
+struct NavigationPanelView_Previews: PreviewProvider {
+    static var previews: some View {
+        NavigationPanelView(globalModel: GlobalModel())
+    }
 }

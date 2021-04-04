@@ -8,22 +8,22 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    let building: String
+    let landmark: LandmarkJson
     @State var isShowingCredits: Bool = false
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             // BUILDING HOURS TITLE
-            LandmarkTitleView(icon: "building.2.crop.circle.fill", title: building)
+            LandmarkTitleView(icon: landmark.icon, title: landmark.name)
                 
             // BUILDING HOURS CONTENT
-            BuildingHoursView()
+            BuildingHoursView(landmark: landmark)
             
             // BUILDING INFORMATION CONTENT
             LandmarkTitleView(icon: "info.circle.fill", title: "About")
             
             GroupBox {
-                Text("The College of Engineering building is a 100,670 square-foot, 3-story with an accessible rooftop area with a solar-thermal lab.")
+                Text(landmark.description)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
             }
@@ -34,7 +34,7 @@ struct LandmarkDetail: View {
             // OPTIONAL ACTION CONTENT
             HStack {
                 Spacer()
-                NavigationLink(destination: StudyGroupView(building: building, globalModel: GlobalModel())) {
+                NavigationLink(destination: StudyGroupView(landmark: landmark, globalModel: GlobalModel())) {
                     Text("Study Groups")
                         .padding()
                 }
@@ -85,7 +85,6 @@ struct LandmarkTitleView: View {
 
 struct BuildingPopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        let samplePreviewBuilding = "TEGR"
-        LandmarkDetail(building: samplePreviewBuilding)
+        LandmarkDetail(landmark: landmarks[0])
     }
 }

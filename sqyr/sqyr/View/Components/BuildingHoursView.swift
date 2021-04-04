@@ -8,6 +8,8 @@
 import SwiftUI
 
 struct BuildingHoursView: View {
+    let landmark: LandmarkJson
+    
     var body: some View {
         GroupBox {
             HStack {
@@ -43,7 +45,7 @@ func getTime() -> [String] {
 
 struct BuildingHoursView_Previews: PreviewProvider {
     static var previews: some View {
-        BuildingHoursView()
+        BuildingHoursView(landmark: landmarks[0])
             .previewLayout(.sizeThatFits)
     }
 }

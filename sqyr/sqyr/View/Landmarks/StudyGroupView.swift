@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct StudyGroupView: View {
-    let building: String
+    let landmark: LandmarkJson
     let studyGroupPlaceholder: String = "Search for a Study Group"
     let studyRoomPlaceholder: String = "Search for a Study Room"
     
@@ -22,7 +22,7 @@ struct StudyGroupView: View {
         VStack {
             Group {
                 // SEARCH ALL ROOMS
-                StudyGroupTitle(title: "All \(building) Rooms")
+                StudyGroupTitle(title: landmark.name)
                 StudyGroupSearchBar(placeholder: self.studyRoomPlaceholder, text: $studyRoomSearchText)
                 
                 // SEARCH STUDY GROUPS
@@ -167,6 +167,6 @@ struct StudyGroupSearchBar: View {
 
 struct StudyGroupView_Previews: PreviewProvider {
     static var previews: some View {
-        StudyGroupView(building: "TEGR", globalModel: GlobalModel())
+        StudyGroupView(landmark: landmarks[0], globalModel: GlobalModel())
     }
 }
