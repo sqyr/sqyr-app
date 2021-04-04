@@ -25,6 +25,7 @@
             "level1": "tegr_floor1",
             "level2": "tegr_floor2",
             "level3": "tegr_floor3",
+            "level4": null,
         },
         "rooms":
         {
@@ -67,6 +68,7 @@
             "level1": "bus_floor1",
             "level2": "bus_floor2",
             "level3": null,
+            "level4": null,
         },
         "rooms":
         {
@@ -78,6 +80,49 @@
             "level2End": 230,
             "level3Start": null,
             "level3End": null,
+            "level4Start": null,
+            "level4End": null,
+        },
+        "studyGroups": ["dummy value"],
+    },
+    {
+        "id": 3,
+        "name": "James",
+        "description": "The James bulding was the original California Baptist College before it changed into California Baptist University.",
+        "hours":
+        {
+            "mon": "8:00 AM - 9:00 PM",
+            "tue": "8:00 AM - 9:00 PM",
+            "wed": "8:00 AM - 9:00 PM",
+            "thu": "8:00 AM - 9:00 PM",
+            "fri": "8:00 AM - 9:00 PM",
+            "sat": null,
+            "sun": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Academic",
+        "image": "james",
+        "showInfoLeft": true,
+        "icon": "building.2.crop.circle.fill",
+        "floorPlanImage":
+        {
+            "basement": "james_basement",
+            "level1": "james_floor1",
+            "level2": null,
+            "level3": "james_floor3",
+            "level4": "james_floor4",
+        },
+        "rooms":
+        {
+            "basementStart": 36,
+            "basementEnd": 82,
+            "level1Start": 125,
+            "level1End": 156,
+            "level2Start": 239,
+            "level2End": 267,
+            "level3Start": 332,
+            "level3End": 362,
             "level4Start": null,
             "level4End": null,
         },

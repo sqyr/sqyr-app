@@ -57,6 +57,10 @@ struct LandmarkJson: Codable {
             images.append(LandmarkFloorPlanImage(title: "Level 3", image: floorPlanImage.level3!))
         }
         
+        if floorPlanImage.level4 != nil {
+            images.append(LandmarkFloorPlanImage(title: "Level 4", image: floorPlanImage.level4!))
+        }
+        
         return images
     }
     
@@ -76,6 +80,7 @@ struct LandmarkJson: Codable {
         let level1: String?
         let level2: String?
         let level3: String?
+        let level4: String?
     }
 
     struct CodableRoomsJson: Codable {
