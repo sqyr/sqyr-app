@@ -10,7 +10,6 @@
 		1D1A551D25E7633100166B49 /* LocationAndCameraServices.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D1A551C25E7633100166B49 /* LocationAndCameraServices.swift */; };
 		1D1A552125E7636100166B49 /* PermissionsSwiftUI in Frameworks */ = {isa = PBXBuildFile; productRef = 1D1A552025E7636100166B49 /* PermissionsSwiftUI */; };
 		1D94F85425DE06D200AC2A7E /* NavigationPanelView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */; };
-		1DA19FE42612BB9F00354535 /* sqyrData.json in Resources */ = {isa = PBXBuildFile; fileRef = 1DA19FE32612BB9F00354535 /* sqyrData.json */; };
 		6807457A25E488C40025FE38 /* QRScannerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6807457825E488C40025FE38 /* QRScannerView.swift */; };
 		6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 6807459625E4A0350025FE38 /* SearchBarView.swift */; };
 		681A5F5125F094FB00461B87 /* Launch Screen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 681A5F5025F094FB00461B87 /* Launch Screen.storyboard */; };
@@ -51,7 +50,6 @@
 /* Begin PBXFileReference section */
 		1D1A551C25E7633100166B49 /* LocationAndCameraServices.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationAndCameraServices.swift; sourceTree = "<group>"; };
 		1D94F85325DE06D200AC2A7E /* NavigationPanelView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = NavigationPanelView.swift; sourceTree = "<group>"; };
-		1DA19FE32612BB9F00354535 /* sqyrData.json */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.json; path = sqyrData.json; sourceTree = "<group>"; };
 		6807457825E488C40025FE38 /* QRScannerView.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = QRScannerView.swift; sourceTree = "<group>"; };
 		6807459625E4A0350025FE38 /* SearchBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchBarView.swift; sourceTree = "<group>"; };
 		681A5F5025F094FB00461B87 /* Launch Screen.storyboard */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; path = "Launch Screen.storyboard"; sourceTree = "<group>"; };
@@ -106,7 +104,6 @@
 		1DA19FE72612BBCC00354535 /* JSON */ = {
 			isa = PBXGroup;
 			children = (
-				1DA19FE32612BB9F00354535 /* sqyrData.json */,
 				BEC536B226192FEC00EA114B /* LandmarkJsonModel.swift */,
 				BEC536B92619409000EA114B /* landmarks.json */,
 			);
@@ -337,7 +334,6 @@
 			files = (
 				681A5F5125F094FB00461B87 /* Launch Screen.storyboard in Resources */,
 				68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */,
-				1DA19FE42612BB9F00354535 /* sqyrData.json in Resources */,
 				BEC536BA2619409000EA114B /* landmarks.json in Resources */,
 				68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */,
 			);
