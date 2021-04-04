@@ -128,4 +128,29 @@
         },
         "studyGroups": ["dummy value"],
     },
+    {
+        "id": 4,
+        "name": "El Monte Grill",
+        "description": "El Monte Grill is a build your own mexican style restaurant. It features burritos, bowls, tacos, sopas, and more.",
+        "hours":
+        {
+            "mon": "11:00 AM - 7:00 PM",
+            "tue": "11:00 AM - 7:00 PM",
+            "wed": "11:00 AM - 7:00 PM",
+            "thu": "11:00 AM - 7:00 PM",
+            "fri": "11:00 AM - 7:00 PM",
+            "sat": "12:00 PM - 6:30 PM",
+            "sun": null,
+        },
+        "lat": "",
+        "lon": "",
+        "type": "Social",
+        "image": "el_monte_grill",
+        "showInfoLeft": true,
+        "icon": "bag.circle.fill",
+        "floorPlanImage": null,
+        "rooms": null,
+        "studyGroups": null,
+    },
+    
 ]
