@@ -27,15 +27,37 @@ struct LandmarkJson: Codable {
     let studyGroups: [String]
 
     // MARK: - COMPUTED PROPERTIES
-    var getHours: [LandMarkHours] {
-        [LandMarkHours(dayOfWeek: "Monday", openHours: hours.mon ?? "Closed"),
-         LandMarkHours(dayOfWeek: "Tuesday", openHours: hours.tue ?? "Closed"),
-         LandMarkHours(dayOfWeek: "Wednesday", openHours: hours.wed ?? "Closed"),
-         LandMarkHours(dayOfWeek: "Thursday", openHours: hours.thu ?? "Closed"),
-         LandMarkHours(dayOfWeek: "Friday", openHours: hours.fri ?? "Closed"),
-         LandMarkHours(dayOfWeek: "Saturday", openHours: hours.sat ?? "Closed"),
-         LandMarkHours(dayOfWeek: "Sunday", openHours: hours.sun ?? "Closed"),
+    var getHours: [LandmarkHours] {
+        [LandmarkHours(dayOfWeek: "Monday", openHours: hours.mon ?? "Closed"),
+         LandmarkHours(dayOfWeek: "Tuesday", openHours: hours.tue ?? "Closed"),
+         LandmarkHours(dayOfWeek: "Wednesday", openHours: hours.wed ?? "Closed"),
+         LandmarkHours(dayOfWeek: "Thursday", openHours: hours.thu ?? "Closed"),
+         LandmarkHours(dayOfWeek: "Friday", openHours: hours.fri ?? "Closed"),
+         LandmarkHours(dayOfWeek: "Saturday", openHours: hours.sat ?? "Closed"),
+         LandmarkHours(dayOfWeek: "Sunday", openHours: hours.sun ?? "Closed"),
         ]
+    }
+    
+    var getFloorPlanImage: [LandmarkFloorPlanImage] {
+        var images: [LandmarkFloorPlanImage] = []
+        
+        if floorPlanImage.basement != nil {
+            images.append(LandmarkFloorPlanImage(title: "Basement", image: floorPlanImage.basement!))
+        }
+        
+        if floorPlanImage.level1 != nil {
+            images.append(LandmarkFloorPlanImage(title: "Level 1", image: floorPlanImage.level1!))
+        }
+        
+        if floorPlanImage.level2 != nil {
+            images.append(LandmarkFloorPlanImage(title: "Level 2", image: floorPlanImage.level2!))
+        }
+        
+        if floorPlanImage.level3 != nil {
+            images.append(LandmarkFloorPlanImage(title: "Level 3", image: floorPlanImage.level3!))
+        }
+        
+        return images
     }
     
     // MARK: - HELPER DATA MODEL
@@ -51,9 +73,9 @@ struct LandmarkJson: Codable {
 
     struct CodableFloorPlanImageJson: Codable {
         let basement: String?
-        let level1: String
-        let level2: String
-        let level3: String
+        let level1: String?
+        let level2: String?
+        let level3: String?
     }
 
     struct CodableRoomsJson: Codable {
@@ -70,9 +92,14 @@ struct LandmarkJson: Codable {
     }
     
     // MARK: - HELPER STRUCTS
-    struct LandMarkHours {
+    struct LandmarkHours {
         let dayOfWeek: String
         let openHours: String
+    }
+    
+    struct LandmarkFloorPlanImage: Hashable {
+        let title: String
+        let image: String
     }
 }
 
