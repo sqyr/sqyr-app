@@ -8,17 +8,10 @@
 import SwiftUI
 
 // MARK: - DATA
-
 let landmarks: [LandmarkJson] = Bundle.main.decode("landmarks.json")
 
-// MARK: - IMAGE
-
-func floorPlanImage(building: String, floor: Int) -> String {
-    return "\(building)_Floor\(floor)"
-}
 
 // MARK: - EXTENSION
-
 extension Bundle {
     func decode<T: Codable>(_ file: String) -> T {
         // 1. Locate the json file
