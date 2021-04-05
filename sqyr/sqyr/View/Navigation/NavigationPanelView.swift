@@ -69,6 +69,6 @@ enum Category: String, CaseIterable {
 
 struct NavigationPanelView_Previews: PreviewProvider {
     static var previews: some View {
-        NavigationPanelView(globalModel: GlobalModel())
+        ContentView()
     }
 }

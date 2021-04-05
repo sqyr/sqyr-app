@@ -55,7 +55,7 @@ struct ContentView: View {
         .fullScreenCover(isPresented: $showingOnboarding, content: {
             OnboardingView()
         })
-        .JMModal(showModal: $showingPermissions, for: [.camera, .location], restrictDismissal: true)
+        .JMModal(showModal: $showingPermissions, for: [.camera, .location], autoDismiss: true)
         .setPermissionComponent(for: .camera, description: "Sqyr needs to overlay an augmented reality guide over your camera.")
         .setPermissionComponent(for: .location, description: "Sqyr needs to get your location to display relevant landmark guides.")
         .changeBottomDescriptionTo("Sqyr needs these permissions for all the features and functionality to work. Without camera permission, you can't see the augmented reality guide. Without location permision, you can't get accurate guidance to locations.")
