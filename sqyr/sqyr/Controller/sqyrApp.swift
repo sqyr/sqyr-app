@@ -11,7 +11,8 @@ import SwiftUI
 struct sqyrApp: App {
     var body: some Scene {
         WindowGroup {
-            ContentView()
+            NavigationPanelView(globalModel: GlobalModel())
+
         }
     }
 }
