@@ -24,8 +24,8 @@
         "repositoryURL": "https://github.com/jevonmao/PermissionsSwiftUI",
         "state": {
           "branch": null,
-          "revision": "3befec70bb249bad9e7f75ca050fe8b9806b3750",
-          "version": "1.4.0"
+          "revision": "fbcf29cb74140c8f115930653f400024f134f739",
+          "version": "1.2.5"
         }
       },
       {
@@ -33,7 +33,7 @@
         "repositoryURL": "https://github.com/siteline/SwiftUI-Introspect",
         "state": {
           "branch": "master",
-          "revision": "482e0d302f93e386efd5a967a38af478cf249204",
+          "revision": "894289d16be7d1af350d9c5cb84801991fa47059",
           "version": null
         }
       }
