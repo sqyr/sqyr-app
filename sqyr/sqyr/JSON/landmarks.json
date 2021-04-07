@@ -263,7 +263,7 @@
         "studyGroups": ["dummy value"],
     },
     {
-        "id": 7,
+        "id": 8,
         "name": "Mission Hall",
         "description": "Yeager is the main office building and features a few computer labs and large lecture halls.",
         "hours":
@@ -306,7 +306,7 @@
         "studyGroups": ["dummy value"],
     },
     {
-        "id": 8,
+        "id": 9,
         "name": "Alumni Dining Commons",
         "description": "This is the main restaurant on campus and has 3 different options in to-go containers. Fresh, delicious food is rotated daily.",
         "hours":
@@ -330,7 +330,7 @@
         "studyGroups": null,
     },
     {
-        "id": 9,
+        "id": 10,
         "name": "Briscos",
         "description": "Build-Your-Own sandwiches, flatbreads, and grab and go options available.",
         "hours":
@@ -354,7 +354,7 @@
         "studyGroups": null,
     },
     {
-        "id": 10,
+        "id": 11,
         "name": "CampusXpress",
         "description": "Quick to-go food and even small essential items for when you can't go to the store.",
         "hours":
@@ -378,7 +378,7 @@
         "studyGroups": null,
     },
     {
-        "id": 11,
+        "id": 12,
         "name": "The Habit",
         "description": "The restaurant with burgers, fries, salads, shakes, malts, and much more.",
         "hours":
@@ -402,7 +402,7 @@
         "studyGroups": null,
     },
     {
-        "id": 12,
+        "id": 13,
         "name": "Shake Smart",
         "description": "Healthy on-the-go protein shakes, acai bowls, and sandwiches.",
         "hours":
@@ -426,7 +426,7 @@
         "studyGroups": null,
     },
     {
-        "id": 13,
+        "id": 14,
         "name": "Wanda's",
         "description": "This rstaurant is popular for specialty coffee, smoothies, baked goods, sandwiches and salads, Mexican food, snacks, and daily specials.",
         "hours":
@@ -450,7 +450,7 @@
         "studyGroups": null,
     },
     {
-        "id": 14,
+        "id": 15,
         "name": "Rec Center",
         "description": "Work off that freshman-15 with the equipment and machines found in the gym. Practice your skillss in handball, soccer, and basketball using the gymnasium and turf field on the roof.",
         "hours":
@@ -474,7 +474,7 @@
         "studyGroups": null,
     },
     {
-        "id": 15,
+        "id": 16,
         "name": "Basketball and Volleyball Courts",
         "description": "Hang out with friends and have fun playing basketball and volleyball.",
         "hours":
@@ -498,7 +498,7 @@
         "studyGroups": null,
     },
     {
-        "id": 16,
+        "id": 17,
         "name": "Front Lawn",
         "description": "Many students like to play volleyball, soccer, ultimate frisbee, and flag football on the lawn. Every year, the Fortuna Bowl, Christmas Tree Lighting, and Festival of Colors are held on the lawn. Look out for different events from Community Life throughout the year.",
         "hours":
@@ -522,7 +522,7 @@
         "studyGroups": null,
     },
     {
-        "id": 17,
+        "id": 18,
         "name": "Events Center",
         "description": "This is the home to the CBU Men's and Women's basketball teams. Chapel is also held in the events center on Tuesdays and Thursdays.",
         "hours":
@@ -546,7 +546,7 @@
         "studyGroups": null,
     },
     {
-        "id": 18,
+        "id": 19,
         "name": "Stamps Courtyard",
         "description": "Stamps is located in the center of campus and is home to many club and job fairs. Come socialize with friends amd maybe have a picnic on the grass.",
         "hours":
@@ -570,7 +570,7 @@
         "studyGroups": null,
     },
     {
-        "id": 19,
+        "id": 20,
         "name": "Couch's Corner",
         "description": "Enjoy some company while you eat and relax or do homework in the comfortable new area on campus.",
         "hours":
@@ -594,7 +594,7 @@
         "studyGroups": null,
     },
     {
-        "id": 20,
+        "id": 21,
         "name": "The Colony",
         "description": "The living area located on the north end of campus traditionally for sophomores and juniors. Come check out the pool or the colony basketball courts.",
         "hours":
@@ -618,7 +618,7 @@
         "studyGroups": null,
     },
     {
-        "id": 21,
+        "id": 22,
         "name": "The Cottages",
         "description": "House-style living area with 5 bedrooms and up to 3 students per room. Features a kitchen, common living area, and a laundry room.",
         "hours":
@@ -642,7 +642,7 @@
         "studyGroups": null,
     },
     {
-        "id": 22,
+        "id": 23,
         "name": "Lancer Arms",
         "description": "Upperclassmen living area located next to the Events Center and Rec Center.",
         "hours":
@@ -666,7 +666,7 @@
         "studyGroups": null,
     },
     {
-        "id": 23,
+        "id": 24,
         "name": "The Point",
         "description": "An upperclassmen living area with a suite-style apartmenr and pool. Located close to the Engineering building and near Lancer Plaza/The Village.",
         "hours":
@@ -690,7 +690,7 @@
         "studyGroups": null,
     },
     {
-        "id": 24,
+        "id": 25,
         "name": "Simmons Hall",
         "description": "A traditional hall style dorm for freshman women. Build lasting relationships and community with fellow students in this building.",
         "hours":
@@ -714,7 +714,7 @@
         "studyGroups": null,
     },
     {
-        "id": 25,
+        "id": 26,
         "name": "Smith Hall",
         "description": "A traditional hall style dorm for freshman men. Build lasting relationships and community with fellow students in this building.",
         "hours":
@@ -738,7 +738,7 @@
         "studyGroups": null,
     },
     {
-        "id": 26,
+        "id": 27,
         "name": "Tower Hall",
         "description": "Living area for freshmen with a kitchenette and suite style rooms.",
         "hours":
@@ -762,7 +762,7 @@
         "studyGroups": null,
     },
     {
-        "id": 27,
+        "id": 28,
         "name": "University Place",
         "description": "The UP apartments allow a variety of students carying from one to four. The apartments are located right off of Palm Drive and allow students to watch unsets from their living area.",
         "hours":
@@ -786,7 +786,7 @@
         "studyGroups": null,
     },
     {
-        "id": 27,
+        "id": 29,
         "name": "The Village",
         "description": "Suite-style residences for freshman students. Located near Briscos and The Habit for convenient dining.",
         "hours":
