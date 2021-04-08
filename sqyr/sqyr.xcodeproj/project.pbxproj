@@ -37,6 +37,7 @@
 		73749BEC2602E703002BFDBE /* Classroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BEB2602E703002BFDBE /* Classroom.swift */; };
 		73749BEF2602F0B9002BFDBE /* Studyroom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BEE2602F0B9002BFDBE /* Studyroom.swift */; };
 		73749BF22602F0FD002BFDBE /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BF12602F0FD002BFDBE /* User.swift */; };
+		B37A8545261FC92800D1FDCF /* egrbuilding.obj in Resources */ = {isa = PBXBuildFile; fileRef = B37A8544261FC92800D1FDCF /* egrbuilding.obj */; };
 		BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18754D25EE18FB0009096F /* LocateClassroomView.swift */; };
 		BE68B83325EDCD0700FEDA90 /* BuildingHoursView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */; };
 		BEC536B326192FEC00EA114B /* LandmarkJsonModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = BEC536B226192FEC00EA114B /* LandmarkJsonModel.swift */; };
@@ -74,6 +75,7 @@
 		73749BEB2602E703002BFDBE /* Classroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Classroom.swift; sourceTree = "<group>"; };
 		73749BEE2602F0B9002BFDBE /* Studyroom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Studyroom.swift; sourceTree = "<group>"; };
 		73749BF12602F0FD002BFDBE /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		B37A8544261FC92800D1FDCF /* egrbuilding.obj */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text; path = egrbuilding.obj; sourceTree = "<group>"; };
 		BE18754D25EE18FB0009096F /* LocateClassroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateClassroomView.swift; sourceTree = "<group>"; };
 		BE68B83225EDCD0700FEDA90 /* BuildingHoursView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingHoursView.swift; sourceTree = "<group>"; };
 		BEC536B226192FEC00EA114B /* LandmarkJsonModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LandmarkJsonModel.swift; sourceTree = "<group>"; };
@@ -159,6 +161,7 @@
 		6844D03725F089BA00FE34B6 /* AR */ = {
 			isa = PBXGroup;
 			children = (
+				B37A8544261FC92800D1FDCF /* egrbuilding.obj */,
 				682908E025C8D8D60046F4C7 /* ARCLView.swift */,
 				682908E325C8DBF50046F4C7 /* ARCLViewController.swift */,
 			);
@@ -329,6 +332,7 @@
 				681A5F5125F094FB00461B87 /* Launch Screen.storyboard in Resources */,
 				68B96A7025C25DF30090E47D /* Preview Assets.xcassets in Resources */,
 				BEC536BA2619409000EA114B /* landmarks.json in Resources */,
+				B37A8545261FC92800D1FDCF /* egrbuilding.obj in Resources */,
 				68B96A6D25C25DF30090E47D /* Assets.xcassets in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
