@@ -13,13 +13,13 @@ struct LandmarkDetail: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
-            // BUILDING HOURS TITLE
+            // LANDMARK HOURS TITLE
             LandmarkTitleView(icon: landmark.icon, title: landmark.name)
                 
-            // BUILDING HOURS CONTENT
-            BuildingHoursView(landmark: landmark)
+            // LANDMARK HOURS CONTENT
+            LandmarkHoursView(landmark: landmark)
             
-            // BUILDING INFORMATION CONTENT
+            // LANDMARK INFORMATION CONTENT
             LandmarkTitleView(icon: "info.circle.fill", title: "About")
             
             GroupBox {
@@ -89,6 +89,34 @@ struct LandmarkTitleView: View {
         } //: HSTACK
         .foregroundColor(Color("gold"))
         .padding()
+    }
+}
+
+struct LandmarkHoursView: View {
+    let landmark: LandmarkJson
+    
+    var body: some View {
+        GroupBox {
+            HStack {
+                Image(systemName: "clock")
+                Text("Hours of Operation")
+                    .fontWeight(.bold)
+            } //: HSTACK
+            VStack {
+                LazyVGrid(columns: getGridLayout(), spacing: 6) {
+                    ForEach(0..<7) { day in
+                        Text(landmark.getHours[day].dayOfWeek)
+                            .fontWeight(.bold)
+                        Text(landmark.getHours[day].openHours)
+                    }
+                } //: GRID
+            } //: VSTACK
+        } //: BOX
+        .foregroundColor(.secondary)
+    }
+    
+    func getGridLayout() -> [GridItem] {
+        return Array(repeating: GridItem(.flexible(), spacing: 2), count: 2)
     }
 }
 
