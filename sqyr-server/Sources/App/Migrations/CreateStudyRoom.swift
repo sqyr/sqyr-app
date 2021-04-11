@@ -13,8 +13,9 @@ struct CreateStudyRoom: Migration{
     func prepare(on database: Database) -> EventLoopFuture<Void> {
         database.schema("StudyRooms")
             .field("StudyRoomID", .int, .required, .identifier(auto: true))
-            .field("ClassRoomID", .int, .required, .references("ClassRoom", "ClassRoomsID"))
+            .field("RoomID", .int, .required, .references("ClassRoom", "RoomID"))
             .field("Name", .string, .required)
+            .unique(on: "StudyRoomID")
             .create()
     }
     
