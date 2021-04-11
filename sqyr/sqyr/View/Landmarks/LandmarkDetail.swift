@@ -13,6 +13,9 @@ struct LandmarkDetail: View {
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
+            // LANDMARK BANNER IMAGE
+            LandmarkBannerImage(landmark: landmark)
+            
             // LANDMARK HOURS TITLE
             LandmarkTitleView(icon: landmark.icon, title: landmark.name)
                 
@@ -22,11 +25,14 @@ struct LandmarkDetail: View {
             // LANDMARK INFORMATION CONTENT
             LandmarkTitleView(icon: "info.circle.fill", title: "About")
             
+            // LANDMARK ABOUT
             GroupBox {
                 Text(landmark.description)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
+                    .frame(maxWidth: 300)
             }
+
                 
             // OPTIONAL ACTION TITLE
             if landmark.studyGroups != nil && landmark.floorPlanImage != nil {
@@ -56,9 +62,10 @@ struct LandmarkDetail: View {
                     Spacer()
                 }
             }
+            .frame(maxWidth: 340)
             .padding(.bottom)
+
         } //: SCROLLVIEW
-        .padding()
         .navigationBarTitle("", displayMode: .inline)
         .navigationBarItems(
             trailing:
@@ -71,7 +78,61 @@ struct LandmarkDetail: View {
                 CreditView()
             } //: SHEET
         ) //: ITEM
-        .edgesIgnoringSafeArea(.bottom)
+        .edgesIgnoringSafeArea(.all)
+        .padding(0)
+    }
+}
+
+struct LandmarkBannerImage: View {
+    let landmark: LandmarkJson
+    @State private var showHeadline: Bool = false
+    
+    // MARK: - FUNCTIONS
+    func slideInAnimation() -> Animation {
+        Animation.spring(response: 1.5, dampingFraction: 0.5, blendDuration: 0.5)
+            .speed(1)
+            .delay(0.25)
+    }
+    
+    var body: some View {
+        ZStack {
+            // MARK: - IMAGE
+            Image(landmark.image)
+                .resizable()
+                .scaledToFit()
+            HStack(alignment: .top, spacing: 0) {
+                Rectangle()
+                    .fill(Color("gold"))
+                    .frame(width: 4)
+                
+                VStack(alignment: .leading, spacing: 6) {
+                    // MARK: - HEADLINE
+                    Text(landmark.name)
+                        .font(.system(.title, design: .serif))
+                        .fontWeight(.bold)
+                        .foregroundColor(Color.white)
+                        .shadow(radius: 3)
+                    // MARK: - SUBHEADLINE
+                    Text(landmark.description)
+                        .font(.footnote)
+                        .lineLimit(2)
+                        .multilineTextAlignment(.leading)
+                        .foregroundColor(Color.white)
+                        .shadow(radius: 3)
+                } //: VSTACK
+                .padding(.vertical, 0)
+                .padding(.horizontal, 20)
+                .frame(width: 281, height: 105)
+                .background(Color("ColorBlackTransparent"))
+            } //: HSTACK
+            .frame(width: 285, height: 105, alignment: .center)
+            .offset(x: -40, y: showHeadline ? 95 : 200)
+            .animation(slideInAnimation())
+            .onAppear() {
+                self.showHeadline.toggle()
+            }
+        } //: ZSTACK
+        .frame(width: 480, height: 320, alignment: .center)
     }
 }
 
@@ -113,6 +174,7 @@ struct LandmarkHoursView: View {
             } //: VSTACK
         } //: BOX
         .foregroundColor(.secondary)
+        .frame(maxWidth: 340)
     }
     
     func getGridLayout() -> [GridItem] {
