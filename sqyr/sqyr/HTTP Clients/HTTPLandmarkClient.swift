@@ -18,34 +18,12 @@ import Foundation
 class HTTPLandmarkClient: ObservableObject {
     
     @Published var landMarks: [Landmark] = [Landmark]()
-    @Published var classRooms: [Classroom] = [Classroom]()
-    @Published var studyRooms: [Studyroom] = [Studyroom]()
-    @Published var users: [User] = [User]()
-    
-    // This is just an example of a possible function.
-    // List all other functions in here for data manipulation.
-    static func saveLandmark(landMarkName: String, description: String, hours: String, coordinatesLat: Double, coordinatesLon: Double, buildingType: String, icon: String, completion: @escaping (Bool) -> Void) {
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/Landmarks") else {
-            fatalError("URL is not defined")
-        }
-
-        let landMark = Landmark(landMarkName: landMarkName, description: description, hours: hours, coordinatesLat: coordinatesLat, coordinatesLon: coordinatesLon, buildingType: buildingType, icon: icon)
-
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(landMark)
-
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let _ = data, error == nil else {
-                return completion(false)
-            }
-            completion(true)
-        }.resume()
-    }
+    @Published var classRooms: [ClassRoom]? = [ClassRoom]()
+    @Published var studyRooms: [Studyroom]? = [Studyroom]()
+    @Published var users: [User]? = [User]()
     
     func getAllLandmarks(){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/Landmarks") else{
+        guard let url = URL(string: "http://localhost:8080/Landmarks") else{
             fatalError("URL is not defined.")
         }
         URLSession.shared.dataTask(with: url){data, response, error in
@@ -62,8 +40,25 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
+    func getAllClassRooms(){
+        guard let url = URL(string: "http://localhost:8080/ClassRooms") else{
+            fatalError("URL is not defined.")
+        }
+        URLSession.shared.dataTask(with: url){data, response, error in
+            guard let data = data, error == nil else{
+                return
+            }
+            let classrooms = try? JSONDecoder().decode([ClassRoom].self, from: data)
+            if let classrooms = classrooms{
+                DispatchQueue.main.async {
+                    self.classRooms = classrooms
+                }
+            }
+        }.resume()
+    }
+    
     func getAllStudyRooms(){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/Studyrooms") else{
+        guard let url = URL(string: "http://localhost:8080/StudyRooms") else{
             fatalError("URL is not defined.")
         }
         URLSession.shared.dataTask(with: url){data, repsonse, error in
@@ -80,7 +75,7 @@ class HTTPLandmarkClient: ObservableObject {
     }
     
     func getAllUsers(){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/Users") else{
+        guard let url = URL(string: "http://localhost:8080/Users") else{
             fatalError("URL is not defined.")
         }
         URLSession.shared.dataTask(with: url){data, response, error in
@@ -96,26 +91,8 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
-    func saveClassroom(classRoom: Classroom, completion: @escaping (Bool) -> Void){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/ClassRoom") else {
-            fatalError("URL is not defined")
-        }
-        
-        var request = URLRequest(url: url)
-        request.httpMethod = "POST"
-        request.addValue("application/json", forHTTPHeaderField: "Content-Type")
-        request.httpBody = try? JSONEncoder().encode(classRoom)
-        
-        URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let _ = data, error == nil else {
-                return completion(false)
-            }
-            completion(true)
-        }.resume()
-    }
-    
-    static func saveStudyRoom(studyRoom: Studyroom, completion: @escaping (Bool) -> Void){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/Studyrooms") else{
+    func saveStudyRoom(studyRoom: Studyroom, completion: @escaping (Bool) -> Void){
+        guard let url = URL(string: "http://localhost:8080/StudyRooms") else{
             fatalError("URL is not defined.")
         }
         var request = URLRequest(url: url)
@@ -132,7 +109,7 @@ class HTTPLandmarkClient: ObservableObject {
     }
     
     func saveUser(user: User, completion: @escaping (Bool) -> Void){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/Users") else {
+        guard let url = URL(string: "http://localhost:8080/Users") else {
             fatalError("URL is not defined")
         }
         var request = URLRequest(url: url)
@@ -150,7 +127,7 @@ class HTTPLandmarkClient: ObservableObject {
     
     func getClassroomsByLandmark(landMark: Landmark){
         guard let uuid = landMark.id,
-              let url = URL(string: "https://sqyr.davidbarsam.com/Landmarks/\(uuid)") else {
+              let url = URL(string: "http://localhost:8080/Landmarks/\(uuid)/ClassRoom") else {
             fatalError("URL is not defined")
         }
         
@@ -159,7 +136,7 @@ class HTTPLandmarkClient: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            let decodedClassrooms = try? JSONDecoder().decode([Classroom].self, from: data)
+            let decodedClassrooms = try? JSONDecoder().decode([ClassRoom].self, from: data)
             
             if let decodedClassrooms = decodedClassrooms{
                 DispatchQueue.main.async {
@@ -169,8 +146,51 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
+    func getStudyRoomsByClassRooms(classRoom: ClassRoom){
+        guard let id = classRoom.id,
+              let url = URL(string: "http://localhost:8080/ClassRoom/\(id)/StudyRooms") else {
+            fatalError("URL is not defined")
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            
+            guard let data = data, error == nil else {
+                return
+            }
+            let decodedStudyRooms = try? JSONDecoder().decode([Studyroom].self, from: data)
+            
+            if let decodedStudyRooms = decodedStudyRooms{
+                DispatchQueue.main.async {
+                    self.studyRooms = decodedStudyRooms
+                }
+            }
+        }.resume()
+    }
+    
+    // localhost:8080/StudyRooms/1/Users
+    func getUsersByStudyRoom(studyRoom: Studyroom){
+        guard let id = studyRoom.id,
+              let url = URL(string: "http://localhost:8080/StudyRooms/\(id)/Users") else {
+            fatalError("URL is not defined")
+        }
+        
+        URLSession.shared.dataTask(with: url) { data, _, error in
+            
+            guard let data = data, error == nil else {
+                return
+            }
+            let decodedUsers = try? JSONDecoder().decode([User].self, from: data)
+            
+            if let decodedUsers = decodedUsers{
+                DispatchQueue.main.async {
+                    self.users = decodedUsers
+                }
+            }
+        }.resume()
+    }
+    
     func deleteStudyRoom(studyRoom: Studyroom, completion: @escaping (Bool) -> Void){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/StudyRoom/\(String(describing: studyRoom.id))") else{
+        guard let url = URL(string: "http://localhost:8080/StudyRooms/\(String(studyRoom.id!))") else{
             fatalError("URL is not defined.")
         }
         var request = URLRequest(url: url)
@@ -185,7 +205,7 @@ class HTTPLandmarkClient: ObservableObject {
     }
     
     func deleteUser(user: User, completion: @escaping (Bool) -> Void){
-        guard let url = URL(string: "https://sqyr.davidbarsam.com/Users/\(String(describing: user.id))") else{
+        guard let url = URL(string: "http://localhost:8080/Users/\(String(user.id!))") else{
             fatalError("URL is not defined")
         }
         var request = URLRequest(url: url)
