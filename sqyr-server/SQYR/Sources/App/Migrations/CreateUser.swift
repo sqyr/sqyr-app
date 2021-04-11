@@ -16,7 +16,8 @@ struct CreateUser: Migration{
             .field("FirstName", .string, .required)
             .field("StudyRoomID", .int, .required, .references("StudyRooms", "StudyRoomID"))
             .field("Creation", .datetime, .required)
-            .create()
+            .unique(on: "UserID")
+            .create() 
     }
     
     func revert(on database: Database) -> EventLoopFuture<Void> {

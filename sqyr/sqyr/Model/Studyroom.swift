@@ -9,6 +9,6 @@ import Foundation
 
 struct Studyroom: Codable{
     var id: Int?
-    var classRoomsId: Classroom
+    var classRoomId: ClassRoom?
     var name: String
 }

@@ -10,7 +10,7 @@ import Foundation
 struct User: Codable{
     var id: Int?
     var firstName: String
-    var studyRoomId: Studyroom
+    var studyRoomId: Studyroom?
     var creation: Date
 }
     

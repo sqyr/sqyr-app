@@ -4,14 +4,13 @@
 //
 //  Created by Tomas Perez on 3/11/21.
 //
-
+ 
 import Foundation
 import Vapor
 import Fluent
 import FluentPostgresDriver
 
 final class User: Model, Content{
-    
     static let schema = "Users"
     
     @ID(custom: "UserID")

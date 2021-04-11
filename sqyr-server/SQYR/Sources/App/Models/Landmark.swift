@@ -35,9 +35,9 @@ final class Landmark: Model, Content{
     var buildingType: String
     
     @Field(key: "Icon")
-    var icon: String
+    var icon: String 
     
-    @Children(for: \.$classRoomsId)
+    @Children(for: \.$landmark)
     var classRoomsId: [ClassRoom]
     
     init() {}

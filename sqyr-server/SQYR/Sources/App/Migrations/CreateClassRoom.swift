@@ -15,7 +15,8 @@ struct CreateClassroom: Migration{
             .field("RoomID", .int, .required, .identifier(auto: true))
             .field("ClassRoomsID", .int, .required, .references("LandMarks", "LandMarkID"))
             .field("RoomNumber", .int, .required)
-            .unique(on: "ClassRoomsID")
+            .unique(on: "RoomID")
+            .unique(on: "RoomNumber")
             .create()
     }
     func revert(on database: Database) -> EventLoopFuture<Void> {
