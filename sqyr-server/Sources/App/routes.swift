@@ -5,26 +5,61 @@ import Fluent
 import Vapor
 
 func routes(_ app: Application) throws {
+    let landmarkController = LandmarkController()
+    let classroomController = ClassroomController()
+    let studyroomController = StudyroomController()
+    let userController = UserController()
     
-    // Adding landmarks to DB
-    // localhost:8080/Landmarks
-    app.post("Landmarks"){req -> EventLoopFuture<Landmark> in
-        let landmark = try req.content.decode(Landmark.self) // content = body of http request
-        return landmark.create(on: req.db).map {landmark}
-    }
+    // localhost:8080/Landmarks GET all landmarks
+    app.get("Landmarks", use: landmarkController.all)
     
-    // Returns all landmarks with their classrooms
-    // localhost:8080/LandMarks
-    app.get("Landmarks"){req in
-        Landmark.query(on: req.db).with(\.$classRoomsId).all()
-    }
+    // localhost:8080/Landmarks/# GET a landmark by ID
+    app.get("Landmarks", ":LandMarkID", use: landmarkController.byID)
     
-    // Return a landmark by ID
-    // localhost:8080/Landmarks/#
-    app.get("Landmarks", ":LandMarkID") {req -> EventLoopFuture<Landmark> in
-        Landmark.find(req.parameters.get("LandMarkID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-    }
+    // localhost:8080/ClassRoom GET all classrooms
+    app.get("ClassRoom", use: classroomController.all)
+    
+    // localhost:8080/ClassRoom/# GET a classroom by ID
+    app.get("ClassRoom", ":RoomID", use: classroomController.byID)
+    
+    // localhost:8080/StudyRooms GET all studyrooms
+    app.get("StudyRooms", use: studyroomController.all)
+    
+    // localhost:8080/StudyRooms GET a studyroom by ID
+    app.get("StudyRooms", ":StudyRoomID", use: studyroomController.byID)
+    
+    // localhost:8080/Users GET all users
+    app.get("Users", use: userController.all)
+    
+    // localhost:8080/Users GET a user by ID
+    app.get("Users", ":UserID", use: userController.byID)
+    
+    // localhost:8080/Landmarks POST a new landmark
+    app.post("Landmarks", use: landmarkController.create)
+    
+    // localhost:8080/ClassRoom POST a new classroom
+    app.post("ClassRoom", use: classroomController.create)
+    
+    // localhost:8080/StudyRooms POST a new studyroom
+    app.post("StudyRooms", use: studyroomController.create)
+    
+    // localhost:8080/Users POST a new user
+    app.post("Users", use: userController.create)
+    
+    // localhost:8080/Landmarks/:landmarkId/ClassRoom GET
+    app.get("Landmarks", ":LandMarkID", "ClassRoom", use: classroomController.getByLandmarkId)
+    
+    // localhost:8080/ClassRoom/:RoomID/Studyrooms GET
+    app.get("ClassRoom", ":RoomID", "StudyRooms", use: studyroomController.getByClassRoomId)
+    
+    // localhost:8080/Studyrooms/:StudyRoomID/Users GET
+    app.get("StudyRooms", ":StudyRoomID", "Users", use: userController.getByStudyroomId)
+    
+    // localhost:8080/StudyRooms/:StudyRoomID DELETE a studyroom
+    app.delete("StudyRooms", ":StudyRoomID", use: studyroomController.delete)
+    
+    // localhost:8080/Users/:UserID DELETE a user
+    app.delete("Users", ":UserID", use: userController.delete)
     
     // Update a landmark
     // localhost:8080/Landmarks/#
@@ -44,36 +79,6 @@ func routes(_ app: Application) throws {
             }
     }
     
-    // Delete a landmark
-    // localhost:8080/Landmarks/#
-    app.delete("Landmarks", ":LandMarkID"){ req -> EventLoopFuture<HTTPStatus> in
-        Landmark.find(req.parameters.get("LandMarkID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap {
-                $0.delete(on: req.db)
-            }.transform(to: .ok)
-    }
-    
-    // Creates a Classroom
-    // localhost:8080/ClassRoom
-    app.post("ClassRoom"){req -> EventLoopFuture<ClassRoom> in
-        let classRoom = try req.content.decode(ClassRoom.self)
-        return classRoom.create(on: req.db).map {classRoom}
-    }
-    
-    // Get all Classrooms
-    // localhost:8080/ClassRoom
-    app.get("ClassRoom"){req in
-        ClassRoom.query(on: req.db).all()
-    }
-    
-    // Get a Classroom by ID
-    // localhost:8080/ClassRoom/#
-    app.get("ClassRoom", ":RoomID") {req -> EventLoopFuture<ClassRoom> in
-        ClassRoom.find(req.parameters.get("RoomID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-    }
-    
     // Update a classroom
     // localhost:8080/ClassRoom/#
     app.put("ClassRoom"){req -> EventLoopFuture<HTTPStatus> in
@@ -81,78 +86,27 @@ func routes(_ app: Application) throws {
         return ClassRoom.find(classRoom.id, on: req.db)
             .unwrap(or: Abort(.notFound))
             .flatMap{
-                $0.classRoomsId = classRoom.classRoomsId;
+                $0.landmark = classRoom.landmark;
                 $0.roomNumber = classRoom.roomNumber;
                 return $0.update(on: req.db).transform(to: .ok)
             }
     }
     
-    // Delete a classroom
-    // localhost:8080/ClassRoom/#
-    app.delete("ClassRoom", ":RoomID"){ req -> EventLoopFuture<HTTPStatus> in
-        ClassRoom.find(req.parameters.get("RoomID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap {
-                $0.delete(on: req.db)
-            }.transform(to: .ok)
-    }
-    
-    // Creates a Studyroom
-    app.post("StudyRooms"){req -> EventLoopFuture<StudyRoom> in
-        let studyRooms = try req.content.decode(StudyRoom.self)
-        return studyRooms.create(on: req.db).map {studyRooms}
-    }
-    
-    // Get all StudyRooms
-    app.get("StudyRooms"){req in
-        StudyRoom.query(on: req.db).all()
-    }
-    
-    // Get a StudyRoom by ID
-    app.get("StudyRooms", ":StudyRoomID") {req -> EventLoopFuture<StudyRoom> in
-        StudyRoom.find(req.parameters.get("StudyRoomID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-    }
-    
     // Update a StudyRoom
+    // localhost:8080/StudyRooms/#
     app.put("StudyRooms"){req -> EventLoopFuture<HTTPStatus> in
         let studyRoom = try req.content.decode(StudyRoom.self)
         return StudyRoom.find(studyRoom.id, on: req.db)
             .unwrap(or: Abort(.notFound))
             .flatMap{
-                $0.classRoomsId = studyRoom.classRoomsId;
+                $0.classRoomId = studyRoom.classRoomId;
                 $0.name = studyRoom.name;
                 return $0.update(on: req.db).transform(to: .ok)
             }
     }
     
-    // Delete a StudyRoom
-    app.delete("StudyRooms", ":StudyRoomID"){ req -> EventLoopFuture<HTTPStatus> in
-        StudyRoom.find(req.parameters.get("StudyRoomID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap {
-                $0.delete(on: req.db)
-            }.transform(to: .ok)
-    }
-    
-    // Creates a User
-    app.post("Users"){req -> EventLoopFuture<User> in
-        let user = try req.content.decode(User.self)
-        return user.create(on: req.db).map {user}
-    }
-    
-    // Get all Users
-    app.get("Users"){req in
-        User.query(on: req.db).all()
-    }
-    
-    // Get a Users by ID
-    app.get("Users", ":UserID") {req -> EventLoopFuture<User> in
-        User.find(req.parameters.get("UserID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-    }
-    
     // Update a User
+    // localhost:8080/Users/#
     app.put("Users"){req -> EventLoopFuture<HTTPStatus> in
         let user = try req.content.decode(User.self)
         return User.find(user.id, on: req.db)
@@ -163,14 +117,5 @@ func routes(_ app: Application) throws {
                 $0.creation = user.creation;
                 return $0.update(on: req.db).transform(to: .ok)
             }
-    }
-    
-    // Delete a User
-    app.delete("Users", ":UserID"){ req -> EventLoopFuture<HTTPStatus> in
-        User.find(req.parameters.get("UserID"), on: req.db)
-            .unwrap(or: Abort(.notFound))
-            .flatMap {
-                $0.delete(on: req.db)
-            }.transform(to: .ok)
     }
 }
