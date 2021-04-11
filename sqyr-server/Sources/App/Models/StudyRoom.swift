@@ -17,16 +17,19 @@ final class StudyRoom: Model, Content{
     var id: Int?
     
     @Parent(key: "RoomID")
-    var classRoomsId: ClassRoom
+    var classRoomId: ClassRoom
     
     @Field(key: "Name")
     var name: String
     
+    @Children(for: \.$studyRoomId)
+    var usersInStudyRoom: [User]
+    
     init(){}
     
-    init(id: Int? = nil, classRoomsId: Int, name: String) {
+    init(id: Int? = nil, classRoomId: Int, name: String) {
         self.id = id
-        self.$classRoomsId.id = classRoomsId
+        self.$classRoomId.id = classRoomId
         self.name = name
     }
 }
