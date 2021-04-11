@@ -126,7 +126,7 @@ struct LandmarkBannerImage: View {
                 .background(Color("ColorBlackTransparent"))
             } //: HSTACK
             .frame(width: 285, height: 105, alignment: .center)
-            .offset(x: -40, y: showHeadline ? 95 : 200)
+            .offset(x: -40, y: showHeadline ? 95 : 0)
             .animation(slideInAnimation())
             .onAppear() {
                 self.showHeadline.toggle()
