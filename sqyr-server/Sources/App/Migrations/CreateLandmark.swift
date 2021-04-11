@@ -20,6 +20,7 @@ struct CreateLandmark: Migration {
             .field("CoordinatesLon", .double, .required)
             .field("BuildingType", .string, .required)
             .field("Icon", .string, .required)
+            .unique(on: "LandMarkID")
             .create()
     }
     
