@@ -7,8 +7,8 @@
 
 import Foundation
 
-struct Classroom: Codable{
+struct ClassRoom: Codable{
     var id: Int?
-    var classRoomsId: Landmark
+    var classRoomsId: Landmark?
     var roomNumber: Int
 }
