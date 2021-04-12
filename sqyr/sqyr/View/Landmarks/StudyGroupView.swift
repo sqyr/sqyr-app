@@ -8,7 +8,9 @@
 import SwiftUI
 
 struct StudyGroupView: View {
-    let landmark: LandmarkJson
+    let landmark: Landmark
+    let studyGroup: Studyroom
+    let users: [User]
     let studyGroupPlaceholder: String = "Search for a Study Group"
     let studyRoomPlaceholder: String = "Search for a Room"
     
@@ -35,7 +37,7 @@ struct StudyGroupView: View {
             username.placeholder = "Enter Your Name"
         }
         
-        let buttonAction = UIAlertAction(title: create ? "Create" : "Join", style: .default) { (_) in
+        let buttonAction = UIAlertAction(title: create ? "Create" : "Join", style: .default) { _ in
             if alert.textFields != nil {
                 if create {
                     let groupName = alert.textFields![0].text!
@@ -48,7 +50,7 @@ struct StudyGroupView: View {
             }
         }
         
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { (_) in }
+        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { _ in }
         
         // add into view
         alert.addAction(buttonAction)
@@ -58,13 +60,13 @@ struct StudyGroupView: View {
         UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: {})
     }
     
-    // TODO start - replace codes server side code
-    @State var studyGroups: Dictionary<Int,[Dictionary<String,[String]>]> = Dictionary<Int,[Dictionary<String,[String]>]>()
+    // TODO: start - replace codes server side code
+    @State var studyGroups = [Int: [[String: [String]]]]()
     
-    var initlizeStudyGroup: Dictionary<Int,[Dictionary<String,[String]>]> {
-        var dict: Dictionary<Int,[Dictionary<String,[String]>]> = Dictionary<Int,[Dictionary<String,[String]>]>()
+    var initlizeStudyGroup: [Int: [[String: [String]]]] {
+        var dict = [Int: [[String: [String]]]]()
         for room in landmark.getLandmarkRoomNumbers {
-            dict[room] = [Dictionary<String,[String]>]()
+            dict[room] = [[String: [String]]]()
         }
         
         studyGroups = dict
@@ -135,7 +137,7 @@ struct StudyGroupView: View {
         return ""
     }
     
-    func joinStudyGroup(room: Int, groupName: String, user: String) -> Void {
+    func joinStudyGroup(room: Int, groupName: String, user: String) {
         var temp = studyGroups
         var count = -1
     
@@ -156,25 +158,25 @@ struct StudyGroupView: View {
         var roomsFiltered: [Int] = []
         
         // display all rooms
-        if self.studyGroupSearchText.isEmpty && self.studyRoomSearchText.isEmpty {
+        if studyGroupSearchText.isEmpty, studyRoomSearchText.isEmpty {
             return roomsAll
         }
         
         // display only search rooms
-        if self.studyGroupSearchText.isEmpty {
+        if studyGroupSearchText.isEmpty {
             for room in roomsAll {
-                if "\(room)".starts(with: self.studyRoomSearchText.lowercased()) {
+                if "\(room)".starts(with: studyRoomSearchText.lowercased()) {
                     roomsFiltered.append(room)
                 }
             }
         }
         
         // display only search study groups
-        if self.studyRoomSearchText.isEmpty {
+        if studyRoomSearchText.isEmpty {
             var set: Set<Int> = []
             for room in roomsAll {
-                for group in getStudyGroupName(roomNum:room) {
-                    if group.contains(self.studyGroupSearchText.lowercased()) {
+                for group in getStudyGroupName(roomNum: room) {
+                    if group.contains(studyGroupSearchText.lowercased()) {
                         set.insert(room)
                     }
                 }
@@ -185,11 +187,10 @@ struct StudyGroupView: View {
             }
         }
 
-        
         return roomsFiltered
     }
     
-    // TODO end - replace codes server side code
+    // TODO: end - replace codes server side code
     
     var body: some View {
         VStack {
@@ -200,7 +201,7 @@ struct StudyGroupView: View {
                 
                 // SEARCH STUDY GROUPS
                 StudyGroupTitle(title: "Study Groups")
-                StudyGroupSearchBar(placeholder: self.studyGroupPlaceholder,  text: $studyGroupSearchText)
+                StudyGroupSearchBar(placeholder: self.studyGroupPlaceholder, text: $studyGroupSearchText)
             }
             .padding(.horizontal)
             
@@ -208,9 +209,9 @@ struct StudyGroupView: View {
             List {
                 ForEach(displayRoomFilter(), id: \.self) { room in
                     DisclosureGroup("Room \(room)") {
-                        ForEach((getStudyGroupName(roomNum:room)), id: \.self) { group in
+                        ForEach(getStudyGroupName(roomNum: room), id: \.self) { group in
                             DisclosureGroup("\(group)") {
-                                ForEach(0..<getUserGroupSize(room: room, group: group), id: \.self) { user in
+                                ForEach(0 ..< getUserGroupSize(room: room, group: group), id: \.self) { user in
                                     Text(getUserName(room: room, group: group, user: user))
                                         .foregroundColor(.secondary)
                                         .font(.footnote)
@@ -226,12 +227,12 @@ struct StudyGroupView: View {
                             .foregroundColor(Color("blue"))
                         } //: LOOP - STUDY GROUP
                         DisclosureGroup("Create Your Own Group", isExpanded: .constant(true)) {
-                        Button(action: { showAlertView(room: room, group: "", create: true) }) {
-                            RoundedRectangle(cornerRadius: 12)
-                                .fill(Color("blue"))
-                                .padding(.horizontal)
-                                .overlay(Text("Create").foregroundColor(.white))
-                        } //: BUTTON
+                            Button(action: { showAlertView(room: room, group: "", create: true) }) {
+                                RoundedRectangle(cornerRadius: 12)
+                                    .fill(Color("blue"))
+                                    .padding(.horizontal)
+                                    .overlay(Text("Create").foregroundColor(.white))
+                            } //: BUTTON
                         } //: DISCLOSURE - CREATE STUDY GROUP
                         .font(.headline)
                         .foregroundColor(Color("blue"))
@@ -264,8 +265,6 @@ struct StudyGroupSearchBar: View {
 
     var body: some View {
         VStack {
-
-           
             // SEARCH BAR
             HStack {
                 TextField(self.placeholder, text: $text)
@@ -295,18 +294,18 @@ struct StudyGroupSearchBar: View {
                         self.isSearching = true
                     }
                 
-                    if isSearching {
-                        Button(action: {
-                            self.isSearching = false
-                            self.text = ""
-                            UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
-                        }) {
-                            Text("Cancel")
-                        } //: BUTTON - CANCEL
-                        .padding(.trailing, 10)
-                        .transition(.move(edge: .trailing))
-                        .animation(.default)
-                    }
+                if isSearching {
+                    Button(action: {
+                        self.isSearching = false
+                        self.text = ""
+                        UIApplication.shared.sendAction(#selector(UIResponder.resignFirstResponder), to: nil, from: nil, for: nil)
+                    }) {
+                        Text("Cancel")
+                    } //: BUTTON - CANCEL
+                    .padding(.trailing, 10)
+                    .transition(.move(edge: .trailing))
+                    .animation(.default)
+                }
             } //: HSTACK
         } //: VSTACK
         .padding(.vertical)

@@ -12,6 +12,7 @@ struct NavigationPanelView: View {
     @State private var text: String = ""
 
     @ObservedObject var globalModel: GlobalModel
+    @ObservedObject var httpClient = HTTPLandmarkClient()
 
     init(globalModel: GlobalModel) {
         self.globalModel = globalModel
@@ -20,35 +21,35 @@ struct NavigationPanelView: View {
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color("gold"))]
     }
     
-    func landmarksFiltered() -> [LandmarkJson] {
-        let landmarkArray: [LandmarkJson] = landmarks
-
+    func landmarksFiltered() -> [Landmark] {
+//        let landmarkArray: [LandmarkJson] = landmarks
+        httpClient.getAllLandmarks()
+        let landmarkArray: [Landmark] = httpClient.landMarks!
         
         if categorySelection == .social {
-            return helpFilterLandmarks(category: "Social")
+            return helpFilterLandmarks(landmarkArray, category: "Social")
         }
         
         if categorySelection == .academic {
-            return helpFilterLandmarks(category: "Academic")
+            return helpFilterLandmarks(landmarkArray, category: "Academic")
         }
         
         if categorySelection == .food {
-            return helpFilterLandmarks(category: "Food")
+            return helpFilterLandmarks(landmarkArray, category: "Food")
         }
         
         if categorySelection == .house {
-            return helpFilterLandmarks(category: "Housing")
+            return helpFilterLandmarks(landmarkArray, category: "Housing")
         }
-        
         
         return landmarkArray
     }
     
-    func helpFilterLandmarks(category: String) -> [LandmarkJson] {
-        var landmarkFilter: [LandmarkJson] = []
+    func helpFilterLandmarks(_ landmarkArray: [Landmark], category: String) -> [Landmark] {
+        var landmarkFilter: [Landmark] = []
         
-        for landmark in landmarks {
-            if landmark.type == category {
+        for landmark in landmarkArray {
+            if landmark.buildingType == category {
                 landmarkFilter.append(landmark)
             }
         }
@@ -79,7 +80,7 @@ struct NavigationPanelView: View {
                             HStack {
                                 Image(systemName: landmark.icon)
                                     .font(.title2)
-                                Text(landmark.name)
+                                Text(landmark.landMarkName)
                                     .fontWeight(.bold)
                             } //: HSTACK
                             .foregroundColor(Color("blue"))

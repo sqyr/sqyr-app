@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    let landmark: LandmarkJson
+    let landmark: Landmark
     @State var isShowingCredits: Bool = false
     
     var body: some View {
@@ -17,7 +17,7 @@ struct LandmarkDetail: View {
             LandmarkBannerImage(landmark: landmark)
             
             // LANDMARK HOURS TITLE
-            LandmarkTitleView(icon: landmark.icon, title: landmark.name)
+            LandmarkTitleView(icon: landmark.icon, title: landmark.landMarkName)
                 
             // LANDMARK HOURS CONTENT
             LandmarkHoursView(landmark: landmark)
@@ -84,7 +84,7 @@ struct LandmarkDetail: View {
 }
 
 struct LandmarkBannerImage: View {
-    let landmark: LandmarkJson
+    let landmark: Landmark
     @State private var showHeadline: Bool = false
     
     // MARK: - FUNCTIONS
@@ -154,7 +154,7 @@ struct LandmarkTitleView: View {
 }
 
 struct LandmarkHoursView: View {
-    let landmark: LandmarkJson
+    let landmark: Landmark
     
     var body: some View {
         GroupBox {
@@ -184,6 +184,6 @@ struct LandmarkHoursView: View {
 
 struct BuildingPopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail(landmark: landmarks[0])
+        LandmarkDetail(landmark: Landmark(id: <#T##Int?#>, landMarkName: <#T##String#>, description: <#T##String#>, hours: <#T##String#>, coordinatesLat: <#T##Double#>, coordinatesLon: <#T##Double#>, buildingType: <#T##String#>, icon: <#T##String#>))
     }
 }

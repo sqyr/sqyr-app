@@ -58,7 +58,7 @@ class ARCLViewController: UIViewController {
 
 extension UIView {
     // ARCL/Node Demos/ARCLViewController.swift
-    class func prettyLabelledView(text: String, backgroundColor: UIColor = .systemBackground, borderColor: UIColor = .black) -> UIView {
+    class func prettyLabelledView(text: String, backgroundColor: UIColor = .white, borderColor: UIColor = .black) -> UIView {
         let font = UIFont.preferredFont(forTextStyle: .title2)
         let fontAttributes = [NSAttributedString.Key.font: font]
         let size = (text as NSString).size(withAttributes: fontAttributes)
@@ -67,6 +67,7 @@ extension UIView {
         let attributedString = NSAttributedString(string: text, attributes: [NSAttributedString.Key.font: font])
         label.attributedText = attributedString
         label.textAlignment = .left
+        label.tintColor = UIColor.black
         label.adjustsFontForContentSizeCategory = true
         
         let cframe = CGRect(x: 0, y: 0, width: label.frame.width + 20, height: label.frame.height + 10)
