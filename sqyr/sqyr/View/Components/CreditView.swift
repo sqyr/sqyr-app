@@ -41,11 +41,17 @@ struct CreditView: View {
                         CreditTitleView(title: "Contributors", icon: "person.2")
                         
                         CreditItemView(title: "Project Manager", name: "Dr. Im")
+                            .font(.system(size: 14, weight: .bold, design: .default))
                         CreditItemView(title: "AR Developer", name: "David Barsamian, True Sarmiento")
+                            .font(.system(size: 14, weight: .bold, design: .default))
                         CreditItemView(title: "Backend Developer", name: "Tomas Perez")
+                            .font(.system(size: 14, weight: .bold, design: .default))
                         CreditItemView(title: "UI Developer", name: "Lauren Nelson, Steven Phun")
+                            .font(.system(size: 14, weight: .bold, design: .default))
                         CreditItemView(title: "Digital Designer", name: "Clay Bakhoum")
+                            .font(.system(size: 14, weight: .bold, design: .default))
                         CreditItemView(title: "Photographer", name: "Lauren Nelson")
+                            .font(.system(size: 14, weight: .bold, design: .default))
                     } //: BOX
                     
                     // MARK: - APPLICATION INFO
