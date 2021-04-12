@@ -30,7 +30,7 @@ struct LandmarkDetail: View {
                 Text(landmark.description)
                     .foregroundColor(.secondary)
                     .fixedSize(horizontal: false, vertical: true)
-                    .frame(maxWidth: 300)
+                    .frame(maxWidth: 315)
             }
 
                 
@@ -91,7 +91,7 @@ struct LandmarkBannerImage: View {
     func slideInAnimation() -> Animation {
         Animation.spring(response: 1.5, dampingFraction: 0.5, blendDuration: 0.5)
             .speed(1)
-            .delay(0.25)
+            .delay(1)
     }
     
     var body: some View {
@@ -174,7 +174,7 @@ struct LandmarkHoursView: View {
             } //: VSTACK
         } //: BOX
         .foregroundColor(.secondary)
-        .frame(maxWidth: 340)
+        .frame(maxWidth: 360)
     }
     
     func getGridLayout() -> [GridItem] {
@@ -184,7 +184,7 @@ struct LandmarkHoursView: View {
 
 struct BuildingPopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail(landmark: landmarks[0])
+        LandmarkDetail(landmark: landmarks[31])
         LandmarkDetail(landmark: landmarks[3])
     }
 }
