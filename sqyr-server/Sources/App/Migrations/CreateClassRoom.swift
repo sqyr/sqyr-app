@@ -16,7 +16,6 @@ struct CreateClassroom: Migration {
             .field("ClassRoomsID", .int, .required, .references("LandMarks", "LandMarkID"))
             .field("RoomNumber", .int, .required)
             .unique(on: "RoomID")
-            .unique(on: "RoomNumber")
             .create()
     }
 
