@@ -40,11 +40,12 @@ struct CreditView: View {
                     GroupBox {
                         CreditTitleView(title: "Contributors", icon: "person.2")
                         
-                        CreditItemView(title: "Project Manager", name: "Not Kim but Im")
-                        CreditItemView(title: "AR Developer", name: "David, True")
-                        CreditItemView(title: "Backend Developer", name: "King Tomas")
-                        CreditItemView(title: "UI Developer", name: "Lauren, Steven")
+                        CreditItemView(title: "Project Manager", name: "Dr. Im")
+                        CreditItemView(title: "AR Developer", name: "David Barsamian, True Sarmiento")
+                        CreditItemView(title: "Backend Developer", name: "Tomas Perez")
+                        CreditItemView(title: "UI Developer", name: "Lauren Nelson, Steven Phun")
                         CreditItemView(title: "Digital Designer", name: "Clay Bakhoum")
+                        CreditItemView(title: "Photographer", name: "Lauren Nelson")
                     } //: BOX
                     
                     // MARK: - APPLICATION INFO
