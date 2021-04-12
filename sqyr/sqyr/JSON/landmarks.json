@@ -997,4 +997,28 @@
             "rooms": null,
             "studyGroups": null,
         },
+    
+    {
+            "id": 38,
+            "name": "Fortuna Fountain",
+            "description": "The Fortuna Fountain is a Greek-inspired statue that inspired the name of the infamous student sports event: The Fortuna Bowl.",
+            "hours":
+            {
+                "mon": "12:00 AM - 11:59 PM",
+                "tue": "12:00 AM - 11:59 PM",
+                "wed": "12:00 AM - 11:59 PM",
+                "fri": "12:00 AM - 11:59 PM",
+                "sat": "12:00 AM - 11:59 PM",
+                "sun": "12:00 AM - 11:59 PM",
+            },
+            "lat": "33.930502",
+            "lon": "-117.426017",
+            "type": "Social",
+            "image": "fortuna",
+            "showInfoLeft": true,
+            "icon": "person.2.circle.fill",
+            "floorPlanImage": null,
+            "rooms": null,
+            "studyGroups": null,
+        },
 ]
