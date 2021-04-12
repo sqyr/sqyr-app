@@ -184,7 +184,6 @@ struct LandmarkHoursView: View {
 
 struct BuildingPopUpView_Previews: PreviewProvider {
     static var previews: some View {
-        LandmarkDetail(landmark: landmarks[31])
-        LandmarkDetail(landmark: landmarks[3])
+        LandmarkDetail(landmark: landmarks[0])
     }
 }
