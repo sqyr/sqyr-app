@@ -985,8 +985,10 @@
                 "sat": null,
                 "sun": null,
             },
-            "lat": "33.929363",
-            "lon": "-117.425164",
+
+            "lat": "33.929550",
+            "lon": "-117.421972",
+
             "type": "Social",
             "image": "post",
             "showInfoLeft": true,
