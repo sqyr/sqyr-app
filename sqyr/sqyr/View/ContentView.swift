@@ -13,7 +13,7 @@ struct ContentView: View {
     @State private var showingDrawer: Bool = true
     @State private var showingOnboarding: Bool = false
     @State private var showingPermissions: Bool = false
-    @State private var showingAR: Bool = false // TODO: change this based on permissions granted
+    @State private var showingAR: Bool = false
     @State private var appVersion: String? = UserDefaults.standard.string(forKey: "appVersion")
 
     @ObservedObject var globalModel = GlobalModel()
