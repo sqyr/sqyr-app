@@ -19,6 +19,38 @@ struct NavigationPanelView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .normal)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color("gold"))]
     }
+    
+    func landmarksFiltered() -> [LandmarkJson] {
+        let landmarkArray: [LandmarkJson] = landmarks
+
+        
+        if categorySelection == .social {
+            return helpFilterLandmarks(category: "Social")
+        }
+        
+        if categorySelection == .academic {
+            return helpFilterLandmarks(category: "Academic")
+        }
+        
+        if categorySelection == .food {
+            return helpFilterLandmarks(category: "Food")
+        }
+        
+        return landmarkArray
+    }
+    
+    func helpFilterLandmarks(category: String) -> [LandmarkJson] {
+        var landmarkFilter: [LandmarkJson] = []
+        
+        for landmark in landmarks {
+            if landmark.type == category {
+                landmarkFilter.append(landmark)
+            }
+        }
+        
+        return landmarkFilter
+    }
+        
 
     var body: some View {
         NavigationView {
@@ -37,7 +69,7 @@ struct NavigationPanelView: View {
                 .padding()
 
                 List {
-                    ForEach(landmarks, id: \.id) { landmark in
+                    ForEach(landmarksFiltered(), id: \.id) { landmark in
                         NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
                             HStack {
                                 Image(systemName: landmark.icon)
@@ -63,12 +95,13 @@ enum Category: String, CaseIterable {
     case all = "All"
     case academic = "Academic"
     case social = "Social"
+    case food = "Food"
 
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
 
 struct NavigationPanelView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        NavigationPanelView(globalModel: GlobalModel())
     }
 }
