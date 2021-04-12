@@ -4,31 +4,30 @@
 //
 //  Created by Tomas Perez on 4/10/21.
 //
+import Fluent
 import Foundation
 import Vapor
-import Fluent
 
 final class UserController {
-
     func create(_ req: Request) throws -> EventLoopFuture<User> {
         let user = try req.content.decode(User.self)
         return user.create(on: req.db).map { user }
     }
 
-    func all(_ req: Request) throws -> EventLoopFuture<[User]>{
+    func all(_ req: Request) throws -> EventLoopFuture<[User]> {
         User.query(on: req.db).all()
     }
 
-    func byID(_ req: Request) throws -> EventLoopFuture<[User]>{
-        guard let userId = req.parameters.get("UserID", as: Int.self) else{
+    func byID(_ req: Request) throws -> EventLoopFuture<[User]> {
+        guard let userId = req.parameters.get("UserID", as: Int.self) else {
             throw Abort(.notFound)
         }
         return User.query(on: req.db).filter(\.$id, .equal, userId)
             .all()
     }
 
-    func getByStudyroomId(_ req: Request) throws -> EventLoopFuture<[User]>{
-        guard let studyRoomId = req.parameters.get("StudyRoomID", as: Int.self) else{
+    func getByStudyroomId(_ req: Request) throws -> EventLoopFuture<[User]> {
+        guard let studyRoomId = req.parameters.get("StudyRoomID", as: Int.self) else {
             throw Abort(.notFound)
         }
 
@@ -37,9 +36,9 @@ final class UserController {
             .all()
     }
 
-    func delete(_ req: Request) throws -> EventLoopFuture<HTTPStatus>{
+    func delete(_ req: Request) throws -> EventLoopFuture<HTTPStatus> {
         User.find(req.parameters.get("UserID"), on: req.db).unwrap(or: Abort(.notFound))
-            .flatMap{
+            .flatMap {
                 $0.delete(on: req.db)
             }.transform(to: .ok)
     }

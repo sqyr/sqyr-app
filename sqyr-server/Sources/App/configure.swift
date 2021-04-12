@@ -16,14 +16,14 @@ public func configure(_ app: Application) throws {
 //    ), as: .psql)
 //
 //    app.migrations.add(CreateTodo())
-    
+
     app.databases.use(.postgres(hostname: "localhost", username: "sqyr", password: "9yg8Fd-A", database: "sqyr"), as: .psql)
 
     app.migrations.add(CreateLandmark())
     app.migrations.add(CreateClassroom())
     app.migrations.add(CreateStudyRoom())
     app.migrations.add(CreateUser())
-    
+
     // register routes
     try routes(app)
 }

@@ -63,58 +63,58 @@ func routes(_ app: Application) throws {
     
     // Update a landmark
     // localhost:8080/Landmarks/#
-    app.put("Landmarks"){req -> EventLoopFuture<HTTPStatus> in
+    app.put("Landmarks") { req -> EventLoopFuture<HTTPStatus> in
         let landmark = try req.content.decode(Landmark.self)
         return Landmark.find(landmark.id, on: req.db)
             .unwrap(or: Abort(.notFound))
-            .flatMap{
-                $0.landMarkName = landmark.landMarkName;
-                $0.description = landmark.description;
-                $0.hours = landmark.hours;
-                $0.coordinatesLat = landmark.coordinatesLat;
-                $0.coordinatesLon = landmark.coordinatesLon;
-                $0.buildingType = landmark.buildingType;
-                $0.icon = landmark.icon;
+            .flatMap {
+                $0.landMarkName = landmark.landMarkName
+                $0.description = landmark.description
+                $0.hours = landmark.hours
+                $0.coordinatesLat = landmark.coordinatesLat
+                $0.coordinatesLon = landmark.coordinatesLon
+                $0.buildingType = landmark.buildingType
+                $0.icon = landmark.icon
                 return $0.update(on: req.db).transform(to: .ok)
             }
     }
     
     // Update a classroom
     // localhost:8080/ClassRoom/#
-    app.put("ClassRoom"){req -> EventLoopFuture<HTTPStatus> in
+    app.put("ClassRoom") { req -> EventLoopFuture<HTTPStatus> in
         let classRoom = try req.content.decode(ClassRoom.self)
         return ClassRoom.find(classRoom.id, on: req.db)
             .unwrap(or: Abort(.notFound))
-            .flatMap{
-                $0.landmark = classRoom.landmark;
-                $0.roomNumber = classRoom.roomNumber;
+            .flatMap {
+                $0.landmark = classRoom.landmark
+                $0.roomNumber = classRoom.roomNumber
                 return $0.update(on: req.db).transform(to: .ok)
             }
     }
     
     // Update a StudyRoom
     // localhost:8080/StudyRooms/#
-    app.put("StudyRooms"){req -> EventLoopFuture<HTTPStatus> in
+    app.put("StudyRooms") { req -> EventLoopFuture<HTTPStatus> in
         let studyRoom = try req.content.decode(StudyRoom.self)
         return StudyRoom.find(studyRoom.id, on: req.db)
             .unwrap(or: Abort(.notFound))
-            .flatMap{
-                $0.classRoomId = studyRoom.classRoomId;
-                $0.name = studyRoom.name;
+            .flatMap {
+                $0.classRoomId = studyRoom.classRoomId
+                $0.name = studyRoom.name
                 return $0.update(on: req.db).transform(to: .ok)
             }
     }
     
     // Update a User
     // localhost:8080/Users/#
-    app.put("Users"){req -> EventLoopFuture<HTTPStatus> in
+    app.put("Users") { req -> EventLoopFuture<HTTPStatus> in
         let user = try req.content.decode(User.self)
         return User.find(user.id, on: req.db)
             .unwrap(or: Abort(.notFound))
-            .flatMap{
-                $0.firstName = user.firstName;
-                $0.studyRoomId = user.studyRoomId;
-                $0.creation = user.creation;
+            .flatMap {
+                $0.firstName = user.firstName
+                $0.studyRoomId = user.studyRoomId
+                $0.creation = user.creation
                 return $0.update(on: req.db).transform(to: .ok)
             }
     }

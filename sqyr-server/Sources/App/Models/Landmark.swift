@@ -5,12 +5,12 @@
 //  Created by Tomas Perez on 3/10/21.
 //
 
-import Foundation
 import Fluent
 import FluentPostgresDriver
+import Foundation
 import Vapor
 
-final class Landmark: Model, Content{
+final class Landmark: Model, Content {
     static let schema = "LandMarks"
     
     @ID(custom: "LandMarkID")
@@ -42,7 +42,7 @@ final class Landmark: Model, Content{
     
     init() {}
     
-    init(id: Int? = nil, landMarkName: String, description: String, hours: String, coordinatesLat: Double, coordinatesLon: Double, buildingType: String, icon: String){
+    init(id: Int? = nil, landMarkName: String, description: String, hours: String, coordinatesLat: Double, coordinatesLon: Double, buildingType: String, icon: String) {
         self.id = id
         self.landMarkName = landMarkName
         self.description = description

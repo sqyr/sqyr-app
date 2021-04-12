@@ -1,16 +1,16 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tomas Perez on 3/10/21.
 //
 
-import Foundation
 import Fluent
 import FluentPostgresDriver
+import Foundation
 import Vapor
 
-final class StudyRoom: Model, Content{
+final class StudyRoom: Model, Content {
     static let schema = "StudyRooms"
     
     @ID(custom: "StudyRoomID")
@@ -25,7 +25,7 @@ final class StudyRoom: Model, Content{
     @Children(for: \.$studyRoomId)
     var usersInStudyRoom: [User]
     
-    init(){}
+    init() {}
     
     init(id: Int? = nil, classRoomId: Int, name: String) {
         self.id = id

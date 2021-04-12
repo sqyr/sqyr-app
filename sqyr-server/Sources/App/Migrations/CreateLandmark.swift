@@ -5,9 +5,9 @@
 //  Created by Tomas Perez on 3/10/21.
 //
 
-import Foundation
 import Fluent
 import FluentPostgresDriver
+import Foundation
 
 struct CreateLandmark: Migration {
     func prepare(on database: Database) -> EventLoopFuture<Void> {
@@ -23,7 +23,7 @@ struct CreateLandmark: Migration {
             .unique(on: "LandMarkID")
             .create()
     }
-    
+
     func revert(on database: Database) -> EventLoopFuture<Void> {
         return database.schema("LandMarks").delete()
     }

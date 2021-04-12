@@ -1,12 +1,12 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tomas Perez on 4/10/21.
 //
+import Fluent
 import Foundation
 import Vapor
-import Fluent
 
 final class LandmarkController {
     func create(_ req: Request) throws -> EventLoopFuture<Landmark> {
@@ -14,12 +14,12 @@ final class LandmarkController {
         return landmark.create(on: req.db).map { landmark }
     }
 
-    func all(_ req: Request) throws -> EventLoopFuture<[Landmark]>{
+    func all(_ req: Request) throws -> EventLoopFuture<[Landmark]> {
         Landmark.query(on: req.db).with(\.$classRoomsId).all()
     }
 
-    func byID(_ req: Request) throws -> EventLoopFuture<[Landmark]>{
-        guard let landmarkId = req.parameters.get("LandMarkID", as: Int.self) else{
+    func byID(_ req: Request) throws -> EventLoopFuture<[Landmark]> {
+        guard let landmarkId = req.parameters.get("LandMarkID", as: Int.self) else {
             throw Abort(.notFound)
         }
         return Landmark.query(on: req.db).filter(\.$id, .equal, landmarkId)

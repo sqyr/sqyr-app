@@ -1,17 +1,16 @@
 //
 //  File.swift
-//  
+//
 //
 //  Created by Tomas Perez on 3/11/21.
 //
 
-import Foundation
-import Vapor
 import Fluent
 import FluentPostgresDriver
+import Foundation
+import Vapor
 
-final class User: Model, Content{
-    
+final class User: Model, Content {
     static let schema = "Users"
     
     @ID(custom: "UserID")
@@ -26,9 +25,9 @@ final class User: Model, Content{
     @Field(key: "Creation")
     var creation: Date
     
-    init(){}
+    init() {}
     
-    init(id: Int? = nil, firstName: String, studyRoomId: Int, creation: Date){
+    init(id: Int? = nil, firstName: String, studyRoomId: Int, creation: Date) {
         self.id = id
         self.firstName = firstName
         self.$studyRoomId.id = studyRoomId
