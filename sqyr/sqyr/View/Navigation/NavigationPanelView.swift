@@ -36,6 +36,11 @@ struct NavigationPanelView: View {
             return helpFilterLandmarks(category: "Food")
         }
         
+        if categorySelection == .house {
+            return helpFilterLandmarks(category: "Housing")
+        }
+        
+        
         return landmarkArray
     }
     
@@ -96,6 +101,7 @@ enum Category: String, CaseIterable {
     case academic = "Academic"
     case social = "Social"
     case food = "Food"
+    case house = "Housing"
 
     var localizedName: LocalizedStringKey { LocalizedStringKey(rawValue) }
 }
