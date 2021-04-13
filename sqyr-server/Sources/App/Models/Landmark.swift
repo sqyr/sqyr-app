@@ -44,14 +44,14 @@ final class Landmark: Model, Content{
     var showInfoLeft: Bool
     
     @Field(key: "FloorPlanImage")
-    var floorPlanImage: FloorPlan
+    var floorPlanImage: FloorPlanImage
     
     @Children(for: \.$landmark)
     var classRoomsId: [ClassRoom]
     
     init() {}
     
-    init(id: Int? = nil, landMarkName: String, description: String, hours: Hours, coordinatesLat: Double, coordinatesLon: Double, buildingType: String, icon: String, images: String, showInfoLeft: Bool, floorPlanImage: FloorPlan){
+    init(id: Int? = nil, landMarkName: String, description: String, hours: Hours, coordinatesLat: Double, coordinatesLon: Double, buildingType: String, icon: String, images: String, showInfoLeft: Bool, floorPlanImage: FloorPlanImage){
         self.id = id
         self.landMarkName = landMarkName
         self.description = description
@@ -66,7 +66,7 @@ final class Landmark: Model, Content{
     }
 }
 
-struct FloorPlan: Codable {
+struct FloorPlanImage: Codable {
     var basement: String?
     var level1: String?
     var level2: String?
