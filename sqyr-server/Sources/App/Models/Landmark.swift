@@ -23,7 +23,7 @@ final class Landmark: Model, Content{
     var description: String
     
     @Field(key: "Hours")
-    var hours: String
+    var hours: Hours
     
     @Field(key: "CoordinatesLat")
     var coordinatesLat: Double
@@ -44,14 +44,14 @@ final class Landmark: Model, Content{
     var showInfoLeft: Bool
     
     @Field(key: "FloorPlanImage")
-    var floorPlanImage: String
+    var floorPlanImage: FloorPlan
     
     @Children(for: \.$landmark)
     var classRoomsId: [ClassRoom]
     
     init() {}
     
-    init(id: Int? = nil, landMarkName: String, description: String, hours: String, coordinatesLat: Double, coordinatesLon: Double, buildingType: String, icon: String, images: String, showInfoLeft: Bool, floorPlanImage: String){
+    init(id: Int? = nil, landMarkName: String, description: String, hours: Hours, coordinatesLat: Double, coordinatesLon: Double, buildingType: String, icon: String, images: String, showInfoLeft: Bool, floorPlanImage: FloorPlan){
         self.id = id
         self.landMarkName = landMarkName
         self.description = description
@@ -68,5 +68,18 @@ final class Landmark: Model, Content{
 
 struct FloorPlan: Codable {
     var basement: String?
-    var 
+    var level1: String?
+    var level2: String?
+    var level3: String?
+    var level4: String?
+}
+
+struct Hours: Codable {
+    var mon: String?
+    var tue: String?
+    var wed: String?
+    var thu: String?
+    var fri: String?
+    var sat: String?
+    var sun: String?
 }
