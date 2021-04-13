@@ -22,12 +22,12 @@ final class User: Model, Content {
     @Parent(key: "StudyRoomID")
     var studyRoomId: StudyRoom
     
-    @Field(key: "Creation")
-    var creation: Date
+    @Timestamp(key: "Creation", on: .create, format: .iso8601)
+    var creation: Date?
     
     init() {}
     
-    init(id: Int? = nil, firstName: String, studyRoomId: Int, creation: Date) {
+    init(id: Int? = nil, firstName: String, studyRoomId: Int, creation: Date?) {
         self.id = id
         self.firstName = firstName
         self.$studyRoomId.id = studyRoomId

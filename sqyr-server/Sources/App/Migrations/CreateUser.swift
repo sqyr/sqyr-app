@@ -15,7 +15,7 @@ struct CreateUser: Migration {
             .field("UserID", .int, .required, .identifier(auto: true))
             .field("FirstName", .string, .required)
             .field("StudyRoomID", .int, .required, .references("StudyRooms", "StudyRoomID"))
-            .field("Creation", .datetime, .required)
+            .field("Creation", .string)
             .unique(on: "UserID")
             .create()
     }
