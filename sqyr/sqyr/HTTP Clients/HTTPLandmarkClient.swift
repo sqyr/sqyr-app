@@ -16,8 +16,10 @@ import Foundation
 //      }
 // }
 class HTTPLandmarkClient: ObservableObject {
+    static var shared = HTTPLandmarkClient()
+    
     @Published var landMarks: [Landmark]? = [Landmark]()
-    @Published var classRooms: [ClassRoom]? = [ClassRoom]()
+    @Published var classRooms: [Classroom]? = [Classroom]()
     @Published var studyRooms: [Studyroom]? = [Studyroom]()
     @Published var users: [User]? = [User]()
     
@@ -47,7 +49,7 @@ class HTTPLandmarkClient: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            let classrooms = try? JSONDecoder().decode([ClassRoom].self, from: data)
+            let classrooms = try? JSONDecoder().decode([Classroom].self, from: data)
             if let classrooms = classrooms {
                 DispatchQueue.main.async {
                     self.classRooms = classrooms
@@ -136,7 +138,7 @@ class HTTPLandmarkClient: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            let decodedClassrooms = try? JSONDecoder().decode([ClassRoom].self, from: data)
+            let decodedClassrooms = try? JSONDecoder().decode([Classroom].self, from: data)
             
             if let decodedClassrooms = decodedClassrooms {
                 DispatchQueue.main.async {
@@ -146,7 +148,7 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
-    func getStudyRoomsByClassRooms(classRoom: ClassRoom) {
+    func getStudyRoomsByClassRooms(classRoom: Classroom) {
         guard let id = classRoom.id,
               let url = URL(string: "http://localhost:8080/ClassRoom/\(id)/StudyRooms")
         else {

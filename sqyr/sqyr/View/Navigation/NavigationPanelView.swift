@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct NavigationPanelView: View {
+    // States
     @State private var categorySelection: Category = .all
     @State private var text: String = ""
-
+    @State private var landmarks = [Landmark]()
+    
+    // Observed
     @ObservedObject var globalModel: GlobalModel
 
     init(globalModel: GlobalModel) {
@@ -18,45 +21,35 @@ struct NavigationPanelView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color("gold"))], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .normal)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color("gold"))]
+        
+        HTTPLandmarkClient.shared.getAllLandmarks()
+        if let array = HTTPLandmarkClient.shared.landMarks {
+            landmarks = array
+        }
     }
     
-    func landmarksFiltered() -> [LandmarkJson] {
-        let landmarkArray: [LandmarkJson] = landmarks
-
-        
-        if categorySelection == .social {
-            return helpFilterLandmarks(category: "Social")
+    func landmarksFiltered() -> [Landmark] {
+        switch categorySelection {
+        case .all:
+            return helpFilterLandmarks(in: .all)
+        case .academic:
+            return helpFilterLandmarks(in: .academic)
+        case .food:
+            return helpFilterLandmarks(in: .food)
+        case .house:
+            return helpFilterLandmarks(in: .house)
+        case .social:
+            return helpFilterLandmarks(in: .social)
         }
-        
-        if categorySelection == .academic {
-            return helpFilterLandmarks(category: "Academic")
-        }
-        
-        if categorySelection == .food {
-            return helpFilterLandmarks(category: "Food")
-        }
-        
-        if categorySelection == .house {
-            return helpFilterLandmarks(category: "Housing")
-        }
-        
-        
-        return landmarkArray
     }
     
-    func helpFilterLandmarks(category: String) -> [LandmarkJson] {
-        var landmarkFilter: [LandmarkJson] = []
-        
-        for landmark in landmarks {
-            if landmark.type == category {
-                landmarkFilter.append(landmark)
-            }
+    func helpFilterLandmarks(in category: Category) -> [Landmark] {
+        let filteredLandmarks = landmarks.filter { (landmark) -> Bool in
+            
         }
         
-        return landmarkFilter
     }
         
-
     var body: some View {
         NavigationView {
             VStack {
@@ -82,7 +75,6 @@ struct NavigationPanelView: View {
                 } //: LIST
                 .listStyle(InsetListStyle())
                 .padding(.horizontal)
-
             } //: VSTACK
             .navigationBarTitle("Landmarks")
         } //: NAVIGATION
@@ -102,9 +94,9 @@ struct NavLandmarkListView: View {
                     .fontWeight(.bold)
                     .foregroundColor(Color("blue"))
             
-            Text(landmark.imageSubHeadline)
-                .foregroundColor(.secondary)
-                .font(.footnote)
+                Text(landmark.imageSubHeadline)
+                    .foregroundColor(.secondary)
+                    .font(.footnote)
             } //: VSTACK
         } //: HSTACK
         .padding(.vertical, 12)
