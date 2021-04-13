@@ -1,5 +1,5 @@
 //
-//  Landmark.swift
+//  StudyRoomId.swift
 //
 //  Created by Sqyr on 4/12/21
 //  Copyright (c) . All rights reserved.
@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct Landmark: Codable {
+struct StudyRoomId: Codable {
 
   enum CodingKeys: String, CodingKey {
     case id = "id"
