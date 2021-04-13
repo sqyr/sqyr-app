@@ -20,6 +20,7 @@ struct LandmarkJson: Codable {
     let lon: String
     let type: String
     let image: String
+    let imageSubHeadline: String
     let showInfoLeft: Bool
     let icon: String
     let floorPlanImage: CodableFloorPlanImageJson?
