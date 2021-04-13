@@ -65,3 +65,8 @@ final class Landmark: Model, Content{
         self.floorPlanImage = floorPlanImage
     }
 }
+
+struct FloorPlan: Codable {
+    var basement: String?
+    var 
+}
