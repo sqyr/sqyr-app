@@ -113,7 +113,7 @@ struct LandmarkBannerImage: View {
                         .foregroundColor(Color.white)
                         .shadow(radius: 3)
                     // MARK: - SUBHEADLINE
-                    Text(landmark.description)
+                    Text(landmark.imageSubHeadline)
                         .font(.footnote)
                         .lineLimit(2)
                         .multilineTextAlignment(.leading)

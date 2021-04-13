@@ -195,11 +195,11 @@ struct StudyGroupView: View {
         VStack {
             Group {
                 // SEARCH ALL ROOMS
-                StudyGroupTitle(title: landmark.name)
+                StudyGroupTitle(icon: landmark.icon, title: landmark.name)
                 StudyGroupSearchBar(placeholder: self.studyRoomPlaceholder, text: $studyRoomSearchText)
                 
                 // SEARCH STUDY GROUPS
-                StudyGroupTitle(title: "Study Groups")
+                StudyGroupTitle(icon: "person.3.fill",title: "Study Groups")
                 StudyGroupSearchBar(placeholder: self.studyGroupPlaceholder,  text: $studyGroupSearchText)
             }
             .padding(.horizontal)
@@ -246,14 +246,18 @@ struct StudyGroupView: View {
 }
 
 struct StudyGroupTitle: View {
+    let icon: String
     let title: String
     
     var body: some View {
-        Text(self.title)
-            .font(.title2)
-            .bold()
-            .padding(.top)
-            .foregroundColor(Color("blue"))
+        HStack {
+            Image(systemName: icon)
+            Text(self.title)
+                .bold()
+        } //: HSTACK
+        .font(.title2)
+        .padding(.top)
+        .foregroundColor(Color("blue"))
     }
 }
 

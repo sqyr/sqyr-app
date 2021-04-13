@@ -76,14 +76,7 @@ struct NavigationPanelView: View {
                 List {
                     ForEach(landmarksFiltered(), id: \.id) { landmark in
                         NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
-                            HStack {
-                                Image(systemName: landmark.icon)
-                                    .font(.title2)
-                                Text(landmark.name)
-                                    .fontWeight(.bold)
-                            } //: HSTACK
-                            .foregroundColor(Color("blue"))
-                            .padding(.vertical, 12)
+                            NavLandmarkListView(landmark: landmark)
                         } //: LINK
                     } //: LOOP
                 } //: LIST
@@ -93,6 +86,28 @@ struct NavigationPanelView: View {
             } //: VSTACK
             .navigationBarTitle("Landmarks")
         } //: NAVIGATION
+    }
+}
+
+struct NavLandmarkListView: View {
+    let landmark: LandmarkJson
+    
+    var body: some View {
+        HStack {
+            Image(systemName: landmark.icon)
+                .font(.title2)
+            
+            VStack(alignment: .leading) {
+                Text(landmark.name)
+                    .fontWeight(.bold)
+                    .foregroundColor(Color("blue"))
+            
+            Text(landmark.imageSubHeadline)
+                .foregroundColor(.secondary)
+                .font(.footnote)
+            } //: VSTACK
+        } //: HSTACK
+        .padding(.vertical, 12)
     }
 }
 
@@ -109,5 +124,6 @@ enum Category: String, CaseIterable {
 struct NavigationPanelView_Previews: PreviewProvider {
     static var previews: some View {
         NavigationPanelView(globalModel: GlobalModel())
+            .environmentObject(GlobalModel())
     }
 }
