@@ -88,7 +88,6 @@ struct LandmarkDetail: View {
         .padding(0)
         .onAppear {
              hapticFeedback.impactOccurred()
-             print("haptic pass")
          }
     }
 }
