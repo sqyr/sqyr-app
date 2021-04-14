@@ -1,8 +1,17 @@
 {
   "images" : [
     {
-      "filename" : "chickFilA.jpg",
-      "idiom" : "universal"
+      "filename" : "chick_fil_a.jpg",
+      "idiom" : "universal",
+      "scale" : "1x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "2x"
+    },
+    {
+      "idiom" : "universal",
+      "scale" : "3x"
     }
   ],
   "info" : {
