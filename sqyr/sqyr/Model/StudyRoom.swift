@@ -33,5 +33,6 @@ struct StudyRoom: Codable {
     init(classRoomId: ClassRoom, name: String) {
         self.classRoomId = classRoomId
         self.name = name
+        usersInStudyRoom = [User]()
     }
 }
