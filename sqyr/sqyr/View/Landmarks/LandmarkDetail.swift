@@ -86,6 +86,10 @@ struct LandmarkDetail: View {
         ) //: ITEM
         .edgesIgnoringSafeArea(.all)
         .padding(0)
+        .onAppear {
+             hapticFeedback.impactOccurred()
+             print("haptic pass")
+         }
     }
 }
 

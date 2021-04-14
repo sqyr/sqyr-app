@@ -6,6 +6,9 @@
 //
 
 import SwiftUI
+// MARK: - PROPERTIES
+let hapticFeedback = UIImpactFeedbackGenerator(style: .heavy)
+
 
 // MARK: - EXTENSION
 extension Bundle {
