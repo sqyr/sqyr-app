@@ -24,6 +24,7 @@ class HTTPLandmarkClient: ObservableObject {
     @Published var classRooms: [ClassRoom]? = [ClassRoom]()
     @Published var studyRooms: [StudyRoom]? = [StudyRoom]()
     @Published var users: [User]? = [User]()
+    @Published var studyRoomsByClassRoom: [Int: [StudyRoom]] = [Int: [StudyRoom]]()
     
     // UIKit Publishers
     let landmarkPublisher = NotificationCenter.Publisher(center: .default, name: Notification.Name("new_landmark"), object: nil)
@@ -161,7 +162,7 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
-    func getStudyRoomsByClassRooms(classRoom: ClassRoom) {
+    func getStudyRoomsByClassRoom(classRoom: ClassRoom) {
         guard let id = classRoom.id,
               let url = URL(string: "\(baseUrl)/ClassRoom/\(id)/StudyRooms")
         else {
@@ -181,6 +182,17 @@ class HTTPLandmarkClient: ObservableObject {
                 }
             }
         }.resume()
+    }
+    
+    func getStudyRoomsInClassRooms(classRoom: [ClassRoom]) {
+        studyRoomsByClassRoom = [Int: [StudyRoom]]()
+        guard let classRooms = classRooms else { return }
+        for classRoom in classRooms {
+            getStudyRoomsByClassRoom(classRoom: classRoom)
+            if let studyRooms = studyRooms {
+                studyRoomsByClassRoom[classRoom.id!] = studyRooms
+            }
+        }
     }
     
     func getUsersByStudyRoom(studyRoom: StudyRoom) {

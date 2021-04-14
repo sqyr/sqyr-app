@@ -8,8 +8,10 @@
 import SwiftUI
 
 struct LocateClassroomView: View {
-    let landmark: LandmarkJson
-    @State var selected = 0
+    let landmark: Landmark
+    var floorNames = [String]()
+    var floorImageNames = [String]()
+    @State var selected: Int = 0
     @State var scale: CGFloat = 1.0
     @State var isTapped: Bool = false
     @State var tapLocation: CGPoint = CGPoint.zero
@@ -17,11 +19,33 @@ struct LocateClassroomView: View {
     @State var dragPrevious: CGSize = CGSize.zero
     @State var reset: Bool = true
     
-    init(landmark: LandmarkJson) {
+    init(landmark: Landmark) {
         self.landmark = landmark
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(Color("gold"))], for: .selected)
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .normal)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color("gold"))]
+        
+        // This is literally the only way I could think to get a collection of both the floor names AND the floor image names. -David
+        if let basement = landmark.floorPlanImage?.basement, basement != "null" {
+            floorNames.append("Basement")
+            floorImageNames.append(basement)
+        }
+        if let level1 = landmark.floorPlanImage?.level1, level1 != "null" {
+            floorNames.append("Level 1")
+            floorImageNames.append(level1)
+        }
+        if let level2 = landmark.floorPlanImage?.level2, level2 != "null" {
+            floorNames.append("Level 2")
+            floorImageNames.append(level2)
+        }
+        if let level3 = landmark.floorPlanImage?.level3, level3 != "null" {
+            floorNames.append("Level 3")
+            floorImageNames.append(level3)
+        }
+        if let level4 = landmark.floorPlanImage?.level4, level4 != "null" {
+            floorNames.append("Level 4")
+            floorImageNames.append(level4)
+        }
     }
     
     var body: some View {
@@ -30,8 +54,8 @@ struct LocateClassroomView: View {
                 VStack {
                     HStack {
                         Picker(selection: $selected, label: Text("Select Any Level")) {
-                            ForEach(0..<landmark.getFloorPlanImage.count) { index in
-                                Text(landmark.getFloorPlanImage[index].title).tag(index)
+                            ForEach(floorNames, id: \.self) { floor in
+                                Text(floor).tag(self.floorNames.firstIndex(of: floor)!)
                             }
                         } //: PICKER
                         .pickerStyle(SegmentedPickerStyle())
@@ -40,11 +64,11 @@ struct LocateClassroomView: View {
                         .padding()
                     } //: HSTACK
                     
-                    Text(landmark.getFloorPlanImage[self.selected].title)
+                    Text(floorNames[selected])
                         .fontWeight(.bold)
                         .padding()
                     
-                    Image(landmark.getFloorPlanImage[self.selected].image)
+                    Image(floorImageNames[selected])
                         .resizable()
                         .scaledToFit()
                         .animation(.default)
@@ -97,12 +121,13 @@ struct LocateClassroomView: View {
                 } //: VSTACK
             } //: SCROLL
         } //: GEOMETRY
-        .navigationBarTitle("\(landmark.name) Floor Plan", displayMode: .inline)
+        .navigationBarTitle("\(landmark.landMarkName!) Floor Plan", displayMode: .inline)
     }
 }
 
-struct LocateClassroomView_Previews: PreviewProvider {
-    static var previews: some View {
-        LocateClassroomView(landmark: landmarks[0])
-    }
-}
+// TODO: Fix preview
+//struct LocateClassroomView_Previews: PreviewProvider {
+//    static var previews: some View {
+//        LocateClassroomView(landmark: landmarks[0])
+//    }
+//}

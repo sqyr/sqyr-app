@@ -11,10 +11,10 @@ struct NavigationPanelView: View {
     // States
     @State private var categorySelection: Category = .all
     @State private var text: String = ""
-    @State private var landmarks = [Landmark]()
     
     // Observed
     @ObservedObject var globalModel: GlobalModel
+    @ObservedObject var httpClient: HTTPLandmarkClient
 
     init(globalModel: GlobalModel) {
         self.globalModel = globalModel
@@ -22,10 +22,8 @@ struct NavigationPanelView: View {
         UISegmentedControl.appearance().setTitleTextAttributes([.foregroundColor: UIColor(.white)], for: .normal)
         UINavigationBar.appearance().largeTitleTextAttributes = [.foregroundColor: UIColor(Color("gold"))]
         
-        HTTPLandmarkClient.shared.getAllLandmarks()
-        if let array = HTTPLandmarkClient.shared.landMarks {
-            landmarks = array
-        }
+        httpClient = HTTPLandmarkClient.shared
+        httpClient.getAllLandmarks()
     }
     
     func landmarksFiltered() -> [Landmark] {
@@ -44,10 +42,17 @@ struct NavigationPanelView: View {
     }
     
     func helpFilterLandmarks(in category: Category) -> [Landmark] {
+        guard let landmarks = httpClient.landMarks else { return [] }
         let filteredLandmarks = landmarks.filter { (landmark) -> Bool in
-            
+            if let type = landmark.buildingType, (type.lowercased() == category.rawValue.lowercased() || categorySelection == .all) {
+                return true
+            } else {
+                return false
+            }
         }
-        
+        return filteredLandmarks.sorted { (firstLandmark, secondLandmark) -> Bool in
+            return firstLandmark.landMarkName ?? "" < secondLandmark.landMarkName ?? ""
+        }
     }
         
     var body: some View {
@@ -68,7 +73,7 @@ struct NavigationPanelView: View {
 
                 List {
                     ForEach(landmarksFiltered(), id: \.id) { landmark in
-                        NavigationLink(destination: LandmarkDetail(landmark: landmark)) {
+                        NavigationLink(destination: LandmarkDetail(with: landmark, classRooms: landmark.classRoomsId ?? nil)) {
                             NavLandmarkListView(landmark: landmark)
                         } //: LINK
                     } //: LOOP
@@ -82,21 +87,17 @@ struct NavigationPanelView: View {
 }
 
 struct NavLandmarkListView: View {
-    let landmark: LandmarkJson
+    let landmark: Landmark
     
     var body: some View {
         HStack {
-            Image(systemName: landmark.icon)
+            Image(systemName: landmark.icon ?? "")
                 .font(.title2)
             
             VStack(alignment: .leading) {
-                Text(landmark.name)
+                Text(landmark.landMarkName ?? "")
                     .fontWeight(.bold)
                     .foregroundColor(Color("blue"))
-            
-                Text(landmark.imageSubHeadline)
-                    .foregroundColor(.secondary)
-                    .font(.footnote)
             } //: VSTACK
         } //: HSTACK
         .padding(.vertical, 12)
