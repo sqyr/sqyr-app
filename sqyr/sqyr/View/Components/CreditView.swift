@@ -42,7 +42,9 @@ struct CreditView: View {
                         
                         CreditItemView(title: "Project Manager", name: "Dr. Im")
                             .font(.system(size: 14, weight: .bold, design: .default))
-                        CreditItemView(title: "AR Developer", name: "David Barsamian, True Sarmiento")
+                        CreditItemView(title: "AR Developer", name: "David Barsamian")
+                            .font(.system(size: 14, weight: .bold, design: .default))
+                        CreditItemView(title: "AR Developer", name: "True Sarmiento")
                             .font(.system(size: 14, weight: .bold, design: .default))
                         CreditItemView(title: "Backend Developer", name: "Tomas Perez")
                             .font(.system(size: 14, weight: .bold, design: .default))
