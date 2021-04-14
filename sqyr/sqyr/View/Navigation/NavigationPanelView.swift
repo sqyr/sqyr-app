@@ -97,10 +97,10 @@ struct NavLandmarkListView: View {
             VStack(alignment: .leading) {
                 Text(landmark.landMarkName ?? "")
                     .fontWeight(.bold)
-                    .foregroundColor(Color("blue"))
             } //: VSTACK
         } //: HSTACK
         .padding(.vertical, 12)
+        .foregroundColor(Color("blue"))
     }
 }
 
