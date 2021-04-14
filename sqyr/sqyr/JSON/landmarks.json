@@ -1058,4 +1058,28 @@
             "rooms": null,
             "studyGroups": null,
         },
+    {
+                "id": 39,
+                "name": “Wallace Theatre,
+                "description": “Come see your fellow Lancers perform in their various shows.”,
+                "hours":
+                {
+                    "mon": “8:00 AM - 5:00 PM",
+                    "tue": "8:00 AM - 5:00 PM",
+                    "wed": "8:00 AM - 5:00 PM",
+                    "fri": "8:00 AM - 5:00 PM",
+                    "sat": "8:00 AM - 5:00 PM",
+                    "sun": "8:00 AM - 5:00 PM",
+                },
+                "lat": "33.92994288619978",
+                "lon": "-117.42591912328268",
+                "type": "Social",
+                "image": “wallace”,
+                "imageSubHeadline": "Fortuna Fountain is a Greek Statue",
+                "showInfoLeft": true,
+                "icon": "building.2.crop.circle.filll",
+                "floorPlanImage": null,
+                "rooms": null,
+                "studyGroups": null,
+            },
 ]
