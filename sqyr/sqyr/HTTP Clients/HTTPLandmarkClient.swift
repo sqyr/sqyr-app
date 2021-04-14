@@ -19,8 +19,8 @@ class HTTPLandmarkClient: ObservableObject {
     static var shared = HTTPLandmarkClient()
     
     @Published var landMarks: [Landmark]? = [Landmark]()
-    @Published var classRooms: [Classroom]? = [Classroom]()
-    @Published var studyRooms: [Studyroom]? = [Studyroom]()
+    @Published var classRooms: [ClassRoom]? = [ClassRoom]()
+    @Published var studyRooms: [StudyRoom]? = [StudyRoom]()
     @Published var users: [User]? = [User]()
     
     func getAllLandmarks() {
@@ -49,7 +49,7 @@ class HTTPLandmarkClient: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            let classrooms = try? JSONDecoder().decode([Classroom].self, from: data)
+            let classrooms = try? JSONDecoder().decode([ClassRoom].self, from: data)
             if let classrooms = classrooms {
                 DispatchQueue.main.async {
                     self.classRooms = classrooms
@@ -66,7 +66,7 @@ class HTTPLandmarkClient: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            let studyrooms = try? JSONDecoder().decode([Studyroom].self, from: data)
+            let studyrooms = try? JSONDecoder().decode([StudyRoom].self, from: data)
             if let studyrooms = studyrooms {
                 DispatchQueue.main.async {
                     self.studyRooms = studyrooms
@@ -92,7 +92,7 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
-    func saveStudyRoom(studyRoom: Studyroom, completion: @escaping (Bool) -> Void) {
+    func saveStudyRoom(studyRoom: StudyRoom, completion: @escaping (Bool) -> Void) {
         guard let url = URL(string: "http://localhost:8080/StudyRooms") else {
             fatalError("URL is not defined.")
         }
@@ -126,7 +126,7 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
-    func getClassroomsByLandmark(landMark: Landmark) {
+    func getClassRoomsByLandmark(landMark: Landmark) {
         guard let uuid = landMark.id,
               let url = URL(string: "http://localhost:8080/Landmarks/\(uuid)/ClassRoom")
         else {
@@ -138,17 +138,17 @@ class HTTPLandmarkClient: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            let decodedClassrooms = try? JSONDecoder().decode([Classroom].self, from: data)
+            let decodedClassRooms = try? JSONDecoder().decode([ClassRoom].self, from: data)
             
-            if let decodedClassrooms = decodedClassrooms {
+            if let decodedClassRooms = decodedClassRooms {
                 DispatchQueue.main.async {
-                    self.classRooms = decodedClassrooms
+                    self.classRooms = decodedClassRooms
                 }
             }
         }.resume()
     }
     
-    func getStudyRoomsByClassRooms(classRoom: Classroom) {
+    func getStudyRoomsByClassRooms(classRoom: ClassRoom) {
         guard let id = classRoom.id,
               let url = URL(string: "http://localhost:8080/ClassRoom/\(id)/StudyRooms")
         else {
@@ -160,7 +160,7 @@ class HTTPLandmarkClient: ObservableObject {
             guard let data = data, error == nil else {
                 return
             }
-            let decodedStudyRooms = try? JSONDecoder().decode([Studyroom].self, from: data)
+            let decodedStudyRooms = try? JSONDecoder().decode([StudyRoom].self, from: data)
             
             if let decodedStudyRooms = decodedStudyRooms {
                 DispatchQueue.main.async {
@@ -171,7 +171,7 @@ class HTTPLandmarkClient: ObservableObject {
     }
     
     // localhost:8080/StudyRooms/1/Users
-    func getUsersByStudyRoom(studyRoom: Studyroom) {
+    func getUsersByStudyRoom(studyRoom: StudyRoom) {
         guard let id = studyRoom.id,
               let url = URL(string: "http://localhost:8080/StudyRooms/\(id)/Users")
         else {
@@ -193,7 +193,7 @@ class HTTPLandmarkClient: ObservableObject {
         }
     }
     
-    func deleteStudyRoom(studyRoom: Studyroom, completion: @escaping (Bool) -> Void) {
+    func deleteStudyRoom(studyRoom: StudyRoom, completion: @escaping (Bool) -> Void) {
         guard let url = URL(string: "http://localhost:8080/StudyRooms/\(String(studyRoom.id!))") else {
             fatalError("URL is not defined.")
         }
