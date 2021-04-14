@@ -5,6 +5,7 @@
 //  Created by Tomas Perez on 3/17/21.
 //
 
+import Combine
 import Foundation
 
 // To call this in the code, setup as such:
@@ -18,10 +19,17 @@ import Foundation
 class HTTPLandmarkClient: ObservableObject {
     static var shared = HTTPLandmarkClient()
     
+    // SwiftUI Publishers
     @Published var landMarks: [Landmark]? = [Landmark]()
     @Published var classRooms: [ClassRoom]? = [ClassRoom]()
     @Published var studyRooms: [StudyRoom]? = [StudyRoom]()
     @Published var users: [User]? = [User]()
+    
+    // UIKit Publishers
+    let landmarkPublisher = NotificationCenter.Publisher(center: .default, name: Notification.Name("new_landmark"), object: nil)
+        .map { (notification) -> [Landmark]? in
+            return (notification.object as? [Landmark]) ?? nil
+        }
     
     let baseUrl = "https://sqyr.davidbarsam.com"
     
@@ -37,7 +45,10 @@ class HTTPLandmarkClient: ObservableObject {
             let landmarks = try? JSONDecoder().decode([Landmark].self, from: data)
             if let landmarks = landmarks {
                 DispatchQueue.main.async {
+                    // Update SwiftUI publisher
                     self.landMarks = landmarks
+                    // Update non-SwiftUI publisher
+                    NotificationCenter.default.post(name: Notification.Name("new_landmark"), object: self.landMarks)
                 }
             }
         }.resume()

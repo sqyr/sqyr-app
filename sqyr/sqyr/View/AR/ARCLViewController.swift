@@ -5,8 +5,9 @@
 //  Created by David Barsamian on 2/1/21.
 //
 
-import ARKit_CoreLocation
 import ARKit
+import ARKit_CoreLocation
+import Combine
 import CoreLocation
 import Foundation
 import UIKit
@@ -15,12 +16,16 @@ class ARCLViewController: UIViewController {
     var sceneLocationView = SceneLocationView()
     var coachingOverlay = ARCoachingOverlayView()
     
+    var landmarkSubscriber: AnyCancellable?
+    var landmarks: [Landmark]?
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        landmarkSubscriber = HTTPLandmarkClient.shared.landmarkPublisher.assign(to: \.landmarks, on: self)
+        
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
-        
         view.addSubview(coachingOverlay)
     }
     
@@ -29,19 +34,15 @@ class ARCLViewController: UIViewController {
         
         sceneLocationView.frame = view.bounds
         
-        // Apple Park
-        var coordinate = CLLocationCoordinate2D(latitude: 37.3326, longitude: -122.0055)
-        var location = CLLocation(coordinate: coordinate, altitude: 200)
-        var labelledView = UIView.prettyLabelledView(text: "Apple Park")
-        var annotationNode = LocationAnnotationNode(location: location, view: labelledView)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
-        
-        // CBU
-        coordinate = CLLocationCoordinate2D(latitude: 33.9289, longitude: -117.4259)
-        location = CLLocation(coordinate: coordinate, altitude: 200)
-        labelledView = UIView.prettyLabelledView(text: "California Baptist University")
-        annotationNode = LocationAnnotationNode(location: location, view: labelledView)
-        sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+        if let landmarks = landmarks {
+            for landmark in landmarks {
+                let coordinate = CLLocationCoordinate2D(latitude: landmark.coordinatesLat!, longitude: landmark.coordinatesLon!)
+                let location = CLLocation(coordinate: coordinate, altitude: 200)
+                let labelledView = UIView.prettyLabelledView(text: landmark.landMarkName!)
+                let annotationNode = LocationAnnotationNode(location: location, view: labelledView)
+                sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
+            }
+        }
         
         coachingOverlay.session = sceneLocationView.session
         coachingOverlay.translatesAutoresizingMaskIntoConstraints = false
