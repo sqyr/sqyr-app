@@ -7,10 +7,6 @@
 
 import SwiftUI
 
-// MARK: - DATA
-let landmarks: [LandmarkJson] = Bundle.main.decode("landmarks.json")
-
-
 // MARK: - EXTENSION
 extension Bundle {
     func decode<T: Codable>(_ file: String) -> T {
