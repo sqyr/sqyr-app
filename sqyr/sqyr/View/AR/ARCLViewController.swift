@@ -20,7 +20,6 @@ class ARCLViewController: UIViewController {
     var landmarks: [Landmark]?
     
     let pinView: UIView = UIView()
-    var landmarkTitles = [CLLocation: String]()
     
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -49,7 +48,6 @@ class ARCLViewController: UIViewController {
                 let location = CLLocation(coordinate: coordinate, altitude: 200)
                 let labelledView = UIView.prettyLabelledView(text: landmark.landMarkName!)
                 let annotationNode = LocationAnnotationNode(location: location, view: labelledView)
-                landmarkTitles[location] = landmark.landMarkName!
                 annotationNode.ignoreAltitude = true
                 annotationNode.scaleRelativeToDistance = true
                 sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
@@ -70,9 +68,9 @@ class ARCLViewController: UIViewController {
 }
 
 extension ARCLViewController: LNTouchDelegate {
-    
-    
-    func annotationNodeTouched(node: AnnotationNode) {}
+    func annotationNodeTouched(node: AnnotationNode) {
+        
+    }
     
     func locationNodeTouched(node: LocationNode) {
         

@@ -7,8 +7,11 @@
 
 import SwiftUI
 
+// MARK: - StudyGroupView
+
 struct StudyGroupView: View {
     let landmark: Landmark
+    let studyGroupVC: StudyGroupViewController
     let studyGroupPlaceholder: String = "Search for a Study Group"
     let studyRoomPlaceholder: String = "Search for a Room"
     
@@ -16,144 +19,17 @@ struct StudyGroupView: View {
     @State var studyRoomSearchText: String = ""
     @State var username: String = ""
     @State var disclosureGroupExpand: Bool = true
+    @State var classRoomNumbers = [Int]() // Class Room Numbers, NOT IDs
+    @State var studyRoomNames = [Int: [String]]() // Class Room Number: [Study Room Names]
+    @State var usersInStudyRooms = [String: [String]]() // Study Room Name: [User Names]
     
     @ObservedObject var globalModel: GlobalModel
-    @ObservedObject var httpClient: HTTPLandmarkClient
-    
-    // MARK: Functions
     
     init(landmark: Landmark, globalModel: GlobalModel) {
         self.landmark = landmark
         self.globalModel = globalModel
-        httpClient = HTTPLandmarkClient.shared
-
-        // Fetch data
-        HTTPLandmarkClient.shared.getClassRoomsByLandmark(landMark: landmark)
-        HTTPLandmarkClient.shared.getStudyRoomsInClassRooms(classRoom: httpClient.classRooms!)
+        self.studyGroupVC = StudyGroupViewController(landmark: landmark)
     }
-    
-    // show alert window
-    func showAlertView(room: Int, group: String, create: Bool) {
-        let message = create ? "Make your own study group." : group
-        let alert = UIAlertController(title: "Room \(room)", message: message, preferredStyle: .alert)
-        if create {
-            alert.addTextField { section in
-                section.placeholder = "Enter class: EGR302"
-            }
-        }
-        alert.addTextField { username in
-            username.placeholder = "Enter Your Name"
-        }
-        
-        let buttonAction = UIAlertAction(title: create ? "Create" : "Join", style: .default) { _ in
-            if alert.textFields != nil {
-                if create {
-                    let groupName = alert.textFields![0].text!
-                    let userName = alert.textFields![1].text!
-                    createStudyRoom(room: room, group: groupName, user: userName)
-                } else {
-                    let userName = alert.textFields![0].text!
-                    joinStudyGroup(room: room, groupName: group, user: userName)
-                }
-            }
-        }
-        
-        let cancelAction = UIAlertAction(title: "Cancel", style: .destructive) { _ in }
-        
-        // add into view
-        alert.addAction(buttonAction)
-        alert.addAction(cancelAction)
-        
-        // present alert
-        UIApplication.shared.windows.first?.rootViewController?.present(alert, animated: true, completion: {})
-    }
-
-    func getStudyGroupName(roomNum: Int) -> [String] {
-        var names = [String]()
-        guard let roomCollection = httpClient.studyRoomsByClassRoom[roomNum] else { return names }
-        for room in roomCollection {
-            if let roomName = room.name {
-                names.append(roomName)
-            }
-        }
-        return names
-    }
-    
-    func createStudyRoom(room: Int, group: String, user: String) {
-        if let classRooms = httpClient.classRooms, let classRoomId = findClassRoomId(roomNumber: room) {
-            let studyRoom = StudyRoom(classRoomId: classRooms[classRoomId], name: group)
-            httpClient.saveStudyRoom(studyRoom: studyRoom) { roomDidSave in
-                if roomDidSave {
-                    httpClient.getStudyRoomsByClassRoom(classRoom: classRooms[classRoomId])
-                    let user = User(firstName: user, studyRoomId: studyRoom)
-                    httpClient.saveUser(user: user) { (userDidSave) in
-                        if userDidSave {
-                            httpClient.getUsersByStudyRoom(studyRoom: studyRoom)
-                        }
-                    }
-                }
-            }
-        }
-    }
-    
-    func findClassRoomId(roomNumber: Int) -> Int? {
-        for classRoom in httpClient.classRooms! {
-            if classRoom.roomNumber! == roomNumber {
-                return classRoom.id
-            }
-        }
-        return nil
-    }
-    
-    func getUserGroupSize(room: Int, group: String) -> Int {
-        guard let userGroup = httpClient.studyRoomsByClassRoom[room]?.first(where: { $0.name?.lowercased() == group.lowercased() })?.usersInStudyRoom else { return 0 }
-        return userGroup.count
-    }
-    
-    func getUserName(room: Int, group: String, user: Int) -> String {
-        guard let userGroup = httpClient.studyRoomsByClassRoom[room]?.first(where: { $0.name?.lowercased() == group.lowercased() })?.usersInStudyRoom else { return "(No Name)" }
-        return userGroup[user].firstName ?? "(No Name)"
-    }
-    
-    func joinStudyGroup(room: Int, groupName: String, user: String) {
-        let classRoom = httpClient.classRooms![room]
-        var studyGroup = StudyRoom(classRoomId: classRoom, name: groupName)
-        studyGroup.usersInStudyRoom!.append(User(firstName: groupName, studyRoomId: studyGroup))
-    }
-    
-    func displayRoomFilter() -> [Int] {
-        guard let classRooms = landmark.classRoomsId else { return [] }
-        var roomNumbers = [Int]()
-        guard studyRoomSearchText.count > 0 else {
-            for classRoom in classRooms {
-                if let roomNumber = classRoom.roomNumber {
-                    roomNumbers.append(roomNumber)
-                }
-            }
-            return roomNumbers
-        }
-        let classRoomsFiltered = classRooms.filter { (classRoom) -> Bool in
-            if let roomNumber = classRoom.roomNumber, studyRoomSearchText.contains("\(roomNumber)") {
-                return true
-            } else {
-                return false
-            }
-        }
-        for classRoom in classRoomsFiltered {
-            if let roomNumber = classRoom.roomNumber {
-                roomNumbers.append(roomNumber)
-            }
-        }
-        return roomNumbers
-        
-        // display all rooms
-        
-        // display only search rooms
-        
-        // display only search study groups
-    }
-    
-    // MARK: - View
     
     var body: some View {
         VStack {
@@ -170,42 +46,74 @@ struct StudyGroupView: View {
             
             // LIST OF ROOMS
             List {
-                ForEach(displayRoomFilter(), id: \.self) { room in
-                    DisclosureGroup("Room \(room)") {
-                        ForEach(getStudyGroupName(roomNum: room), id: \.self) { group in
-                            DisclosureGroup("\(group)") {
-                                ForEach(0 ..< getUserGroupSize(room: room, group: group), id: \.self) { user in
-                                    Text(getUserName(room: room, group: group, user: user))
-                                        .foregroundColor(.secondary)
-                                        .font(.footnote)
-                                } //: LOOP - USER
-                                Button(action: { showAlertView(room: room, group: group, create: false) }) {
-                                    RoundedRectangle(cornerRadius: 12)
-                                        .fill(Color("gold"))
-                                        .padding(.horizontal)
-                                        .overlay(Text("Join").foregroundColor(.white))
-                                } //: BUTTON
-                            } //: DISCLOSURE
-                            .font(.headline)
-                            .foregroundColor(Color("blue"))
-                        } //: LOOP - STUDY GROUP
-                        DisclosureGroup("Create Your Own Group", isExpanded: .constant(true)) {
-                            Button(action: { showAlertView(room: room, group: "", create: true) }) {
-                                RoundedRectangle(cornerRadius: 12)
-                                    .fill(Color("blue"))
-                                    .padding(.horizontal)
-                                    .overlay(Text("Create").foregroundColor(.white))
-                            } //: BUTTON
-                        } //: DISCLOSURE - CREATE STUDY GROUP
-                        .font(.headline)
-                        .foregroundColor(Color("blue"))
-                    } //: DISCLOSURE - ROOMS
-                    .foregroundColor(.secondary)
+                ForEach(classRoomNumbers, id: \.self) { room in
+                    ClassRoomDisclosure(studyGroupVC: studyGroupVC, room: room, studyRoomNames: studyRoomNames)
                 } //: LOOP - ROOMS
             } //: LIST
             .listStyle(InsetGroupedListStyle())
         } //: VSTACK
         .edgesIgnoringSafeArea(.bottom)
+        .onAppear {
+            self.classRoomNumbers = studyGroupVC.displayRoomFilter(searchText: studyRoomSearchText)
+            for roomNumber in self.classRoomNumbers {
+                self.studyRoomNames[roomNumber] = studyGroupVC.getStudyGroupName(roomNum: roomNumber)
+                // TOOD
+                
+            }
+        }
+    }
+}
+
+// MARK: - ClassRoomDisclosure
+
+struct ClassRoomDisclosure: View {
+    let studyGroupVC: StudyGroupViewController
+    var room: Int
+    var studyRoomNames: [Int: [String]]
+    
+    var body: some View {
+        DisclosureGroup("Room \(room)") {
+            ForEach(studyRoomNames[room]!, id: \.self) { group in
+                StudyGroupDisclosure(studyGroupVC: studyGroupVC, room: room, group: group)
+            } //: LOOP - STUDY GROUP
+            DisclosureGroup("Create Your Own Group", isExpanded: .constant(true)) {
+                Button(action: { studyGroupVC.showAlertView(room: room, group: "", create: true) }) {
+                    RoundedRectangle(cornerRadius: 12)
+                        .fill(Color("blue"))
+                        .padding(.horizontal)
+                        .overlay(Text("Create").foregroundColor(.white))
+                } //: BUTTON
+            } //: DISCLOSURE - CREATE STUDY GROUP
+            .font(.headline)
+            .foregroundColor(Color("blue"))
+        } //: DISCLOSURE - ROOMS
+        .foregroundColor(.secondary)
+    }
+}
+
+// MARK: - StudyGroupDisclosure
+
+struct StudyGroupDisclosure: View {
+    let studyGroupVC: StudyGroupViewController
+    var room: Int
+    var group: String
+    
+    var body: some View {
+        DisclosureGroup("\(group)") {
+            ForEach(0 ..< studyGroupVC.getUserGroupSize(room: room, group: group), id: \.self) { user in
+                Text(studyGroupVC.getUserName(room: room, group: group, user: user))
+                    .foregroundColor(.secondary)
+                    .font(.footnote)
+            } //: LOOP - USER
+            Button(action: { studyGroupVC.showAlertView(room: room, group: group, create: false) }) {
+                RoundedRectangle(cornerRadius: 12)
+                    .fill(Color("gold"))
+                    .padding(.horizontal)
+                    .overlay(Text("Join").foregroundColor(.white))
+            } //: BUTTON
+        } //: DISCLOSURE
+        .font(.headline)
+        .foregroundColor(Color("blue"))
     }
 }
 

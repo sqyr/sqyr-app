@@ -36,6 +36,7 @@
 		68F6BD2626255B0400E60F3B /* ClassRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6BD2526255B0400E60F3B /* ClassRoom.swift */; };
 		68F6BD2926255D0B00E60F3B /* StudyRoom.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6BD2826255D0B00E60F3B /* StudyRoom.swift */; };
 		68F6BD2C26255D7B00E60F3B /* User.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68F6BD2B26255D7B00E60F3B /* User.swift */; };
+		68FD90872627E4BE00288D71 /* StudyGroupViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68FD90862627E4BE00288D71 /* StudyGroupViewController.swift */; };
 		73749BE62602D928002BFDBE /* HTTPLandmarkClient.swift in Sources */ = {isa = PBXBuildFile; fileRef = 73749BE52602D927002BFDBE /* HTTPLandmarkClient.swift */; };
 		BE18754E25EE18FB0009096F /* LocateClassroomView.swift in Sources */ = {isa = PBXBuildFile; fileRef = BE18754D25EE18FB0009096F /* LocateClassroomView.swift */; };
 		BEC536BA2619409000EA114B /* landmarks.json in Resources */ = {isa = PBXBuildFile; fileRef = BEC536B92619409000EA114B /* landmarks.json */; };
@@ -71,6 +72,7 @@
 		68F6BD2526255B0400E60F3B /* ClassRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ClassRoom.swift; sourceTree = "<group>"; };
 		68F6BD2826255D0B00E60F3B /* StudyRoom.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyRoom.swift; sourceTree = "<group>"; };
 		68F6BD2B26255D7B00E60F3B /* User.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = User.swift; sourceTree = "<group>"; };
+		68FD90862627E4BE00288D71 /* StudyGroupViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyGroupViewController.swift; sourceTree = "<group>"; };
 		73749BE52602D927002BFDBE /* HTTPLandmarkClient.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HTTPLandmarkClient.swift; sourceTree = "<group>"; };
 		BE18754D25EE18FB0009096F /* LocateClassroomView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocateClassroomView.swift; sourceTree = "<group>"; };
 		BEC536B92619409000EA114B /* landmarks.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = landmarks.json; sourceTree = "<group>"; };
@@ -138,6 +140,7 @@
 			isa = PBXGroup;
 			children = (
 				68B96A6825C25DF20090E47D /* sqyrApp.swift */,
+				68FD90862627E4BE00288D71 /* StudyGroupViewController.swift */,
 			);
 			path = Controller;
 			sourceTree = "<group>";
@@ -345,6 +348,7 @@
 				68AD764F25EDAF59005A22F0 /* OnboardingView.swift in Sources */,
 				6807459725E4A0350025FE38 /* SearchBarView.swift in Sources */,
 				688F08A825ECC99C00A36433 /* NavigationDrawer.swift in Sources */,
+				68FD90872627E4BE00288D71 /* StudyGroupViewController.swift in Sources */,
 				681EAF4D25E4D58D00C39ACE /* ViewExtension.swift in Sources */,
 				BED74D7225EF013C00EEFF05 /* CreditView.swift in Sources */,
 				6807457A25E488C40025FE38 /* QRScannerView.swift in Sources */,
@@ -490,7 +494,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = ZSGY3777RX;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -499,7 +503,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.laurennelson.sqyr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.sqyr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
@@ -515,7 +519,7 @@
 				CODE_SIGN_IDENTITY = "Apple Development";
 				CODE_SIGN_STYLE = Automatic;
 				DEVELOPMENT_ASSET_PATHS = "\"sqyr/Preview Content\"";
-				DEVELOPMENT_TEAM = ZSGY3777RX;
+				DEVELOPMENT_TEAM = J97PER9B8T;
 				ENABLE_PREVIEWS = YES;
 				INFOPLIST_FILE = sqyr/Info.plist;
 				IPHONEOS_DEPLOYMENT_TARGET = 14.0;
@@ -524,7 +528,7 @@
 					"@executable_path/Frameworks",
 				);
 				MARKETING_VERSION = 0.1.0;
-				PRODUCT_BUNDLE_IDENTIFIER = com.laurennelson.sqyr;
+				PRODUCT_BUNDLE_IDENTIFIER = com.davidbarsam.sqyr;
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				PROVISIONING_PROFILE_SPECIFIER = "";
 				SWIFT_VERSION = 5.0;
