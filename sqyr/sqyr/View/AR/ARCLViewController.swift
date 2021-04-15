@@ -19,11 +19,20 @@ class ARCLViewController: UIViewController {
     var landmarkSubscriber: AnyCancellable?
     var landmarks: [Landmark]?
     
+    let pinView: UIView = UIView()
+    var landmarkTitles = [CLLocation: String]()
+    
     override func viewDidLoad() {
         super.viewDidLoad()
         
+        // Delegate setup
+        sceneLocationView.locationNodeTouchDelegate = self
+        
+        // Susbcriber setup
         landmarkSubscriber = HTTPLandmarkClient.shared.landmarkPublisher.assign(to: \.landmarks, on: self)
         
+        // View setup
+        pinView.addSubview(UIImageView(image: UIImage(systemName: "mappin.circle.fill")?.withTintColor(.red)))
         sceneLocationView.run()
         view.addSubview(sceneLocationView)
         view.addSubview(coachingOverlay)
@@ -40,6 +49,9 @@ class ARCLViewController: UIViewController {
                 let location = CLLocation(coordinate: coordinate, altitude: 200)
                 let labelledView = UIView.prettyLabelledView(text: landmark.landMarkName!)
                 let annotationNode = LocationAnnotationNode(location: location, view: labelledView)
+                landmarkTitles[location] = landmark.landMarkName!
+                annotationNode.ignoreAltitude = true
+                annotationNode.scaleRelativeToDistance = true
                 sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
             }
         }
@@ -54,6 +66,16 @@ class ARCLViewController: UIViewController {
         ])
         coachingOverlay.activatesAutomatically = true
         coachingOverlay.goal = .horizontalPlane
+    }
+}
+
+extension ARCLViewController: LNTouchDelegate {
+    
+    
+    func annotationNodeTouched(node: AnnotationNode) {}
+    
+    func locationNodeTouched(node: LocationNode) {
+        
     }
 }
 
