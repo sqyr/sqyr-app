@@ -33,6 +33,7 @@ final class ClassroomController {
 
         return ClassRoom.query(on: req.db).filter(\.$landmark.$id, .equal, landmarkId)
             .with(\.$landmark)
+            .with(\.$studyRoomsId)
             .all()
     }
 }
