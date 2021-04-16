@@ -29,7 +29,11 @@ final class LandmarkController {
             throw Abort(.notFound)
         }
         return Landmark.query(on: req.db).filter(\.$id, .equal, landmarkId)
-            .with(\.$classRoomsId)
+            .with(\.$classRoomsId) { classRoomsId in
+                classRoomsId.with(\.$studyRoomsId) { studyRoomsId in
+                    studyRoomsId.with(\.$usersInStudyRoom)
+                }
+            }
             .all()
     }
 }
