@@ -4,8 +4,8 @@
 //
 //  Created by David Barsamian, Lauren Nelson, Steven Phun, True Sarmiento, and Tomas Perez on 1/27/21.
 
-import SwiftUI
 import PermissionsSwiftUI
+import SwiftUI
 
 // MARK: - View
 
@@ -22,18 +22,20 @@ struct ContentView: View {
 
     var body: some View {
         // MARK: - Gestures
+
         let resignFRGesture = TapGesture().onEnded {
             resignFirstResponder()
         }
 
         // MARK: - Views
+
         ZStack {
-            if checkPermissions() {
+            if showingAR {
                 ARCLView()
                     .edgesIgnoringSafeArea(.all)
                     .gesture(resignFRGesture, including: .all)
                     .background(Color(UIColor.systemBackground))
-            } else {
+            } else if !showingPermissions, !checkPermissions() {
                 MissingPermissionsView()
             }
             GeometryReader { geo in
@@ -46,32 +48,44 @@ struct ContentView: View {
             }
         }
         .onAppear {
-            checkForUpdate()
+            if checkForUpdate() {
+                showingOnboarding = true
+            }
             if !checkPermissions() {
                 showingPermissions = true
+            } else {
+                showingAR = true
             }
-            showingAR = true
         }
         .fullScreenCover(isPresented: $showingOnboarding, content: {
             OnboardingView()
+                .onDisappear {
+                    if !checkPermissions() {
+                        showingPermissions = true
+                    }
+                }
         })
-        .JMModal(showModal: $showingPermissions, for: [.camera, .location], autoDismiss: true)
+        .JMAlert(showModal: $showingPermissions, for: [.camera, .location], autoDismiss: true, onDisappear: { self.showingAR = true })
         .setPermissionComponent(for: .camera, description: "Sqyr needs to overlay an augmented reality guide over your camera.")
         .setPermissionComponent(for: .location, description: "Sqyr needs to get your location to display relevant landmark guides.")
         .changeBottomDescriptionTo("Sqyr needs these permissions for all the features and functionality to work. Without camera permission, you can't see the augmented reality guide. Without location permision, you can't get accurate guidance to locations.")
         .setAccentColor(to: .accentColor)
     }
-    
-    private func checkForUpdate() {
+
+    private func checkForUpdate() -> Bool {
         let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
-        
+
         if self.appVersion == nil {
-            self.showingOnboarding = true
+            print("First run!")
             UserDefaults.standard.set(currentVersion, forKey: "appVersion")
             self.appVersion = currentVersion
+            return true
+        } else {
+            print("Not first run.")
+            return false
         }
     }
-    
+
     private func checkPermissions() -> Bool {
         return PermissionsUtility.checkPermission(for: .camera) && (PermissionsUtility.checkPermission(for: .location) || PermissionsUtility.checkPermission(for: .locationAlways))
     }
