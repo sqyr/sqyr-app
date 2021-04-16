@@ -50,15 +50,12 @@ struct NavigationDrawer: View {
                 }
             })
             .onAppear {
-                print("onAppear")
                 httpClient.getAllLandmarks()
             }
             .onReceive(httpClient.$landMarks) { (output) in
                 if let landmarks = output, !landmarks.isEmpty, !self.landmarks.elementsEqual(landmarks) {
-                    print("Replacing landmarks...")
                     self.landmarks.removeAll()
                     self.landmarks.append(contentsOf: landmarks)
-                    print(self.landmarks)
                 } else {
                     httpClient.getAllLandmarks()
                 }

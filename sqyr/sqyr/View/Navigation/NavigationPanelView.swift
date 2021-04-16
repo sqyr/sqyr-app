@@ -29,7 +29,7 @@ struct NavigationPanelView: View {
                 .pickerStyle(SegmentedPickerStyle())
                 .background(Color("blue"))
                 .cornerRadius(8)
-                .padding()
+                .padding(.horizontal)
                 
                 NavigationListView(landmarks: landmarks, categorySelection: $categorySelection)
                 

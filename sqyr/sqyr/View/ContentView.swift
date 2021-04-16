@@ -76,12 +76,10 @@ struct ContentView: View {
         let currentVersion = Bundle.main.object(forInfoDictionaryKey: "CFBundleShortVersionString") as? String
 
         if self.appVersion == nil {
-            print("First run!")
             UserDefaults.standard.set(currentVersion, forKey: "appVersion")
             self.appVersion = currentVersion
             return true
         } else {
-            print("Not first run.")
             return false
         }
     }
