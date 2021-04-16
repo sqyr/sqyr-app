@@ -49,7 +49,6 @@ class ARCLViewController: UIViewController {
                 let labelledView = UIView.prettyLabelledView(text: landmark.landMarkName!)
                 let annotationNode = LocationAnnotationNode(location: location, view: labelledView)
                 annotationNode.ignoreAltitude = true
-                annotationNode.scaleRelativeToDistance = true
                 sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
             }
         }
