@@ -35,10 +35,6 @@ final class ClassroomController {
 
         return ClassRoom.query(on: req.db)
             .filter(\.$landmark.$id, .equal, landmarkId)
-            .with(\.$landmark)
-            .with(\.$studyRoomsId) { studyRoomsId in
-                studyRoomsId.with(\.$usersInStudyRoom)
-            }
             .all()
     }
 }
