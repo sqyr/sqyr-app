@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct ClassRoom: Codable {
+struct ClassRoom: Codable, Hashable {
+    static func == (lhs: ClassRoom, rhs: ClassRoom) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case landmark

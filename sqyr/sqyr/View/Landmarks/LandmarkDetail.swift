@@ -8,22 +8,14 @@
 import SwiftUI
 
 struct LandmarkDetail: View {
-    let landmark: Landmark
-    let classRooms: [ClassRoom]?
-    
-    @State var hours: [Hours]?
+    var landmark: Landmark
     @State var isShowingCredits: Bool = false
-    
-    init(with landmark: Landmark, classRooms: [ClassRoom]?) {
-        self.landmark = landmark
-        self.classRooms = classRooms
-    }
 
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             // LANDMARK BANNER IMAGE
             LandmarkBannerImage(landmark: landmark)
-            
+
             // LANDMARK HOURS TITLE
             LandmarkTitleView(icon: landmark.icon ?? "", title: landmark.landMarkName ?? "")
 
@@ -42,14 +34,14 @@ struct LandmarkDetail: View {
             }
 
             // OPTIONAL ACTION TITLE
-            if (classRooms != nil && classRooms!.count > 0) || (landmark.floorPlanImage != nil && landmark.floorPlanImage!.level1 != "null") {
+            if (landmark.classRoomsId != nil && landmark.classRoomsId!.count > 0) || (landmark.floorPlanImage != nil && landmark.floorPlanImage!.level1 != "null") {
                 LandmarkTitleView(icon: "ellipsis.circle.fill", title: "Actions")
             }
 
             // OPTIONAL ACTION CONTENT
             HStack {
                 // STUDY GROUP BUTTON
-                if classRooms != nil && classRooms!.count > 0 {
+                if landmark.classRoomsId != nil && landmark.classRoomsId!.count > 0 {
                     Spacer()
                     NavigationLink(destination: StudyGroupView(landmark: landmark, globalModel: GlobalModel())) {
                         Text("Study Groups")
@@ -85,10 +77,10 @@ struct LandmarkDetail: View {
             } //: SHEET
         ) //: ITEM
         .edgesIgnoringSafeArea(.all)
-        .padding(0)
+        .padding(.bottom)
         .onAppear {
-             hapticFeedback.impactOccurred()
-         }
+            hapticFeedback.impactOccurred()
+        }
     }
 }
 
@@ -169,13 +161,13 @@ struct LandmarkTitleView: View {
 
 struct LandmarkHoursView: View {
     let landmark: Landmark
-    
-    var hours: [Int:String]
-    
+
+    var hours: [Int: String]
+
     init(with landmark: Landmark) {
         self.landmark = landmark
-        
-        hours = [Int:String]()
+
+        hours = [Int: String]()
         if let landmarkHours = landmark.hours {
             hours[0] = landmarkHours.mon ?? "CLOSED"
             hours[1] = landmarkHours.tue ?? "CLOSED"
@@ -202,7 +194,7 @@ struct LandmarkHoursView: View {
                 } //: HSTACK
                 VStack {
                     LazyVGrid(columns: getGridLayout(), spacing: 6) {
-                        ForEach(0..<hours.count) { n in
+                        ForEach(0 ..< hours.count) { n in
                             Text(getDayString(forWeekDay: n))
                                 .fontWeight(.bold)
                             Text(hours[n] ?? "NO HOURS")
@@ -218,7 +210,7 @@ struct LandmarkHoursView: View {
     func getGridLayout() -> [GridItem] {
         return Array(repeating: GridItem(.flexible(), spacing: 2), count: 2)
     }
-    
+
     func getDayString(forWeekDay weekDay: Int) -> String {
         switch weekDay {
         case 0:

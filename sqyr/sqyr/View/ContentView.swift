@@ -37,7 +37,7 @@ struct ContentView: View {
                 MissingPermissionsView()
             }
             GeometryReader { geo in
-                NavigationDrawer(geoProxy: geo, globalModel: globalModel)
+                NavigationDrawer(globalModel: globalModel, geoProxy: geo)
                 Rectangle() // Status Bar Blur
                     .frame(width: geo.size.width, height: UIApplication.shared.windows.filter { $0.isKeyWindow }.first?.windowScene?.statusBarManager?.statusBarFrame.height ?? 0, alignment: .top)
                     .foregroundColor(.clear)

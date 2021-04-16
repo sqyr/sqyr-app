@@ -7,8 +7,11 @@
 
 import Foundation
 
-struct Landmark: Codable {
-    
+struct Landmark: Codable, Hashable {
+    static func == (lhs: Landmark, rhs: Landmark) -> Bool {
+        return lhs.id == rhs.id
+    }
+
     enum CodingKeys: String, CodingKey {
         case id
         case landMarkName
@@ -23,7 +26,7 @@ struct Landmark: Codable {
         case floorPlanImage
         case classRoomsId
     }
-    
+
     var id: Int?
     var landMarkName: String?
     var description: String?
@@ -36,7 +39,7 @@ struct Landmark: Codable {
     var showInfoLeft: Bool?
     var floorPlanImage: FloorPlanImage?
     var classRoomsId: [ClassRoom]?
-    
+
     init(from decoder: Decoder) throws {
         let container = try decoder.container(keyedBy: CodingKeys.self)
         id = try? container.decodeIfPresent(Int.self, forKey: .id)
@@ -54,7 +57,7 @@ struct Landmark: Codable {
     }
 }
 
-struct FloorPlanImage: Codable {
+struct FloorPlanImage: Codable, Hashable {
     var basement: String?
     var level1: String?
     var level2: String?
@@ -62,7 +65,7 @@ struct FloorPlanImage: Codable {
     var level4: String?
 }
 
-struct Hours: Codable {
+struct Hours: Codable, Hashable {
     var mon: String?
     var tue: String?
     var wed: String?

@@ -28,7 +28,7 @@ class ARCLViewController: UIViewController {
         sceneLocationView.locationNodeTouchDelegate = self
         
         // Susbcriber setup
-        landmarkSubscriber = HTTPLandmarkClient.shared.landmarkPublisher.assign(to: \.landmarks, on: self)
+        landmarkSubscriber = HTTPLandmarkClient().landmarkPublisher.assign(to: \.landmarks, on: self)
         
         // View setup
         pinView.addSubview(UIImageView(image: UIImage(systemName: "mappin.circle.fill")?.withTintColor(.red)))

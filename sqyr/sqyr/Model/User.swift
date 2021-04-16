@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct User: Codable {
+struct User: Codable, Hashable {
     enum CodingKeys: String, CodingKey {
         case id
         case firstName

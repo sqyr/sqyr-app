@@ -17,8 +17,6 @@ import Foundation
 //      }
 // }
 class HTTPLandmarkClient: ObservableObject {
-    static var shared = HTTPLandmarkClient()
-    
     // SwiftUI Publishers
     @Published var landMarks: [Landmark]? = [Landmark]()
     @Published var classRooms: [ClassRoom]? = [ClassRoom]()
@@ -28,7 +26,7 @@ class HTTPLandmarkClient: ObservableObject {
     // UIKit Publishers
     let landmarkPublisher = NotificationCenter.Publisher(center: .default, name: Notification.Name("new_landmark"), object: nil)
         .map { (notification) -> [Landmark]? in
-            return (notification.object as? [Landmark]) ?? nil
+            (notification.object as? [Landmark]) ?? nil
         }
     
     let baseUrl = "https://sqyr.davidbarsam.com"
@@ -105,7 +103,7 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
-    func saveStudyRoom(studyRoom: StudyRoom, completion: @escaping (Bool) -> Void) {
+    func saveStudyRoom(studyRoom: StudyRoom, completion: ((StudyRoom) -> Void)?) {
         guard let url = URL(string: "\(baseUrl)/StudyRooms") else {
             fatalError("URL is not defined.")
         }
@@ -115,14 +113,19 @@ class HTTPLandmarkClient: ObservableObject {
         request.httpBody = try? JSONEncoder().encode(studyRoom)
         
         URLSession.shared.dataTask(with: request) { data, _, error in
-            guard let _ = data, error == nil else {
-                return completion(false)
+            guard let data = data, error == nil else {
+                return
             }
-            completion(true)
+            let studyRoom = try? JSONDecoder().decode(StudyRoom.self, from: data)
+            if let studyRoom = studyRoom {
+                if completion != nil {
+                    completion!(studyRoom)
+                }
+            }
         }.resume()
     }
     
-    func saveUser(user: User, completion: @escaping (Bool) -> Void) {
+    func saveUser(user: User, completion: ((Bool) -> Void)?) {
         guard let url = URL(string: "\(baseUrl)/Users") else {
             fatalError("URL is not defined")
         }
@@ -133,9 +136,14 @@ class HTTPLandmarkClient: ObservableObject {
         
         URLSession.shared.dataTask(with: request) { data, _, error in
             guard let _ = data, error == nil else {
-                return completion(false)
+                if completion != nil {
+                    return completion!(false)
+                }
+                return
             }
-            completion(true)
+            if completion != nil {
+                completion!(true)
+            }
         }.resume()
     }
     
@@ -147,7 +155,6 @@ class HTTPLandmarkClient: ObservableObject {
         }
         
         URLSession.shared.dataTask(with: url) { data, _, error in
-            
             guard let data = data, error == nil else {
                 return
             }
@@ -183,37 +190,23 @@ class HTTPLandmarkClient: ObservableObject {
         }.resume()
     }
     
-    func getStudyRoomsInClassRooms(classRoom: [ClassRoom]) {
-//        studyRoomsByClassRoom = [Int: [StudyRoom]]()
-//        guard let classRooms = classRooms else { return }
-//        for classRoom in classRooms {
-//            getStudyRoomsByClassRoom(classRoom: classRoom)
-//            if let studyRooms = studyRooms {
-//                studyRoomsByClassRoom[classRoom.id!] = studyRooms
-//            }
-//        }
-    }
-    
     func getUsersByStudyRoom(studyRoom: StudyRoom) {
         guard let id = studyRoom.id,
               let url = URL(string: "\(baseUrl)/StudyRooms/\(id)/Users")
         else {
             fatalError("URL is not defined")
         }
-        
         URLSession.shared.dataTask(with: url) { data, _, error in
-            
             guard let data = data, error == nil else {
                 return
             }
             let decodedUsers = try? JSONDecoder().decode([User].self, from: data)
-            
             if let decodedUsers = decodedUsers {
                 DispatchQueue.main.async {
                     self.users = decodedUsers
                 }
             }
-        }
+        }.resume()
     }
     
     func deleteStudyRoom(studyRoom: StudyRoom, completion: @escaping (Bool) -> Void) {

@@ -7,7 +7,11 @@
 
 import Foundation
 
-struct StudyRoom: Codable {
+struct StudyRoom: Codable, Hashable {
+    static func == (lhs: StudyRoom, rhs: StudyRoom) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
     enum CodingKeys: String, CodingKey {
         case id
         case classRoomId
