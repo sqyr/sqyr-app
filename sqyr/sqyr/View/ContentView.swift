@@ -30,7 +30,7 @@ struct ContentView: View {
         // MARK: - Views
 
         ZStack {
-            if showingAR {
+            if showingAR, !globalModel.shouldHideAr {
                 ARCLView()
                     .edgesIgnoringSafeArea(.all)
                     .gesture(resignFRGesture, including: .all)

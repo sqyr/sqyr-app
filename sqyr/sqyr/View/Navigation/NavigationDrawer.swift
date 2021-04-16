@@ -49,6 +49,13 @@ struct NavigationDrawer: View {
                     bottomSheetPosition = .top
                 }
             })
+            .onChange(of: bottomSheetPosition, perform: { (position) in
+                if position == .top {
+                    self.globalModel.shouldHideAr = true
+                } else {
+                    self.globalModel.shouldHideAr = false
+                }
+            })
             .onAppear {
                 httpClient.getAllLandmarks()
             }
