@@ -15,7 +15,13 @@ final class LandmarkController {
     }
 
     func all(_ req: Request) throws -> EventLoopFuture<[Landmark]> {
-        Landmark.query(on: req.db).with(\.$classRoomsId).all()
+        Landmark.query(on: req.db)
+            .with(\.$classRoomsId) { classRoomsId in
+                classRoomsId.with(\.$studyRoomsId) { studyRoomsId in
+                    studyRoomsId.with(\.$usersInStudyRoom)
+                }
+            }
+            .all()
     }
 
     func byID(_ req: Request) throws -> EventLoopFuture<[Landmark]> {
