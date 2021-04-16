@@ -49,6 +49,8 @@ class ARCLViewController: UIViewController {
                 let labelledView = UIView.prettyLabelledView(text: landmark.landMarkName!)
                 let annotationNode = LocationAnnotationNode(location: location, view: labelledView)
                 annotationNode.ignoreAltitude = true
+                annotationNode.annotationHeightAdjustmentFactor = 1
+                annotationNode.scalingScheme = .doubleTiered(firstThreshold: 0, firstScale: 1, secondThreshold: 1, secondScale: 5)
                 sceneLocationView.addLocationNodeWithConfirmedLocation(locationNode: annotationNode)
             }
         }
@@ -100,5 +102,19 @@ extension UIView {
         label.center = cview.center
         
         return cview
+    }
+    
+    class func prettyPinView() -> UIView {
+        var pinImage = UIImage(systemName: "mappin.and.ellipse")
+        pinImage = pinImage?.resizableImage(withCapInsets: .zero)
+        pinImage = pinImage?.applyingSymbolConfiguration(.init(textStyle: .title1))
+        let pinImageView = UIImageView(image: pinImage)
+        let pinFrame = CGRect(x: 0, y: 0, width: pinImageView.frame.height + 12, height: pinImageView.frame.height + 12)
+        let pinView = UIView(frame: pinFrame)
+        pinView.layer.cornerRadius = pinImageView.frame.height / 2
+        pinView.layer.backgroundColor = UIColor(.white).cgColor
+        pinView.addSubview(pinImageView)
+        pinImageView.center = pinView.center
+        return pinView
     }
 }
