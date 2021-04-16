@@ -43,6 +43,9 @@ class ARCLViewController: UIViewController {
         sceneLocationView.frame = view.bounds
         
         if let landmarks = landmarks {
+            if landmarks.count > 0 {
+                landmarkSubscriber?.cancel()
+            }
             for landmark in landmarks {
                 let coordinate = CLLocationCoordinate2D(latitude: landmark.coordinatesLat!, longitude: landmark.coordinatesLon!)
                 let location = CLLocation(coordinate: coordinate, altitude: 200)
