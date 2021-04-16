@@ -92,8 +92,8 @@ struct LandmarkBannerImage: View {
 
     func slideInAnimation() -> Animation {
         Animation.spring(response: 1.5, dampingFraction: 0.5, blendDuration: 0.5)
-            .speed(0.50)
-            .delay(0.50)
+            .speed(1)
+            .delay(0.25)
     }
 
     var body: some View {
@@ -132,7 +132,7 @@ struct LandmarkBannerImage: View {
                 .background(Color("ColorBlackTransparent"))
             } //: HSTACK
             .frame(width: 285, height: 105, alignment: .center)
-            .offset(x: -40, y: showHeadline ? 95 : 0)
+            .offset(x: -40, y: showHeadline ? 95 : 65)
             .animation(slideInAnimation())
             .onAppear {
                 self.showHeadline.toggle()
