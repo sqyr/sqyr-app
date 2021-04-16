@@ -15,14 +15,16 @@ final class ClassroomController {
     }
 
     func all(_ req: Request) throws -> EventLoopFuture<[ClassRoom]> {
-        ClassRoom.query(on: req.db).all()
+        ClassRoom.query(on: req.db)
+            .all()
     }
 
     func byID(_ req: Request) throws -> EventLoopFuture<[ClassRoom]> {
         guard let classroomId = req.parameters.get("RoomID", as: Int.self) else {
             throw Abort(.notFound)
         }
-        return ClassRoom.query(on: req.db).filter(\.$id, .equal, classroomId)
+        return ClassRoom.query(on: req.db)
+            .filter(\.$id, .equal, classroomId)
             .all()
     }
 
@@ -31,9 +33,12 @@ final class ClassroomController {
             throw Abort(.notFound)
         }
 
-        return ClassRoom.query(on: req.db).filter(\.$landmark.$id, .equal, landmarkId)
+        return ClassRoom.query(on: req.db)
+            .filter(\.$landmark.$id, .equal, landmarkId)
             .with(\.$landmark)
-            .with(\.$studyRoomsId)
+            .with(\.$studyRoomsId) { studyRoomsId in
+                studyRoomsId.with(\.$usersInStudyRoom)
+            }
             .all()
     }
 }
