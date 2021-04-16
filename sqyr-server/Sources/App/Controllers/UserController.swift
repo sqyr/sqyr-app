@@ -32,7 +32,9 @@ final class UserController {
         }
 
         return User.query(on: req.db).filter(\.$studyRoomId.$id, .equal, studyRoomId)
-            .with(\.$studyRoomId)
+            .with(\.$studyRoomId) { studyRoomId in
+                studyRoomId.with(\.$usersInStudyRoom)
+            }
             .all()
     }
 
