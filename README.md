@@ -1,8 +1,3 @@
-<p align="center">
- <a href="https://github.com/sqyr/sqyr-app">
-  <img src="" alt="Logo" width="160" height="160">
- </a>
-
 ![](https://user-images.githubusercontent.com/46636471/115318138-f624ac00-a131-11eb-82a9-29c2d836bada.png)
 # Sqyr
 
