@@ -29,7 +29,7 @@ class HTTPLandmarkClient: ObservableObject {
             (notification.object as? [Landmark]) ?? nil
         }
     
-    let baseUrl = "https://sqyr.davidbarsam.com"
+    let baseUrl = "<REDACTED>"
     
     func getAllLandmarks() {
         guard let url = URL(string: "\(baseUrl)/Landmarks") else {
